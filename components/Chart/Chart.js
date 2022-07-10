@@ -159,7 +159,7 @@ export default function Chart({
       minH="500px"
       h="100%"
       borderRadius="3xl"
-      w="clamp(400px, 90vw, 900px)"
+      w="clamp(200px, 90vw, 900px)"
       py="2.5rem"
       px="2.5rem"
       bg={{
