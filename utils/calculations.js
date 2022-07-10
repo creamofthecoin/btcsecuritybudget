@@ -19,7 +19,7 @@ import {
 
 // t is the amount to translation, t=2: e^-(x-2)
 // s is the stretch: s=3: e^-(3x)
-function partSigmoid(x, t=0, s=0.05){
+function partSigmoid(x, t=33, s=0.05){
   const eST = Math.exp(s*t)
   const eX = Math.exp(-s*(x-t))
   return (eST - eX) / ((1+eX)*(1+eST))
