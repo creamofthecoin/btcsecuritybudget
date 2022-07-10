@@ -1,12 +1,12 @@
 import { Box, ChakraProvider, useColorMode } from "@chakra-ui/react";
 import _ from "lodash";
-import Head from "next/head";
 import { useState } from "react";
 import Chart from "../components/Chart/Chart";
 import Container from "../components/Container/Container";
 import ControlPanel from "../components/ControlPanel/ControlPanel";
 import Footer from "../components/Footer/Footer";
 import Meme from "../components/Meme/Meme";
+import Metatags from "../components/Metatags/Metatags";
 import Section from "../components/Section/Section";
 import theme from "../theme/theme";
 import { deriveValues } from "../utils/calculations";
@@ -79,7 +79,6 @@ export default function Home() {
             ratings={ratings}
           />
           <Box
-            // ml={{ base: "0", lg: "-5rem" }}
             display={{ base: "inline-block", md: "none", lg: "inline-block" }}
           >
             <Meme ratings={ratings} />
@@ -96,45 +95,5 @@ export default function Home() {
         <Footer />
       </Container>
     </ChakraProvider>
-  );
-}
-
-function Metatags() {
-  return (
-    <Head>
-      <title>
-        BTC Security Budget | Bitcoin Decentralization | Bitcoin Miner Reward
-      </title>
-      <meta
-        name="description"
-        content="Bitcoin security budget: The block reward is vanishing, and depending on transaction fees for security may not be a sufficient incentive to keep up with network value (or market cap). State actors are also motivated by ideology, not profit. So, help us keep BTC safe by engaging in the discussion."
-      ></meta>
-      <meta
-        property="og:title"
-        content="BTC Security Budget | Bitcoin Decentralization | Bitcoin Miner Reward"
-        key="title"
-      />
-      <link
-        rel="apple-touch-icon"
-        sizes="180x180"
-        href="/apple-touch-icon.png"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="32x32"
-        href="/favicon-32x32.png"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="16x16"
-        href="/favicon-16x16.png"
-      />
-      <link rel="manifest" href="/site.webmanifest" />
-      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-      <meta name="msapplication-TileColor" content="#da532c" />
-      <meta name="theme-color" content="#ffffff"></meta>
-    </Head>
   );
 }
