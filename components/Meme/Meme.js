@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, Heading, Tooltip } from "@chakra-ui/react";
+import { Box, Grid, Heading, Text, Tooltip, VStack } from "@chakra-ui/react";
 import "@fontsource/inter/600.css";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -12,59 +12,84 @@ export default function Meme({ ratings }) {
     [GOOD_RATING]: [
       `${good}hope-wojak.png`,
       "Plebs Win, it's cheap to participate 😊",
+      "Fees are low enough for everyone to participate in. Great!",
     ],
     [BAD_RATING]: [
       `${bad}pink-upset-wojak.jpg`,
       "Bankers love this! Fees skyrocket! 😭",
+      "Fees are high, creating a bottleneck for average users to participate in the base layer. Banks and other large institutions love this!",
     ],
   };
   const decentralizationMeme = {
     [GOOD_RATING]: [
       `${good}nicholas-cage-hair.gif`,
       "Bitcoin is Safu via Decentralization! 🗽",
+      "Bitcoin decentralization ensures a secure and censorship resistant network.",
     ],
     [BAD_RATING]: [
       `${bad}unlimited-power.webp`,
       "Unlimited Power via Centralization! 🔫",
+      "Bitcoin's incentives point towards centralization! Governments and large institutions are happy!",
     ],
   };
   const securityMeme = {
-    [GOOD_RATING]: [`${good}realistic-pepe.jpg`, "Cost to Attack is High! 🥰"],
+    [GOOD_RATING]: [
+      `${good}realistic-pepe.jpg`,
+      "Cost to Attack is High! 🥰",
+      "It is exceedingly cost prohibitive to attack bitcoin right now.",
+    ],
     [BAD_RATING]: [
       `${bad}bis-wins.png`,
       "The State Wins! Cost to Attack is Low!! 🤮",
+      "Compared to the value of the network, the relative cost to attack is now worth it for state actors to attack!",
     ],
   };
 
   return (
-    <Flex
-      flexDir={{ base: "row", md: "column" }}
-      zIndex="0"
+    <Grid
+      gridTemplateRows="1fr 1fr 1fr"
+      gridTemplateColumns="1fr 1fr"
+      gridTemplateAreas={`"meme1 text1"
+                          "meme2 text2"
+                          "meme3 text3"`}
       gap={{ base: 4, md: 8 }}
     >
+      {/* <Flex
+       flexDir={{ base: "row", md: "column" }}
+      zIndex="0"
+       gap={{ base: 4, md: 8 }}
+     > */}
       <SingleMeme
-        col={1}
         memeSrc={feeMeme}
         title="Fees"
         rating={avgFeeRating}
+        area="1"
       />
       <SingleMeme
-        col={2}
         memeSrc={decentralizationMeme}
         title="Decentralization"
         rating={decentralizationRating}
+        area="2"
       />
       <SingleMeme
-        col={3}
         memeSrc={securityMeme}
         title="Security"
         rating={securityRating}
+        area="3"
       />
-    </Flex>
+
+      <MemeText memeSrc={feeMeme} rating={avgFeeRating} area="1" />
+      <MemeText
+        memeSrc={decentralizationMeme}
+        rating={decentralizationRating}
+        area="2"
+      />
+      <MemeText memeSrc={securityMeme} rating={securityRating} area="3" />
+    </Grid>
   );
 }
 
-function SingleMeme({ title, memeSrc, rating }) {
+function SingleMeme({ title, memeSrc, rating, area }) {
   // const toast = useToast();
   // const [currRating, setCurrRating] = useState(rating);
   const [isHovered, setIsHovered] = useState(false);
@@ -97,6 +122,7 @@ function SingleMeme({ title, memeSrc, rating }) {
   };
   return (
     <Grid
+      gridarea={`meme${area}`}
       gridTemplateColumns="[c-1] 1fr [c-2]"
       gridTemplateRows="[r-1] 1fr [r-2]"
       w={sizes}
@@ -136,7 +162,10 @@ function SingleMeme({ title, memeSrc, rating }) {
           position="relative"
           w="inherit"
           h="inherit"
-          sx={{ transition: "transform 0.45s", transformStyle: "preserve-3d" }}
+          sx={{
+            transition: "transform 0.45s",
+            transformStyle: "preserve-3d",
+          }}
           transform={`rotateY(${condition}deg)`}
         >
           <Tooltip
@@ -182,5 +211,13 @@ function SingleMeme({ title, memeSrc, rating }) {
         </Box>
       </Box>
     </Grid>
+  );
+}
+
+function MemeText({ memeSrc, rating, area }) {
+  return (
+    <VStack gridarea={`text${area}`}>
+      <Text>{memeSrc[rating][2]}</Text>
+    </VStack>
   );
 }
