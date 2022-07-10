@@ -34,11 +34,11 @@ function FAQ() {
       <AsideHeading>What is the security budget?</AsideHeading>
       <Text>
         The security budget is the amount of money paid to miners, which
-        determines the amount that they are willing to invest in mining
-        equipment. Note that "security budget" is not an official bitcoin term,
-        and it isn't a budget that is set by a committee or governing body. It's
-        simply a term used for discussing bitcoin's level of security. An
-        alternative term is "total miner reward".
+        determines the amount they are willing to invest in mining equipment.
+        Note that "security budget" is not an official bitcoin term, and it
+        isn't a budget that is set by a committee or governing body. It's simply
+        a term used for discussing bitcoin's level of security. An alternative
+        term is "total miner reward".
       </Text>
       <AsideHeading>Why is it important?</AsideHeading>
       <Text>
@@ -54,8 +54,8 @@ function FAQ() {
         Why worry? Bitcoin has proven all doubters wrong.
       </AsideHeading>
       <Text>
-        Past performance doesn't guarantee future performance. What's in store
-        for bitcoin is a rapidly declining block reward (newly generated coins),
+        Past performance doesn't guarantee future results. What's in store for
+        bitcoin is a rapidly declining block reward (newly generated coins),
         which is currently the main component of the security budget. In order
         for the block reward to continue providing the same level of security,
         the value of bitcoin will have to double every 4 years for the next 100+
