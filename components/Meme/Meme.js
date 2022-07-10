@@ -50,6 +50,7 @@ export default function Meme({ ratings }) {
       gridTemplateRows="[r1] 1fr [r2] 1fr [r3] 1fr [r4]"
       gridTemplateColumns="[c1] 1fr [c2] 1fr [c3]"
       gap={{ base: 4, md: 8 }}
+      maxW="300px"
     >
       {/* <Flex
        flexDir={{ base: "row", md: "column" }}
@@ -215,7 +216,7 @@ function SingleMeme({ title, memeSrc, rating, area }) {
 function MemeText({ memeSrc, rating, area }) {
   return (
     <VStack gridColumn="c2 / c3" gridRow={`r${area} / r${area + 1}`}>
-      <Text>{memeSrc[rating][2]}</Text>
+      <Text fontSize="sm">{memeSrc[rating][2]}</Text>
     </VStack>
   );
 }
