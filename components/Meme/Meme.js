@@ -49,9 +49,9 @@ export default function Meme({ ratings }) {
     <Grid
       gridTemplateRows="1fr 1fr 1fr"
       gridTemplateColumns="1fr 1fr"
-      gridTemplateAreas={`"meme1 text1"
-                          "meme2 text2"
-                          "meme3 text3"`}
+      gridTemplateAreas={`"m-one t-one"
+                          "m-two t-two"
+                          "m-three t-three"`}
       gap={{ base: 4, md: 8 }}
     >
       {/* <Flex
@@ -63,28 +63,28 @@ export default function Meme({ ratings }) {
         memeSrc={feeMeme}
         title="Fees"
         rating={avgFeeRating}
-        area="1"
+        area="one"
       />
       <SingleMeme
         memeSrc={decentralizationMeme}
         title="Decentralization"
         rating={decentralizationRating}
-        area="2"
+        area="two"
       />
       <SingleMeme
         memeSrc={securityMeme}
         title="Security"
         rating={securityRating}
-        area="3"
+        area="three"
       />
 
-      <MemeText memeSrc={feeMeme} rating={avgFeeRating} area="1" />
+      <MemeText memeSrc={feeMeme} rating={avgFeeRating} area="one" />
       <MemeText
         memeSrc={decentralizationMeme}
         rating={decentralizationRating}
-        area="2"
+        area="two"
       />
-      <MemeText memeSrc={securityMeme} rating={securityRating} area="3" />
+      <MemeText memeSrc={securityMeme} rating={securityRating} area="three" />
     </Grid>
   );
 }
@@ -122,7 +122,7 @@ function SingleMeme({ title, memeSrc, rating, area }) {
   };
   return (
     <Grid
-      gridarea={`meme${area}`}
+      gridarea={`m-${area}`}
       gridTemplateColumns="[c-1] 1fr [c-2]"
       gridTemplateRows="[r-1] 1fr [r-2]"
       w={sizes}
@@ -216,7 +216,7 @@ function SingleMeme({ title, memeSrc, rating, area }) {
 
 function MemeText({ memeSrc, rating, area }) {
   return (
-    <VStack gridarea={`text${area}`}>
+    <VStack gridarea={`t-${area}`}>
       <Text>{memeSrc[rating][2]}</Text>
     </VStack>
   );
