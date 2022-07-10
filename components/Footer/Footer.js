@@ -7,7 +7,7 @@ export default function Footer() {
     <Section outerPy="5rem" flexDir="column">
       <VStack gap={5}>
         <Aside />
-        <Link target="_blank" href="http://github.com/" zIndex="1" w="32px">
+        <Link target="_blank" href="https://github.com/creamofthecoin/btcsecuritybudget" zIndex="1" w="32px">
           <Image src="/github-logo.png" />
         </Link>
       </VStack>
