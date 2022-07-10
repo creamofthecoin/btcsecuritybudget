@@ -95,6 +95,7 @@ const options = {
         drawBorder: false,
         display: false,
       },
+      max: 1e4,
     },
   },
 };
