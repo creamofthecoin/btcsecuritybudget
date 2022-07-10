@@ -132,19 +132,22 @@ function SingleMeme({ title, memeSrc, rating }) {
         transition="0.5s"
         sx={{ perspective: "500px" }}
       >
-        <Box
-          position="relative"
-          w="inherit"
-          h="inherit"
-          sx={{ transition: "transform 0.45s", transformStyle: "preserve-3d" }}
-          transform={`rotateY(${condition}deg)`}
+        <Tooltip
+          label={memeSrc[rating][1]}
+          aria-label="Tool Tip For a Good/Bad Condition"
+          bg="gray.900"
+          color="white"
+          hasArrow
         >
-          <Tooltip
-            label={memeSrc[GOOD_RATING][1]}
-            aria-label="Tool Tip For a Good Condition"
-            bg="gray.900"
-            color="white"
-            hasArrow
+          <Box
+            position="relative"
+            w="inherit"
+            h="inherit"
+            sx={{
+              transition: "transform 0.45s",
+              transformStyle: "preserve-3d",
+            }}
+            transform={`rotateY(${condition}deg)`}
           >
             <Box
               position="absolute"
@@ -157,15 +160,7 @@ function SingleMeme({ title, memeSrc, rating }) {
               backgroundSize="cover"
               backgroundPosition="center"
             />
-          </Tooltip>
 
-          <Tooltip
-            label={memeSrc[BAD_RATING][1]}
-            aria-label="Tool Tip For a Bad Condition"
-            bg="gray.900"
-            color="white"
-            hasArrow
-          >
             <Box
               position="absolute"
               w="inherit"
@@ -178,8 +173,8 @@ function SingleMeme({ title, memeSrc, rating }) {
               borderRadius="full"
               overflow="hidden"
             />
-          </Tooltip>
-        </Box>
+          </Box>
+        </Tooltip>
       </Box>
     </Grid>
   );
