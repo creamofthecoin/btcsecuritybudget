@@ -1,0 +1,1 @@
+call pnpm eslint components pages theme

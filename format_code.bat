@@ -1,0 +1,1 @@
+call pnpm prettier components pages theme --write
