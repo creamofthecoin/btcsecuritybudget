@@ -9,8 +9,8 @@ export default function ControlPanel({
   setAvgFee,
   blockSize,
   setBlockSize,
-  yearlyPriceIncrease,
-  setYearlyPriceIncrease,
+  finalMarketCap,
+  setFinalMarketCap,
   year,
   setYear,
   transactionsPerBlock,
@@ -53,8 +53,8 @@ export default function ControlPanel({
           setAvgFee={setAvgFee}
           blockSize={blockSize}
           setBlockSize={setBlockSize}
-          yearlyPriceIncrease={yearlyPriceIncrease}
-          setYearlyPriceIncrease={setYearlyPriceIncrease}
+          finalMarketCap={finalMarketCap}
+          setFinalMarketCap={setFinalMarketCap}
           transactionsPerBlock={transactionsPerBlock}
         />
         <TotalDisplay

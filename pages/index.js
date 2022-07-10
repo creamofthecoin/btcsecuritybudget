@@ -22,7 +22,7 @@ import { getRating } from "../utils/getRating";
 export default function Home() {
   const [blockSize, setBlockSize] = useState(CURR_AVG_BLOCK_SIZE_MB); // megabytes
   const [avgFee, setAvgFee] = useState(CURR_AVG_FEE); // sats
-  const [yearlyPriceIncrease, setYearlyPriceIncrease] = useState(1); // percent increase per year
+  const [finalMarketCap, setFinalMarketCap] = useState(1e13); // market cap in END_YEAR
   const [year, setYear] = useState(2032);
   const yearIdx = year - START_YEAR;
 
@@ -35,7 +35,7 @@ export default function Home() {
     relativeMinerReward,
     usdCostToAttack,
     blockSizePerYear,
-  } = deriveValues({ avgFee, blockSize, yearlyPriceIncrease });
+  } = deriveValues({ avgFee, blockSize, finalMarketCap });
 
   const ratings = getRating({
     avgUsdFeePerYear,
@@ -68,8 +68,8 @@ export default function Home() {
             setAvgFee={setAvgFee}
             blockSize={blockSize}
             setBlockSize={setBlockSize}
-            yearlyPriceIncrease={yearlyPriceIncrease}
-            setYearlyPriceIncrease={setYearlyPriceIncrease}
+            finalMarketCap={finalMarketCap}
+            setFinalMarketCap={setFinalMarketCap}
             year={year}
             setYear={setYear}
             transactionsPerBlock={transactionsPerBlock}

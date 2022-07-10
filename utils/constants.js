@@ -57,6 +57,7 @@ export const NUM_HISTORICAL_YEARS = BLOCKCHAIN_SIZE_HISTORY.length;
 export const START_YEAR = 2011;
 export const START_FUTURE_YEAR = 2023;
 export const END_YEAR = 2140;
+export const NUM_FUTURE_YEARS = END_YEAR - START_FUTURE_YEAR + 1
 
 // https://www.blockchain.com/charts#block
 export const BLOCKS_PER_YEAR = 52560; //6*24*365
