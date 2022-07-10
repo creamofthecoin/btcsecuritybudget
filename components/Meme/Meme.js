@@ -1,7 +1,7 @@
-import { Box, Flex, Grid, Heading, Tooltip } from "@chakra-ui/react";
+import { Box, Flex, Grid, Heading, Tooltip, useToast } from "@chakra-ui/react";
 import "@fontsource/inter/600.css";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BAD_RATING, GOOD_RATING } from "../../utils/constants";
 export default function Meme({ ratings }) {
   const { avgFeeRating, securityRating, decentralizationRating } = ratings;
@@ -65,8 +65,7 @@ export default function Meme({ ratings }) {
 }
 
 function SingleMeme({ title, memeSrc, rating }) {
-  // const toast = useToast();
-  // const [currRating, setCurrRating] = useState(rating);
+  useMemeToast(memeSrc, rating);
   const [isHovered, setIsHovered] = useState(false);
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -75,18 +74,6 @@ function SingleMeme({ title, memeSrc, rating }) {
     setIsHovered(false);
   };
   const condition = rating === GOOD_RATING ? "180" : "0";
-
-  // useEffect(() => {
-  //   if (currRating !== rating) {
-  //     setCurrRating(rating);
-  //     toast({
-  //       title: memeSrc[rating][1],
-  //       duration: 1000,
-  //       isClosable: true,
-  //       position:"top"
-  //     });
-  //   }
-  // }, [rating]);
 
   const sizes = {
     base: "clamp(2rem, 30vw, 100px)",
@@ -178,4 +165,31 @@ function SingleMeme({ title, memeSrc, rating }) {
       </Box>
     </Grid>
   );
+}
+
+function useMemeToast(memeSrc, rating) {
+  const [currRating, setCurrRating] = useState(rating);
+
+  const toast = useToast();
+  const toastIdRef = React.useRef();
+
+  function addToast() {
+    if (toastIdRef.current) {
+      toast.close(toastIdRef.current);
+    }
+    toastIdRef.current = toast({
+      title: memeSrc[rating][1],
+      duration: 5000,
+      isClosable: false,
+      position: "top",
+    });
+  }
+
+  useEffect(() => {
+    console.log("useEffect");
+    if (currRating !== rating) {
+      setCurrRating(rating);
+      addToast();
+    }
+  }, [rating]);
 }
