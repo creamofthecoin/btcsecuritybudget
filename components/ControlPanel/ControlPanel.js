@@ -21,19 +21,19 @@ export default function ControlPanel({
 }) {
   return (
     <Flex
-      py={{ base: "1rem", lg: "1.5rem", xl: "2.5rem" }}
-      px={{ base: "2rem", lg: "1.75rem", xl: "3rem" }}
-      minW={{ base: "100%", lg: "320px", xl: "380px" }}
-      mr={{ base: "1rem", lg: "2rem", xl: "0" }}
+      py={{ base: "1rem", xl: "2.5rem" }}
+      px={{ base: "2rem", xl: "3rem" }}
+      minW={{ base: "100%", xl: "380px" }}
+      mr={{ base: "1rem", xl: "0" }}
       bg={{
         base:
           colorMode === "light"
             ? "rgba(255, 255, 255, 0.75)"
             : "rgba(0, 0, 0, 0)",
-        lg:
-          colorMode === "light"
-            ? "rgba(255, 255, 255, 0.75)"
-            : "rgba(0, 0, 0, 0.5)",
+        // lg:
+        //   colorMode === "light"
+        //     ? "rgba(255, 255, 255, 0.75)"
+        //     : "rgba(0, 0, 0, 0.5)",
         xl:
           colorMode === "light"
             ? "rgba(255, 255, 255, 0.75)"
@@ -46,7 +46,7 @@ export default function ControlPanel({
       h="100%"
       id="LKJLKJ"
     >
-      <Flex flexDir="column" w="100%" mr={{ base: "0", md: "2.5rem", lg: "0" }}>
+      <Flex flexDir="column" w="100%" mr={{ base: "0", md: "2.5rem", xl: "0" }}>
         <Header />
         <Controls
           avgFee={avgFee}
@@ -64,7 +64,7 @@ export default function ControlPanel({
           usdCostToAttack={usdCostToAttack}
         />
       </Flex>
-      <Box display={{ base: "none", md: "inline-block", lg: "none" }}>
+      <Box display={{ base: "none", md: "inline-block", xl: "none" }}>
         <Meme ratings={ratings} />
       </Box>
     </Flex>

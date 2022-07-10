@@ -3,6 +3,7 @@ import "@fontsource/inter/600.css";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { BAD_RATING, GOOD_RATING } from "../../utils/constants";
+
 export default function Meme({ ratings }) {
   const { avgFeeRating, securityRating, decentralizationRating } = ratings;
 
@@ -48,9 +49,8 @@ export default function Meme({ ratings }) {
   return (
     <Grid
       gridTemplateRows="[r1] 1fr [r2] 1fr [r3] 1fr [r4]"
-      gridTemplateColumns="[c1] 1fr [c2] 1fr [c3]"
+      gridTemplateColumns="[c1] min-content [c2] clamp(150px, 10vw, 300px) [c3]"
       gap={{ base: 4, md: 8 }}
-      maxW="300px"
     >
       {/* <Flex
        flexDir={{ base: "row", md: "column" }}
@@ -115,8 +115,8 @@ function SingleMeme({ title, memeSrc, rating, area }) {
     base: "clamp(2rem, 30vw, 100px)",
     sm: "130px",
     md: "130px",
-    lg: "130px",
-    xl: "150px",
+
+    xl: "clamp(120px, 5vw, 150px)",
   };
   return (
     <Grid
@@ -135,11 +135,16 @@ function SingleMeme({ title, memeSrc, rating, area }) {
         as="h3"
         zIndex="8"
         placeSelf="flex-end center"
-        fontSize={{ base: "clamp(0.25rem, 4vw, .9rem)", sm: "md", md: "lg" }}
+        fontSize={{
+          base: "clamp(0.25rem, 4vw, .9rem)",
+          sm: "md",
+          // md: "md",
+          lg: "lg",
+        }}
         userSelect="none"
         textShadow="2px 2px 3px #000000"
         // mt="7rem"
-        letterSpacing={{ base: "-0.05rem", md: "-0.05rem" }}
+        letterSpacing={{ base: "-0.05rem", md: "-0.125rem" }}
         fontWeight="600"
       >
         {title}
@@ -215,7 +220,11 @@ function SingleMeme({ title, memeSrc, rating, area }) {
 
 function MemeText({ memeSrc, rating, area }) {
   return (
-    <VStack gridColumn="c2 / c3" gridRow={`r${area} / r${area + 1}`}>
+    <VStack
+      gridColumn="c2 / c3"
+      gridRow={`r${area} / r${area + 1}`}
+      placeSelf="center flex-start"
+    >
       <Text fontSize="sm">{memeSrc[rating][2]}</Text>
     </VStack>
   );

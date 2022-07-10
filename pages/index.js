@@ -58,7 +58,7 @@ export default function Home() {
       <Container center={true}>
         <Metatags />
         <Section
-          flexDir={{ base: "column", lg: "row" }}
+          flexDir={{ base: "column", xl: "row" }}
           alignItems="center"
           gap={{ base: 5, md: 0, xl: 10 }}
           outerMt="2rem"
@@ -79,7 +79,13 @@ export default function Home() {
             ratings={ratings}
           />
           <Box
-            display={{ base: "inline-block", md: "none", lg: "inline-block" }}
+            display={{ base: "inline-block", md: "none", xl: "inline-block" }}
+            maxW={{ base: "100%", xl: "600px" }}
+            bg={{ base: "transparent", xl: "rgba(0,0,0,0.33)" }}
+            borderRadius="3xl"
+            h="100%"
+            py="2.5rem"
+            px="2.5rem"
           >
             <Meme ratings={ratings} />
           </Box>
