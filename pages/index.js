@@ -79,9 +79,14 @@ export default function Home() {
             ratings={ratings}
           />
           <Box
-            display={{ base: "inline-block", md: "none", xl: "inline-block" }}
+            display={{ base: "inline-block", md: "none", xl: "grid" }}
+            placeItems="center"
             maxW={{ base: "100%", xl: "600px" }}
-            bg={{ base: "transparent", xl: "rgba(0,0,0,0.33)" }}
+            bg={{
+              base: "rgba(0,0,0,0.33)",
+              md: "transparent",
+              xl: "rgba(0,0,0,0.33)",
+            }}
             borderRadius="3xl"
             h="100%"
             py="2.5rem"

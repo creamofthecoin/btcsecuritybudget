@@ -24,7 +24,6 @@ export default function ControlPanel({
       py={{ base: "1rem", xl: "2.5rem" }}
       px={{ base: "2rem", xl: "3rem" }}
       minW={{ base: "100%", xl: "380px" }}
-      mr={{ base: "1rem", xl: "0" }}
       bg={{
         base:
           colorMode === "light"

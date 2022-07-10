@@ -165,6 +165,12 @@ export default function Chart({
       px="2.5rem"
       bg={{
         base: "transparent",
+
+        md:
+          colorMode === "light"
+            ? "rgba(255, 255, 255, 0.75)"
+            : "rgba(0, 0, 0, 0.25)",
+
         xl:
           colorMode === "light"
             ? "rgba(255, 255, 255, 0.75)"
