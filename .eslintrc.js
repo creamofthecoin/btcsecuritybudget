@@ -14,5 +14,6 @@ module.exports = {
       "react/jsx-no-duplicate-props": "warn",
       "react/no-children-prop": "warn",
       "no-constant-condition": "warn",
+      "react/no-unescaped-entities": "off"
     },
   };

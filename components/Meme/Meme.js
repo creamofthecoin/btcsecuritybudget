@@ -65,6 +65,8 @@ export default function Meme({ ratings }) {
 }
 
 function SingleMeme({ title, memeSrc, rating }) {
+  // const toast = useToast();
+  // const [currRating, setCurrRating] = useState(rating);
   const [isHovered, setIsHovered] = useState(false);
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -74,7 +76,25 @@ function SingleMeme({ title, memeSrc, rating }) {
   };
   const condition = rating === GOOD_RATING ? "180" : "0";
 
-  const sizes = { base: "130px", md: "130px", lg: "130px", xl: "150px" };
+  // useEffect(() => {
+  //   if (currRating !== rating) {
+  //     setCurrRating(rating);
+  //     toast({
+  //       title: memeSrc[rating][1],
+  //       duration: 1000,
+  //       isClosable: true,
+  //       position:"top"
+  //     });
+  //   }
+  // }, [rating]);
+
+  const sizes = {
+    base: "clamp(2rem, 30vw, 100px)",
+    sm: "130px",
+    md: "130px",
+    lg: "130px",
+    xl: "150px",
+  };
   return (
     <Grid
       gridTemplateColumns="[c-1] 1fr [c-2]"
@@ -89,12 +109,12 @@ function SingleMeme({ title, memeSrc, rating }) {
         gridRow="r-1 / r-2"
         as="h3"
         zIndex="8"
-        placeSelf="center"
-        fontSize="lg"
+        placeSelf="flex-end center"
+        fontSize={{ base: "clamp(0.25rem, 4vw, .9rem)", sm: "md", md: "lg" }}
         userSelect="none"
         textShadow="2px 2px 3px #000000"
-        mt="7rem"
-        letterSpacing="-0.025rem"
+        // mt="7rem"
+        letterSpacing={{ base: "-0.05rem", md: "-0.05rem" }}
         fontWeight="600"
       >
         {title}
