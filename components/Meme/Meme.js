@@ -186,7 +186,6 @@ function useMemeToast(memeSrc, rating) {
   }
 
   useEffect(() => {
-    console.log("useEffect");
     if (currRating !== rating) {
       setCurrRating(rating);
       addToast();
