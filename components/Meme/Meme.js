@@ -47,11 +47,8 @@ export default function Meme({ ratings }) {
 
   return (
     <Grid
-      gridTemplateRows="1fr 1fr 1fr"
-      gridTemplateColumns="1fr 1fr"
-      gridTemplateAreas={`"m-one t-one"
-                          "m-two t-two"
-                          "m-three t-three"`}
+      gridTemplateRows="[r1] 1fr [r2] 1fr [r3] 1fr [r4]"
+      gridTemplateColumns="[c1] 1fr [c2] 1fr [c3]"
       gap={{ base: 4, md: 8 }}
     >
       {/* <Flex
@@ -63,28 +60,28 @@ export default function Meme({ ratings }) {
         memeSrc={feeMeme}
         title="Fees"
         rating={avgFeeRating}
-        area="one"
+        area={1}
       />
       <SingleMeme
         memeSrc={decentralizationMeme}
         title="Decentralization"
         rating={decentralizationRating}
-        area="two"
+        area={2}
       />
       <SingleMeme
         memeSrc={securityMeme}
         title="Security"
         rating={securityRating}
-        area="three"
+        area={3}
       />
 
-      <MemeText memeSrc={feeMeme} rating={avgFeeRating} area="one" />
+      <MemeText memeSrc={feeMeme} rating={avgFeeRating} area={1} />
       <MemeText
         memeSrc={decentralizationMeme}
         rating={decentralizationRating}
-        area="two"
+        area={2}
       />
-      <MemeText memeSrc={securityMeme} rating={securityRating} area="three" />
+      <MemeText memeSrc={securityMeme} rating={securityRating} area={3} />
     </Grid>
   );
 }
@@ -122,7 +119,8 @@ function SingleMeme({ title, memeSrc, rating, area }) {
   };
   return (
     <Grid
-      gridarea={`m-${area}`}
+      gridColumn="c1 / c2"
+      gridRow={`r${area} / r${area + 1}`}
       gridTemplateColumns="[c-1] 1fr [c-2]"
       gridTemplateRows="[r-1] 1fr [r-2]"
       w={sizes}
@@ -216,7 +214,7 @@ function SingleMeme({ title, memeSrc, rating, area }) {
 
 function MemeText({ memeSrc, rating, area }) {
   return (
-    <VStack gridarea={`t-${area}`}>
+    <VStack gridColumn="c2 / c3" gridRow={`r${area} / r${area + 1}`}>
       <Text>{memeSrc[rating][2]}</Text>
     </VStack>
   );
