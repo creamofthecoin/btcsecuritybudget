@@ -1,3 +1,3 @@
 <h1 align="center">
-[btcsecuritybudget.com](btcsecuritybudget.com)
+<a href="http://www.btcsecuritybudget.com">btcsecuritybudget.com</a>
 </h1>
