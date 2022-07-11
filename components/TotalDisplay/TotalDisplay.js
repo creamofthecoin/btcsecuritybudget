@@ -44,14 +44,16 @@ export default function TotalDisplay({
         label="Relative Miner Reward"
         total={`${minerReward}`}
         tooltipLabel="(Miner Reward Per Year) / (Market Cap)"
+        bold={true}
+        large={true}
       />
-      <SingleTotal
+      {/* <SingleTotal
         label={`"Cost To Attack"`}
         total={`$${costToAttack}`}
         tooltipLabel="(Miner Reward Per Year) * 51%"
         bold={true}
         large={true}
-      />
+      /> */}
     </Stack>
   );
 }

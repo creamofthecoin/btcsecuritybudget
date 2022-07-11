@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Spacer } from "@chakra-ui/react";
 import Controls from "../Controls/Controls";
 import Header from "../Header/Header";
 import TotalDisplay from "../TotalDisplay/TotalDisplay";
@@ -57,6 +57,7 @@ export default function ControlPanel({
           setFinalMarketCap={setFinalMarketCap}
           transactionsPerBlock={transactionsPerBlock}
         />
+        <Spacer />
         <TotalDisplay
           year={year}
           setYear={setYear}
