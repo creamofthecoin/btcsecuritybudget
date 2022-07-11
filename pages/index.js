@@ -27,9 +27,10 @@ export default function Home() {
   const [finalMarketCap, setFinalMarketCap] = useState(1e13); // market cap in END_YEAR
   const [year, setYear] = useState(2032);
   const yearIdx = year - START_YEAR;
-  const isVisible = useVisibility(
-    (window) => window.innerWidth > 991 || window.innerWidth < 768
-  );
+  const isVisible = useVisibility((window) => {
+    console.log("window", window.innerWidth);
+    return window.innerWidth > 991 || window.innerWidth < 768;
+  });
 
   const {
     transactionsPerBlock,
@@ -87,8 +88,8 @@ export default function Home() {
             ratings={ratings}
             isVisible={isVisible}
           />
-          {isVisible && <Meme ratings={ratings} />}
-
+          {/* {isVisible && <Meme ratings={ratings} />} */}
+          <Meme ratings={ratings} />
           <Chart
             xAxisLabels={YEARS}
             marketCap={marketCap}
