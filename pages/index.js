@@ -8,6 +8,7 @@ import Footer from "../components/Footer/Footer";
 import Meme from "../components/Meme/Meme";
 import Metatags from "../components/Metatags/Metatags";
 import Section from "../components/Section/Section";
+import Status from "../components/Status/Status";
 import theme from "../theme/theme";
 import { deriveValues } from "../utils/calculations";
 import {
@@ -61,6 +62,9 @@ export default function Home() {
     <ChakraProvider theme={theme}>
       <Container center={true}>
         <Metatags />
+        <Section>
+          <Status />
+        </Section>
         <Section
           flexDir={{ base: "column", lg: "row" }}
           alignItems="center"
