@@ -4,7 +4,7 @@ import Section from "../Section/Section";
 
 export default function Footer() {
   return (
-    <Section outerPy="5rem" flexDir="column">
+    <Section outerPy="2rem" flexDir="column">
       <VStack gap={5}>
         <Aside />
         <Link
