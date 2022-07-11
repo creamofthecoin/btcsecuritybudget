@@ -1,5 +1,7 @@
 import { Flex } from "@chakra-ui/react";
 import "@fontsource/inter/600.css";
+import _ from "lodash";
+import React from "react";
 import {
   decentralizationMeme,
   feeMeme,
@@ -7,7 +9,7 @@ import {
 } from "../../utils/memeSrc";
 import SingleMeme from "./SingleMeme";
 
-export default function Meme({ ratings }) {
+function Meme({ ratings }) {
   const { avgFeeRating, securityRating, decentralizationRating } = ratings;
 
   return (
@@ -26,3 +28,5 @@ export default function Meme({ ratings }) {
     </Flex>
   );
 }
+
+export default React.memo(Meme, _.isEqual);

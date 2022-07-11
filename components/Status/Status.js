@@ -1,11 +1,14 @@
 import { Heading, HStack, Stack, Text } from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import _ from "lodash";
+import React from "react";
 import {
   decentralizationMeme,
   feeMeme,
   securityMeme,
 } from "../../utils/memeSrc";
 
-export default function Status({ ratings }) {
+function Status({ ratings }) {
   const { avgFeeRating, securityRating, decentralizationRating } = ratings;
 
   return (
@@ -34,19 +37,24 @@ export default function Status({ ratings }) {
 function SingleStatus({ memeSrc, rating }) {
   return (
     <HStack m="0 !important" p="0 0.5rem">
-      <Heading
-        as="h3"
-        p="0"
-        m="0 .25rem 0 0 !important"
-        fontSize="xs"
-        fontWeight="900"
-        color="gray.300"
-      >
-        {`${memeSrc[rating].title}:`}
-      </Heading>
-      <Text p="0" m="0" fontSize="xs" fontWeight="600" color="gray.400">
-        {memeSrc[rating].tooltip}
-      </Text>
+      <motion.div layout="position">
+        <Heading
+          as="h3"
+          p="0"
+          m="0 .25rem 0 0 !important"
+          fontSize="xs"
+          fontWeight="900"
+          color="gray.300"
+        >
+          {`${memeSrc[rating].title}:`}
+        </Heading>
+
+        <Text p="0" m="0" fontSize="xs" fontWeight="600" color="gray.400">
+          {memeSrc[rating].tooltip}
+        </Text>
+      </motion.div>
     </HStack>
   );
 }
+
+export default React.memo(Status, _.isEqual);
