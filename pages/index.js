@@ -63,7 +63,7 @@ export default function Home() {
       <Container center={true}>
         <Metatags />
         <Section>
-          <Status />
+          <Status ratings={ratings} />
         </Section>
         <Section
           flexDir={{ base: "column", lg: "row" }}

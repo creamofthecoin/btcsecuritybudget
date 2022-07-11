@@ -3,10 +3,8 @@ import "@fontsource/inter/600.css";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { BAD_RATING, GOOD_RATING } from "../../utils/constants";
-import useMemeToast from "./useMemeToast";
 
-export default function SingleMeme({ title, memeSrc, rating }) {
-  useMemeToast(memeSrc, rating);
+export default function SingleMeme({ memeSrc, rating }) {
   const [isHovered, setIsHovered] = useState(false);
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -44,7 +42,7 @@ export default function SingleMeme({ title, memeSrc, rating }) {
         letterSpacing={{ base: "-0.05rem", md: "-0.05rem" }}
         fontWeight="600"
       >
-        {title}
+        {memeSrc[rating].title}
       </Heading>
       <Box
         as={motion.div}
@@ -59,7 +57,7 @@ export default function SingleMeme({ title, memeSrc, rating }) {
         sx={{ perspective: "500px" }}
       >
         <Tooltip
-          label={memeSrc[rating][1]}
+          label={memeSrc[rating].tooltip}
           aria-label="Tool Tip For a Good/Bad Condition"
           bg="gray.900"
           color="white"
@@ -82,7 +80,7 @@ export default function SingleMeme({ title, memeSrc, rating }) {
               bg="gray.300"
               borderRadius="full"
               overflow="hidden"
-              backgroundImage={memeSrc[GOOD_RATING][0]}
+              backgroundImage={memeSrc[GOOD_RATING].img}
               backgroundSize="cover"
               backgroundPosition="center"
             />
@@ -93,7 +91,7 @@ export default function SingleMeme({ title, memeSrc, rating }) {
               h="inherit"
               sx={{ backfaceVisibility: "hidden" }}
               bg="gray.500"
-              backgroundImage={memeSrc[BAD_RATING][0]}
+              backgroundImage={memeSrc[BAD_RATING].img}
               backgroundSize="cover"
               backgroundPosition="center"
               borderRadius="full"
