@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function useVisibility(condition) {
-  const [isVisible, setVisible] = useState(false);
+  const [isVisible, setVisible] = useState(undefined);
 
   useEffect(() => {
     const updateMedia = () => {

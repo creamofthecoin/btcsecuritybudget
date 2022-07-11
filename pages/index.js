@@ -28,7 +28,6 @@ export default function Home() {
   const [year, setYear] = useState(2032);
   const yearIdx = year - START_YEAR;
   const isVisible = useVisibility((window) => {
-    console.log("window", window.innerWidth);
     return window.innerWidth > 991 || window.innerWidth < 768;
   });
 
@@ -59,7 +58,7 @@ export default function Home() {
     theme.styles.global.body._after.opacity = "0";
   }
 
-  return (
+  return isVisible !== undefined ? (
     <ChakraProvider theme={theme}>
       <Container center={true}>
         <Metatags />
@@ -88,8 +87,7 @@ export default function Home() {
             ratings={ratings}
             isVisible={isVisible}
           />
-          {/* {isVisible && <Meme ratings={ratings} />} */}
-          <Meme ratings={ratings} />
+          {isVisible && <Meme ratings={ratings} />}
           <Chart
             xAxisLabels={YEARS}
             marketCap={marketCap}
@@ -101,5 +99,5 @@ export default function Home() {
         <Footer />
       </Container>
     </ChakraProvider>
-  );
+  ) : null;
 }

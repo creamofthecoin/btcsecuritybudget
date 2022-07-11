@@ -1,6 +1,7 @@
 import { Flex, Spacer } from "@chakra-ui/react";
 import Controls from "../Controls/Controls";
 import Header from "../Header/Header";
+import Meme from "../Meme/Meme";
 import TotalDisplay from "../TotalDisplay/TotalDisplay";
 
 export default function ControlPanel({
@@ -65,7 +66,7 @@ export default function ControlPanel({
           usdCostToAttack={usdCostToAttack}
         />
       </Flex>
-      {/* {!isVisible && <Meme ratings={ratings} />} */}
+      {!isVisible && <Meme ratings={ratings} />}
     </Flex>
   );
 }
