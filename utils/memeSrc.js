@@ -22,7 +22,7 @@ export const decentralizationMeme = {
   [GOOD_RATING]: {
     title: DECENTRALIZATION,
     img: `${good}nicholas-cage-hair.gif`,
-    tooltip: "Bitcoin is Safu via Decentralization! 🗽",
+    tooltip: "Bitcoin is Uncensorable via Decentralization! 🗽",
   },
   [BAD_RATING]: {
     title: DECENTRALIZATION,
@@ -39,6 +39,6 @@ export const securityMeme = {
   [BAD_RATING]: {
     title: SECURITY,
     img: `${bad}bis-wins.png`,
-    tooltip: "The State Wins! Cost to Attack is Low!! 🤮",
+    tooltip: "The State Wins! Cost to Attack is Low! 🤮",
   },
 };
