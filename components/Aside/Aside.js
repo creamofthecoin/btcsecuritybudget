@@ -135,7 +135,7 @@ export default function Aside() {
         size="lg"
         fontWeight="black"
       >
-        Why?
+        Explanation
       </Button>
 
       <Modal onClose={onClose} isOpen={isOpen} size="2xl">
