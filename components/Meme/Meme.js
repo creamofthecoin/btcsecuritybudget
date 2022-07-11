@@ -1,8 +1,8 @@
-import { Box, Flex, Grid, Heading, Tooltip, useToast } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import "@fontsource/inter/600.css";
-import { motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
 import { BAD_RATING, GOOD_RATING } from "../../utils/constants";
+import SingleMeme from "./SingleMeme";
+
 export default function Meme({ ratings }) {
   const { avgFeeRating, securityRating, decentralizationRating } = ratings;
 
@@ -64,131 +64,131 @@ export default function Meme({ ratings }) {
   );
 }
 
-function SingleMeme({ title, memeSrc, rating }) {
-  useMemeToast(memeSrc, rating);
-  const [isHovered, setIsHovered] = useState(false);
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
-  const condition = rating === GOOD_RATING ? "180" : "0";
+// function SingleMeme({ title, memeSrc, rating }) {
+//   useMemeToast(memeSrc, rating);
+//   const [isHovered, setIsHovered] = useState(false);
+//   const handleMouseEnter = () => {
+//     setIsHovered(true);
+//   };
+//   const handleMouseLeave = () => {
+//     setIsHovered(false);
+//   };
+//   const condition = rating === GOOD_RATING ? "180" : "0";
 
-  const sizes = {
-    base: "clamp(2rem, 30vw, 100px)",
-    sm: "130px",
-    md: "130px",
-    lg: "130px",
-    xl: "150px",
-  };
-  return (
-    <Grid
-      gridTemplateColumns="[c-1] 1fr [c-2]"
-      gridTemplateRows="[r-1] 1fr [r-2]"
-      w={sizes}
-      h={sizes}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <Heading
-        gridColumn="c-1 / c-2"
-        gridRow="r-1 / r-2"
-        as="h3"
-        zIndex="8"
-        placeSelf="flex-end center"
-        fontSize={{ base: "clamp(0.25rem, 4vw, .9rem)", sm: "md", md: "lg" }}
-        userSelect="none"
-        textShadow="2px 2px 3px #000000"
-        // mt="7rem"
-        letterSpacing={{ base: "-0.05rem", md: "-0.05rem" }}
-        fontWeight="600"
-      >
-        {title}
-      </Heading>
-      <Box
-        as={motion.div}
-        placeSelf="center"
-        gridColumn={`c-1 / c-2`}
-        gridRow="r-1 / r-2"
-        w="inherit"
-        h="inherit"
-        // borderRadius="full"
-        zIndex="0"
-        opacity={isHovered ? "1" : ".75"}
-        transition="0.5s"
-        sx={{ perspective: "500px" }}
-      >
-        <Tooltip
-          label={memeSrc[rating][1]}
-          aria-label="Tool Tip For a Good/Bad Condition"
-          bg="gray.900"
-          color="white"
-          hasArrow
-        >
-          <Box
-            position="relative"
-            w="inherit"
-            h="inherit"
-            sx={{
-              transition: "transform 0.45s",
-              transformStyle: "preserve-3d",
-            }}
-            transform={`rotateY(${condition}deg)`}
-          >
-            <Box
-              position="absolute"
-              w="inherit"
-              h="inherit"
-              bg="gray.300"
-              borderRadius="full"
-              overflow="hidden"
-              backgroundImage={memeSrc[GOOD_RATING][0]}
-              backgroundSize="cover"
-              backgroundPosition="center"
-            />
+//   const sizes = {
+//     base: "clamp(2rem, 30vw, 100px)",
+//     sm: "130px",
+//     md: "130px",
+//     lg: "130px",
+//     xl: "150px",
+//   };
+//   return (
+//     <Grid
+//       gridTemplateColumns="[c-1] 1fr [c-2]"
+//       gridTemplateRows="[r-1] 1fr [r-2]"
+//       w={sizes}
+//       h={sizes}
+//       onMouseEnter={handleMouseEnter}
+//       onMouseLeave={handleMouseLeave}
+//     >
+//       <Heading
+//         gridColumn="c-1 / c-2"
+//         gridRow="r-1 / r-2"
+//         as="h3"
+//         zIndex="8"
+//         placeSelf="flex-end center"
+//         fontSize={{ base: "clamp(0.25rem, 4vw, .9rem)", sm: "md", md: "lg" }}
+//         userSelect="none"
+//         textShadow="2px 2px 3px #000000"
+//         // mt="7rem"
+//         letterSpacing={{ base: "-0.05rem", md: "-0.05rem" }}
+//         fontWeight="600"
+//       >
+//         {title}
+//       </Heading>
+//       <Box
+//         as={motion.div}
+//         placeSelf="center"
+//         gridColumn={`c-1 / c-2`}
+//         gridRow="r-1 / r-2"
+//         w="inherit"
+//         h="inherit"
+//         // borderRadius="full"
+//         zIndex="0"
+//         opacity={isHovered ? "1" : ".75"}
+//         transition="0.5s"
+//         sx={{ perspective: "500px" }}
+//       >
+//         <Tooltip
+//           label={memeSrc[rating][1]}
+//           aria-label="Tool Tip For a Good/Bad Condition"
+//           bg="gray.900"
+//           color="white"
+//           hasArrow
+//         >
+//           <Box
+//             position="relative"
+//             w="inherit"
+//             h="inherit"
+//             sx={{
+//               transition: "transform 0.45s",
+//               transformStyle: "preserve-3d",
+//             }}
+//             transform={`rotateY(${condition}deg)`}
+//           >
+//             <Box
+//               position="absolute"
+//               w="inherit"
+//               h="inherit"
+//               bg="gray.300"
+//               borderRadius="full"
+//               overflow="hidden"
+//               backgroundImage={memeSrc[GOOD_RATING][0]}
+//               backgroundSize="cover"
+//               backgroundPosition="center"
+//             />
 
-            <Box
-              position="absolute"
-              w="inherit"
-              h="inherit"
-              sx={{ backfaceVisibility: "hidden" }}
-              bg="gray.500"
-              backgroundImage={memeSrc[BAD_RATING][0]}
-              backgroundSize="cover"
-              backgroundPosition="center"
-              borderRadius="full"
-              overflow="hidden"
-            />
-          </Box>
-        </Tooltip>
-      </Box>
-    </Grid>
-  );
-}
+//             <Box
+//               position="absolute"
+//               w="inherit"
+//               h="inherit"
+//               sx={{ backfaceVisibility: "hidden" }}
+//               bg="gray.500"
+//               backgroundImage={memeSrc[BAD_RATING][0]}
+//               backgroundSize="cover"
+//               backgroundPosition="center"
+//               borderRadius="full"
+//               overflow="hidden"
+//             />
+//           </Box>
+//         </Tooltip>
+//       </Box>
+//     </Grid>
+//   );
+// }
 
-function useMemeToast(memeSrc, rating) {
-  const [currRating, setCurrRating] = useState(rating);
+// function useMemeToast(memeSrc, rating) {
+//   const [currRating, setCurrRating] = useState(rating);
 
-  const toast = useToast();
-  const toastIdRef = React.useRef();
+//   const toast = useToast();
+//   const toastIdRef = React.useRef();
 
-  function addToast() {
-    if (toastIdRef.current) {
-      toast.close(toastIdRef.current);
-    }
-    toastIdRef.current = toast({
-      title: memeSrc[rating][1],
-      duration: 5000,
-      isClosable: false,
-      position: "top",
-    });
-  }
+//   function addToast() {
+//     if (toastIdRef.current) {
+//       toast.close(toastIdRef.current);
+//     }
+//     toastIdRef.current = toast({
+//       title: memeSrc[rating][1],
+//       duration: 5000,
+//       isClosable: false,
+//       position: "top",
+//     });
+//   }
 
-  useEffect(() => {
-    if (currRating !== rating) {
-      setCurrRating(rating);
-      addToast();
-    }
-  }, [rating]);
-}
+//   useEffect(() => {
+//     if (currRating !== rating) {
+//       setCurrRating(rating);
+//       addToast();
+//     }
+//   }, [rating]);
+// }
