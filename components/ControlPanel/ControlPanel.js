@@ -1,4 +1,4 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import Controls from "../Controls/Controls";
 import Header from "../Header/Header";
 import Meme from "../Meme/Meme";
@@ -18,6 +18,7 @@ export default function ControlPanel({
   usdCostToAttack,
   colorMode,
   ratings,
+  isVisible,
 }) {
   return (
     <Flex
@@ -64,9 +65,7 @@ export default function ControlPanel({
           usdCostToAttack={usdCostToAttack}
         />
       </Flex>
-      <Box display={{ base: "none", md: "inline-block", lg: "none" }}>
-        <Meme ratings={ratings} />
-      </Box>
+      {!isVisible && <Meme ratings={ratings} />}
     </Flex>
   );
 }

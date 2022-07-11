@@ -1,4 +1,4 @@
-import { Box, ChakraProvider, useColorMode } from "@chakra-ui/react";
+import { ChakraProvider, useColorMode } from "@chakra-ui/react";
 import _ from "lodash";
 import { useState } from "react";
 import Chart from "../components/Chart/Chart";
@@ -18,6 +18,7 @@ import {
   YEARS,
 } from "../utils/constants";
 import { getRating } from "../utils/getRating";
+import useVisibility from "../utils/useVisibility";
 
 export default function Home() {
   const [blockSize, setBlockSize] = useState(CURR_AVG_BLOCK_SIZE_MB); // megabytes
@@ -25,6 +26,9 @@ export default function Home() {
   const [finalMarketCap, setFinalMarketCap] = useState(1e13); // market cap in END_YEAR
   const [year, setYear] = useState(2032);
   const yearIdx = year - START_YEAR;
+  const isVisible = useVisibility(
+    (window) => window.innerWidth > 991 || window.innerWidth < 768
+  );
 
   const {
     transactionsPerBlock,
@@ -77,12 +81,9 @@ export default function Home() {
             usdCostToAttack={usdCostToAttack}
             colorMode={colorMode}
             ratings={ratings}
+            isVisible={isVisible}
           />
-          <Box
-            display={{ base: "inline-block", md: "none", lg: "inline-block" }}
-          >
-            <Meme ratings={ratings} />
-          </Box>
+          {isVisible && <Meme ratings={ratings} />}
 
           <Chart
             xAxisLabels={YEARS}
