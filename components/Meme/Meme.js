@@ -1,5 +1,7 @@
 import { Flex } from "@chakra-ui/react";
 import "@fontsource/inter/600.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { BAD_RATING, GOOD_RATING } from "../../utils/constants";
 import SingleMeme from "./SingleMeme";
 
@@ -42,6 +44,7 @@ export default function Meme({ ratings }) {
       zIndex="0"
       gap={{ base: 4, md: 8 }}
     >
+      <ToastContainer />
       <SingleMeme
         col={1}
         memeSrc={feeMeme}
