@@ -1,11 +1,11 @@
 import _ from "lodash";
 import { useEffect, useState } from "react";
 
-export function useFadeInOut(ratings) {
+export function useFadeInOut(ratings, duration) {
   const [loaded, setLoaded] = useState(false);
   const [currRatings, setCurrRatings] = useState(ratings);
   const [timeoutId, setTimeoutId] = useState(null);
-  const [fade, setFade] = useState("fade-in");
+  const [fade, setFade] = useState(true);
 
   useEffect(() => {
     setLoaded(true);
@@ -15,13 +15,13 @@ export function useFadeInOut(ratings) {
     if (!loaded) {
       return;
     }
-    setFade("fade-out");
+    setFade(false);
     clearTimeout(timeoutId);
     setTimeoutId(
       setTimeout(() => {
         setCurrRatings(ratings);
-        setFade("fade-in");
-      }, 275)
+        setFade(true);
+      }, duration + 25)
     );
   }, _.values(ratings));
 

@@ -9,7 +9,8 @@ import {
 import { useFadeInOut } from "./useFadeInOut";
 
 function Status({ ratings }) {
-  const [currRatings, fade] = useFadeInOut(ratings);
+  const duration = 200;
+  const [currRatings, fade] = useFadeInOut(ratings, duration);
   const { avgFeeRating, securityRating, decentralizationRating } = currRatings;
 
   return (
@@ -25,22 +26,33 @@ function Status({ ratings }) {
       justifyContent="center"
       alignItems={{ base: "flex-start", lg: "center" }}
     >
-      <SingleStatus memeSrc={feeMeme} rating={avgFeeRating} fade={fade} />
+      <SingleStatus
+        memeSrc={feeMeme}
+        rating={avgFeeRating}
+        fade={fade}
+        duration={duration}
+      />
       <SingleStatus
         memeSrc={decentralizationMeme}
         rating={decentralizationRating}
         fade={fade}
+        duration={duration}
       />
       <SingleStatus
         memeSrc={securityMeme}
         rating={securityRating}
         fade={fade}
+        duration={duration}
       />
     </Stack>
   );
 }
 
-function SingleStatus({ memeSrc, rating, fade }) {
+function SingleStatus({ memeSrc, rating, fade, duration }) {
+  const fadeStyle = {
+    transition: `opacity ${duration}ms ease`,
+    opacity: fade ? 1 : 0,
+  };
   return (
     <HStack m="0 !important" p="0 0.5rem">
       <Heading
@@ -50,7 +62,7 @@ function SingleStatus({ memeSrc, rating, fade }) {
         fontSize="xs"
         fontWeight="900"
         color="gray.300"
-        className={fade}
+        {...fadeStyle}
       >
         {`${memeSrc[rating].title}:`}
       </Heading>
@@ -61,7 +73,7 @@ function SingleStatus({ memeSrc, rating, fade }) {
         fontSize="xs"
         fontWeight="600"
         color="gray.400"
-        className={fade}
+        {...fadeStyle}
       >
         {memeSrc[rating].tooltip}
       </Text>
