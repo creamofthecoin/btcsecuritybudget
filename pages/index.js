@@ -1,4 +1,5 @@
 import { ChakraProvider, useColorMode } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import _ from "lodash";
 import { useState } from "react";
 import Chart from "../components/Chart/Chart";
@@ -58,46 +59,52 @@ export default function Home() {
     theme.styles.global.body._after.opacity = "0";
   }
 
-  return isVisible !== undefined ? (
+  return (
     <ChakraProvider theme={theme}>
-      <Container center={true}>
-        <Metatags />
-        <Section>
-          <Status ratings={ratings} />
-        </Section>
-        <Section
-          flexDir={{ base: "column", lg: "row" }}
-          alignItems="center"
-          gap={{ base: 5, md: 0, xl: 10 }}
-          outerMt="2rem"
-        >
-          <ControlPanel
-            avgFee={avgFee}
-            setAvgFee={setAvgFee}
-            blockSize={blockSize}
-            setBlockSize={setBlockSize}
-            finalMarketCap={finalMarketCap}
-            setFinalMarketCap={setFinalMarketCap}
-            year={year}
-            setYear={setYear}
-            transactionsPerBlock={transactionsPerBlock}
-            relativeMinerReward={relativeMinerReward}
-            usdCostToAttack={usdCostToAttack}
-            colorMode={colorMode}
-            ratings={ratings}
-            isVisible={isVisible}
-          />
-          {isVisible && <Meme ratings={ratings} />}
-          <Chart
-            xAxisLabels={YEARS}
-            marketCap={marketCap}
-            usdMinerReward={usdMinerReward}
-            blockchainSize={blockchainSize}
-            yearIdx={yearIdx}
-          />
-        </Section>
-        <Footer />
-      </Container>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.1 }}
+      >
+        <Container center={true}>
+          <Metatags />
+          <Section>
+            <Status ratings={ratings} />
+          </Section>
+          <Section
+            flexDir={{ base: "column", lg: "row" }}
+            alignItems="center"
+            gap={{ base: 5, md: 0, xl: 10 }}
+            outerMt="2rem"
+          >
+            <ControlPanel
+              avgFee={avgFee}
+              setAvgFee={setAvgFee}
+              blockSize={blockSize}
+              setBlockSize={setBlockSize}
+              finalMarketCap={finalMarketCap}
+              setFinalMarketCap={setFinalMarketCap}
+              year={year}
+              setYear={setYear}
+              transactionsPerBlock={transactionsPerBlock}
+              relativeMinerReward={relativeMinerReward}
+              usdCostToAttack={usdCostToAttack}
+              colorMode={colorMode}
+              ratings={ratings}
+              isVisible={isVisible}
+            />
+            {isVisible && <Meme ratings={ratings} />}
+            <Chart
+              xAxisLabels={YEARS}
+              marketCap={marketCap}
+              usdMinerReward={usdMinerReward}
+              blockchainSize={blockchainSize}
+              yearIdx={yearIdx}
+            />
+          </Section>
+          <Footer />
+        </Container>
+      </motion.div>
     </ChakraProvider>
-  ) : null;
+  );
 }

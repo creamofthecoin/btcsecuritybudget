@@ -5,7 +5,7 @@ export default function useVisibility(condition) {
 
   useEffect(() => {
     const updateMedia = () => {
-      if (window === undefined) {
+      if (typeof window === "undefined") {
         return;
       }
 
@@ -17,7 +17,7 @@ export default function useVisibility(condition) {
     };
 
     updateMedia();
-    if (window === undefined) {
+    if (typeof window === "undefined") {
       return;
     }
     window.addEventListener("resize", updateMedia);
