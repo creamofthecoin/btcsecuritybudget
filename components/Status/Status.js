@@ -1,5 +1,13 @@
 import { Heading, HStack, Stack, Text } from "@chakra-ui/react";
-export default function Status() {
+import {
+  decentralizationMeme,
+  feeMeme,
+  securityMeme,
+} from "../../utils/memeSrc";
+
+export default function Status({ ratings }) {
+  const { avgFeeRating, securityRating, decentralizationRating } = ratings;
+
   return (
     <Stack
       flexDirection={{ base: "column", lg: "row" }}
@@ -13,14 +21,17 @@ export default function Status() {
       justifyContent="center"
       alignItems={{ base: "flex-start", lg: "center" }}
     >
-      <SingleStatus />
-      <SingleStatus />
-      <SingleStatus />
+      <SingleStatus memeSrc={feeMeme} rating={avgFeeRating} />
+      <SingleStatus
+        memeSrc={decentralizationMeme}
+        rating={decentralizationRating}
+      />
+      <SingleStatus memeSrc={securityMeme} rating={securityRating} />
     </Stack>
   );
 }
 
-function SingleStatus() {
+function SingleStatus({ memeSrc, rating }) {
   return (
     <HStack m="0 !important" p="0 0.5rem">
       <Heading
@@ -31,10 +42,10 @@ function SingleStatus() {
         fontWeight="900"
         color="gray.300"
       >
-        Fees:
+        {`${memeSrc[rating].title}:`}
       </Heading>
       <Text p="0" m="0" fontSize="xs" fontWeight="600" color="gray.400">
-        Plebs Win. It's cheap to participate.
+        {memeSrc[rating].tooltip}
       </Text>
     </HStack>
   );
