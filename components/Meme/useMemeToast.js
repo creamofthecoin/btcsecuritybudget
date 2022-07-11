@@ -1,5 +1,6 @@
 import { useToast } from "@chakra-ui/react";
 import { useState } from "react";
+import { GOOD_RATING } from "../../utils/constants";
 
 import React, { useEffect } from "react";
 
@@ -18,6 +19,7 @@ export default function useMemeToast(memeSrc, rating) {
       duration: 5000,
       isClosable: false,
       position: "top",
+      status: rating === GOOD_RATING ? "success" : "error",
     });
   }
 
