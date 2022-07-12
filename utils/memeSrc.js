@@ -10,35 +10,41 @@ export const feeMeme = {
   [GOOD_RATING]: {
     title: FEES,
     img: `${good}hope-wojak.png`,
-    tooltip: "Plebs Win, it's cheap to participate 😊",
+    tooltip: "Plebs win! It's cheap to participate 😊",
+    status: "Low Fees 😊",
   },
   [BAD_RATING]: {
     title: FEES,
     img: `${bad}pink-upset-wojak.jpg`,
-    tooltip: "Bankers love this! Fees skyrocket! 😭",
+    tooltip: "Banks love this! Fees Skyrocket 😭",
+    status: "High Fees 😭",
   },
 };
 export const decentralizationMeme = {
   [GOOD_RATING]: {
     title: DECENTRALIZATION,
     img: `${good}nicholas-cage-hair.gif`,
-    tooltip: "Bitcoin is Uncensorable via Decentralization! 🗽",
+    tooltip: "Decentralized & Censorship Resistant 🗽",
+    status: "Decentralized 🗽",
   },
   [BAD_RATING]: {
     title: DECENTRALIZATION,
     img: `${bad}unlimited-power.webp`,
-    tooltip: "Unlimited Power via Centralization! 🔫",
+    tooltip: "Centralized & Censorable 🔫",
+    status: "Centralized 🔫",
   },
 };
 export const securityMeme = {
   [GOOD_RATING]: {
     title: SECURITY,
     img: `${good}realistic-pepe.jpg`,
-    tooltip: "Cost to Attack is High! 🥰",
+    tooltip: "Bitcoin's security is ensured! 🥰",
+    status: "Security Budget is High 🥰",
   },
   [BAD_RATING]: {
     title: SECURITY,
     img: `${bad}bis-wins.png`,
-    tooltip: "The State Wins! Cost to Attack is Low! 🤮",
+    tooltip: "Bitcoin is too attractive to attack! 🤮",
+    status: "Security budget is Low 🤮",
   },
 };

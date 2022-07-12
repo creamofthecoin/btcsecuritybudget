@@ -1,6 +1,7 @@
 import { Heading, HStack, Stack, Text } from "@chakra-ui/react";
 import _ from "lodash";
 import React from "react";
+import { GOOD_RATING } from "../../utils/constants";
 import {
   decentralizationMeme,
   feeMeme,
@@ -20,7 +21,7 @@ function Status({ ratings }) {
       bg={{ base: "rgba(0,0,0,0.5)", lg: "rgba(0,0,0,0.125)" }}
       borderRadius="3xl"
       w="100%"
-      minH={{ base: "100px", lg: "68px", xl: "auto" }}
+      minH={{ base: "100px", lg: "auto" }}
       py="1rem"
       px="1rem"
       mt="2rem"
@@ -60,9 +61,9 @@ function SingleStatus({ memeSrc, rating, fade, duration }) {
         as="h3"
         p="0"
         m="0 .25rem 0 0 !important"
-        fontSize="xs"
+        fontSize="sm"
         fontWeight="900"
-        color="gray.300"
+        color={rating === GOOD_RATING ? "green.300" : "red.300"}
         {...fadeStyle}
       >
         {`${memeSrc[rating].title}:`}
@@ -71,12 +72,12 @@ function SingleStatus({ memeSrc, rating, fade, duration }) {
       <Text
         p="0"
         m="0"
-        fontSize="xs"
+        fontSize="sm"
         fontWeight="600"
         color="gray.400"
         {...fadeStyle}
       >
-        {memeSrc[rating].tooltip}
+        {memeSrc[rating].status}
       </Text>
     </HStack>
   );
