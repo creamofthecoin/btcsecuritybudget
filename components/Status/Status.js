@@ -20,7 +20,7 @@ function Status({ ratings }) {
       bg={{ base: "rgba(0,0,0,0.5)", lg: "rgba(0,0,0,0.125)" }}
       borderRadius="3xl"
       w="100%"
-      minH={{ base: "auto", lg: "80px", xl: "auto" }}
+      minH={{ base: "auto", lg: "auto" }}
       py="1rem"
       px="1rem"
       mt={{ base: "1.5rem", lg: "2rem" }}
