@@ -7,7 +7,7 @@ export default function Section(props) {
     position = null,
     opacity = null,
     h = "auto",
-    w = "90vw",
+    w = "clamp(300px, 90vw, 1500px)",
     flexDir = null,
     justifyContent = "center",
     alignItems = "stretch",

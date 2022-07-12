@@ -1,13 +1,15 @@
-import { Box, ChakraProvider, useColorMode } from "@chakra-ui/react";
+import { ChakraProvider, useColorMode } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import _ from "lodash";
-import Head from "next/head";
 import { useState } from "react";
 import Chart from "../components/Chart/Chart";
 import Container from "../components/Container/Container";
 import ControlPanel from "../components/ControlPanel/ControlPanel";
 import Footer from "../components/Footer/Footer";
 import Meme from "../components/Meme/Meme";
+import Metatags from "../components/Metatags/Metatags";
 import Section from "../components/Section/Section";
+import Status from "../components/Status/Status";
 import theme from "../theme/theme";
 import { deriveValues } from "../utils/calculations";
 import {
@@ -18,13 +20,20 @@ import {
   YEARS,
 } from "../utils/constants";
 import { getRating } from "../utils/getRating";
+import useVisibility from "../utils/useVisibility";
 
 export default function Home() {
   const [blockSize, setBlockSize] = useState(CURR_AVG_BLOCK_SIZE_MB); // megabytes
   const [avgFee, setAvgFee] = useState(CURR_AVG_FEE); // sats
-  const [yearlyPriceIncrease, setYearlyPriceIncrease] = useState(1); // percent increase per year
+  const [finalMarketCap, setFinalMarketCap] = useState(1e13); // market cap in END_YEAR
   const [year, setYear] = useState(2032);
   const yearIdx = year - START_YEAR;
+  const isVisible = useVisibility((window) => {
+    return window.innerWidth > 991 || window.innerWidth < 768;
+  });
+  const statusVis = useVisibility((window) => {
+    return window.innerWidth > 991;
+  });
 
   const {
     transactionsPerBlock,
@@ -35,7 +44,7 @@ export default function Home() {
     relativeMinerReward,
     usdCostToAttack,
     blockSizePerYear,
-  } = deriveValues({ avgFee, blockSize, yearlyPriceIncrease });
+  } = deriveValues({ avgFee, blockSize, finalMarketCap });
 
   const ratings = getRating({
     avgUsdFeePerYear,
@@ -55,86 +64,49 @@ export default function Home() {
 
   return (
     <ChakraProvider theme={theme}>
-      <Container center={true}>
-        <Metatags />
-        <Section
-          flexDir={{ base: "column", lg: "row" }}
-          alignItems="center"
-          gap={{ base: 5, md: 0, xl: 10 }}
-          outerMt="2rem"
-        >
-          <ControlPanel
-            avgFee={avgFee}
-            setAvgFee={setAvgFee}
-            blockSize={blockSize}
-            setBlockSize={setBlockSize}
-            yearlyPriceIncrease={yearlyPriceIncrease}
-            setYearlyPriceIncrease={setYearlyPriceIncrease}
-            year={year}
-            setYear={setYear}
-            transactionsPerBlock={transactionsPerBlock}
-            relativeMinerReward={relativeMinerReward}
-            usdCostToAttack={usdCostToAttack}
-            colorMode={colorMode}
-            ratings={ratings}
-          />
-          <Box
-            // ml={{ base: "0", lg: "-5rem" }}
-            display={{ base: "inline-block", md: "none", lg: "inline-block" }}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.1 }}
+      >
+        <Container center={true}>
+          <Metatags />
+          <Section>{statusVis && <Status ratings={ratings} />}</Section>
+          <Section
+            flexDir={{ base: "column", lg: "row" }}
+            alignItems="center"
+            gap={{ base: 5, md: 0, xl: 10 }}
+            outerMt="2rem"
           >
-            <Meme ratings={ratings} />
-          </Box>
-
-          <Chart
-            xAxisLabels={YEARS}
-            marketCap={marketCap}
-            usdMinerReward={usdMinerReward}
-            blockchainSize={blockchainSize}
-            yearIdx={yearIdx}
-          />
-        </Section>
-        <Footer />
-      </Container>
+            <ControlPanel
+              avgFee={avgFee}
+              setAvgFee={setAvgFee}
+              blockSize={blockSize}
+              setBlockSize={setBlockSize}
+              finalMarketCap={finalMarketCap}
+              setFinalMarketCap={setFinalMarketCap}
+              year={year}
+              setYear={setYear}
+              transactionsPerBlock={transactionsPerBlock}
+              relativeMinerReward={relativeMinerReward}
+              usdCostToAttack={usdCostToAttack}
+              colorMode={colorMode}
+              ratings={ratings}
+              isVisible={isVisible}
+            />
+            {isVisible && <Meme ratings={ratings} />}
+            {!statusVis && <Status ratings={ratings} />}
+            <Chart
+              xAxisLabels={YEARS}
+              marketCap={marketCap}
+              usdMinerReward={usdMinerReward}
+              blockchainSize={blockchainSize}
+              yearIdx={yearIdx}
+            />
+          </Section>
+          <Footer />
+        </Container>
+      </motion.div>
     </ChakraProvider>
-  );
-}
-
-function Metatags() {
-  return (
-    <Head>
-      <title>
-        BTC Security Budget | Bitcoin Decentralization | Bitcoin Miner Reward
-      </title>
-      <meta
-        name="description"
-        content="Bitcoin security budget: The block reward is vanishing, and depending on transaction fees for security may not be a sufficient incentive to keep up with network value (or market cap). State actors are also motivated by ideology, not profit. So, help us keep BTC safe by engaging in the discussion."
-      ></meta>
-      <meta
-        property="og:title"
-        content="BTC Security Budget | Bitcoin Decentralization | Bitcoin Miner Reward"
-        key="title"
-      />
-      <link
-        rel="apple-touch-icon"
-        sizes="180x180"
-        href="/apple-touch-icon.png"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="32x32"
-        href="/favicon-32x32.png"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="16x16"
-        href="/favicon-16x16.png"
-      />
-      <link rel="manifest" href="/site.webmanifest" />
-      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-      <meta name="msapplication-TileColor" content="#da532c" />
-      <meta name="theme-color" content="#ffffff"></meta>
-    </Head>
   );
 }

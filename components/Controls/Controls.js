@@ -1,4 +1,4 @@
-import BaseSlider from "./BaseSlider/BaseSlider";
+import { END_YEAR } from "../../utils/constants";
 import LogSlider from "./LogSlider/LogSlider";
 
 export default function Controls({
@@ -6,13 +6,11 @@ export default function Controls({
   setAvgFee,
   blockSize,
   setBlockSize,
-  yearlyPriceIncrease,
-  setYearlyPriceIncrease,
+  finalMarketCap,
+  setFinalMarketCap,
 }) {
-  const oneDecimal = new Intl.NumberFormat("en", {
-    notation: "standard",
-    minimumFractionDigits: 1,
-    maximumFractionDigits: 1,
+  const compact = new Intl.NumberFormat("en", {
+    notation: "compact",
   });
 
   const twoDecimals = new Intl.NumberFormat("en", {
@@ -41,14 +39,14 @@ export default function Controls({
         max={2}
         step={0.01}
       />
-      <BaseSlider
-        label="Yearly Price Increase"
-        output={`${oneDecimal.format(yearlyPriceIncrease)} %`}
-        value={yearlyPriceIncrease}
-        onChange={setYearlyPriceIncrease}
-        min={0}
-        max={10}
-        step={0.1}
+      <LogSlider
+        label={`Market Cap in ${END_YEAR}`}
+        output={`$${compact.format(finalMarketCap)}`}
+        value={finalMarketCap}
+        onChange={setFinalMarketCap}
+        min={10}
+        max={14}
+        step={0.01}
       />
     </>
   );

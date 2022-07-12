@@ -1,4 +1,4 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Flex, Spacer } from "@chakra-ui/react";
 import Controls from "../Controls/Controls";
 import Header from "../Header/Header";
 import Meme from "../Meme/Meme";
@@ -9,8 +9,8 @@ export default function ControlPanel({
   setAvgFee,
   blockSize,
   setBlockSize,
-  yearlyPriceIncrease,
-  setYearlyPriceIncrease,
+  finalMarketCap,
+  setFinalMarketCap,
   year,
   setYear,
   transactionsPerBlock,
@@ -18,6 +18,7 @@ export default function ControlPanel({
   usdCostToAttack,
   colorMode,
   ratings,
+  isVisible,
 }) {
   return (
     <Flex
@@ -53,10 +54,11 @@ export default function ControlPanel({
           setAvgFee={setAvgFee}
           blockSize={blockSize}
           setBlockSize={setBlockSize}
-          yearlyPriceIncrease={yearlyPriceIncrease}
-          setYearlyPriceIncrease={setYearlyPriceIncrease}
+          finalMarketCap={finalMarketCap}
+          setFinalMarketCap={setFinalMarketCap}
           transactionsPerBlock={transactionsPerBlock}
         />
+        <Spacer />
         <TotalDisplay
           year={year}
           setYear={setYear}
@@ -64,9 +66,7 @@ export default function ControlPanel({
           usdCostToAttack={usdCostToAttack}
         />
       </Flex>
-      <Box display={{ base: "none", md: "inline-block", lg: "none" }}>
-        <Meme ratings={ratings} />
-      </Box>
+      {!isVisible && <Meme ratings={ratings} />}
     </Flex>
   );
 }
