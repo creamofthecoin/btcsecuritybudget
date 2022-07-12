@@ -15,6 +15,17 @@ export default function Metatags() {
         content="BTC Security Budget | Bitcoin Decentralization | Bitcoin Miner Reward"
         key="title"
       />
+      <meta property="og:title" content="Bitcoin Security Budget" />
+      <meta property="og:url" content="https://www.btcsecuritybudget.com/" />
+      <meta
+        property="og:description"
+        content="Bitcoin security budget: The block reward is vanishing, and depending on transaction fees for security may not be a sufficient incentive to keep up with network value (or market cap). State actors are also motivated by ideology, not profit. So, help us keep BTC safe by engaging in the discussion."
+      />
+      <meta property="og:type" content="website" />
+      <meta
+        property="og:image"
+        content="https://www.btcsecuritybudget.com/BtcSecurityBudget-OpenGraph.png"
+      />
       <link
         rel="apple-touch-icon"
         sizes="180x180"
