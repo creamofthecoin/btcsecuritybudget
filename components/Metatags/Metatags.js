@@ -23,8 +23,12 @@ export default function Metatags() {
         content="Will Bitcoin thrive once it has to depend on transaction fees to incentivize miners to keep mining? Play with this thought experiment and join the discussion!"
       />
       <meta
+        property="og:image"
+        content="http://www.btcsecuritybudget.com/btcsecuritybudget-socialmedia.jpg"
+      />
+      <meta
         property="og:image:secure_url"
-        content="https://www.btcsecuritybudget.com/BtcSecurityBudget-OpenGraph.png"
+        content="https://www.btcsecuritybudget.com/btcsecuritybudget-socialmedia.jpg"
       />
       <meta property="og:image:width" content="1200" />
 
