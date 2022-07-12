@@ -1,4 +1,4 @@
-import { Box, HStack, Text } from "@chakra-ui/react";
+import { Box, Stack, Text } from "@chakra-ui/react";
 import ModalHeading from "../../utils/ModalHeading";
 
 export default function Glossary() {
@@ -69,17 +69,27 @@ export default function Glossary() {
 
 function Item({ image, alt, ...props }) {
   return (
-    <HStack _notLast={{ marginBottom: "2rem" }} alignItems="flex-start">
+    <Stack
+      flexDir={{ base: "column", md: "row" }}
+      _notLast={{ marginBottom: "3rem" }}
+      alignItems="flex-start"
+    >
       <Box
         backgroundImage={`url(${image})`}
         backgroundSize="cover"
         backgroundPosition="center"
         borderRadius="full"
-        minW="100px"
-        minH="100px"
-        mr="2rem"
+        minW={{ base: "clamp(25px, 30vw, 100px)", md: "100px" }}
+        minH={{ base: "clamp(25px, 30vw, 100px)", md: "100px" }}
+        mr={{ base: "1rem", md: "2rem" }}
+        alignSelf={{ base: "center", md: "flex-start" }}
       />
-      <Box>{props.children}</Box>
-    </HStack>
+      <Box
+        alignSelf="flex-start"
+        mt={{ base: "1rem !important", md: "0 !important" }}
+      >
+        {props.children}
+      </Box>
+    </Stack>
   );
 }

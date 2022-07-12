@@ -3,6 +3,7 @@ import "@fontsource/inter/600.css";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { BAD_RATING, GOOD_RATING } from "../../utils/constants";
+import { useFadeInOut } from "../../utils/useFadeInOut";
 
 export default function SingleMeme({ memeSrc, rating }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -13,6 +14,7 @@ export default function SingleMeme({ memeSrc, rating }) {
     setIsHovered(false);
   };
   const condition = rating === GOOD_RATING ? "180" : "0";
+  const [{ title }, fadeStyle] = useFadeInOut({ title: memeSrc[rating].meme });
 
   const sizes = {
     base: "clamp(2rem, 30vw, 100px)",
@@ -38,11 +40,12 @@ export default function SingleMeme({ memeSrc, rating }) {
         placeSelf="flex-end center"
         fontSize={{ base: "clamp(0.25rem, 4vw, .9rem)", sm: "md", md: "lg" }}
         userSelect="none"
-        textShadow="2px 2px 3px #000000"
+        textShadow="2px 2px 3px #000000, 0px 0px 4px rgba(0, 0 , 0, 1)"
         letterSpacing={{ base: "-0.05rem", md: "-0.05rem" }}
         fontWeight="600"
+        {...fadeStyle}
       >
-        {memeSrc[rating].title}
+        {title}
       </Heading>
       <Box
         as={motion.div}

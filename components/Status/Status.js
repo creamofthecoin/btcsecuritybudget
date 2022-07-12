@@ -1,4 +1,4 @@
-import { Heading, HStack, Stack, Text } from "@chakra-ui/react";
+import { HStack, Stack, Text } from "@chakra-ui/react";
 import _ from "lodash";
 import React from "react";
 import { GOOD_RATING } from "../../utils/constants";
@@ -7,11 +7,10 @@ import {
   feeMeme,
   securityMeme,
 } from "../../utils/memeSrc";
-import { useFadeInOut } from "./useFadeInOut";
+import { useFadeInOut } from "../../utils/useFadeInOut";
 
 function Status({ ratings }) {
-  const duration = 200;
-  const [currRatings, fade] = useFadeInOut(ratings, duration);
+  const [currRatings, fadeStyle] = useFadeInOut(ratings);
   const { avgFeeRating, securityRating, decentralizationRating } = currRatings;
 
   return (
@@ -21,58 +20,54 @@ function Status({ ratings }) {
       bg={{ base: "rgba(0,0,0,0.5)", lg: "rgba(0,0,0,0.125)" }}
       borderRadius="3xl"
       w="100%"
-      minH={{ base: "100px", lg: "auto" }}
+      minH={{ base: "auto", lg: "80px", xl: "auto" }}
       py="1rem"
       px="1rem"
-      mt="2rem"
+      mt={{ base: "1.5rem", lg: "2rem" }}
+      mb={{ base: "0", sm: "1rem", lg: "0" }}
       justifyContent="center"
       alignItems={{ base: "flex-start", lg: "center" }}
     >
       <SingleStatus
         memeSrc={feeMeme}
         rating={avgFeeRating}
-        fade={fade}
-        duration={duration}
+        fadeStyle={fadeStyle}
       />
       <SingleStatus
         memeSrc={decentralizationMeme}
         rating={decentralizationRating}
-        fade={fade}
-        duration={duration}
+        fadeStyle={fadeStyle}
       />
       <SingleStatus
         memeSrc={securityMeme}
         rating={securityRating}
-        fade={fade}
-        duration={duration}
+        fadeStyle={fadeStyle}
       />
     </Stack>
   );
 }
 
-function SingleStatus({ memeSrc, rating, fade, duration }) {
-  const fadeStyle = {
-    transition: `opacity ${duration}ms ease`,
-    opacity: fade ? 1 : 0,
-  };
+function SingleStatus({ memeSrc, rating, fadeStyle }) {
   return (
     <HStack m="0 !important" p="0 0.5rem">
-      <Heading
-        as="h3"
+      <Text
         p="0"
         m="0 .25rem 0 0 !important"
-        fontSize="sm"
+        // fontSize={{ base: "xs", md: "sm" }}
+        fontSize="xs"
         fontWeight="900"
+        alignSelf="flex-start"
         color={rating === GOOD_RATING ? "green.300" : "red.300"}
         {...fadeStyle}
       >
-        {`${memeSrc[rating].title}:`}
-      </Heading>
+        {`${memeSrc[rating].meme}:`}
+      </Text>
 
       <Text
         p="0"
         m="0"
-        fontSize="sm"
+        // fontSize={{ base: "xs", md: "sm" }}
+        fontSize="xs"
         fontWeight="600"
         color="gray.400"
         {...fadeStyle}
