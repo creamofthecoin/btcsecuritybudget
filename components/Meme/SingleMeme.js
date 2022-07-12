@@ -42,7 +42,7 @@ export default function SingleMeme({ memeSrc, rating }) {
         letterSpacing={{ base: "-0.05rem", md: "-0.05rem" }}
         fontWeight="600"
       >
-        {memeSrc[rating].title}
+        {memeSrc[rating].meme}
       </Heading>
       <Box
         as={motion.div}

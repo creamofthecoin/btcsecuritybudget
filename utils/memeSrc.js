@@ -12,12 +12,14 @@ export const feeMeme = {
     img: `${good}hope-wojak.png`,
     tooltip: "Plebs win! It's cheap to participate 😊",
     status: "Low Fees 😊",
+    meme: "Low Fees",
   },
   [BAD_RATING]: {
     title: FEES,
     img: `${bad}pink-upset-wojak.jpg`,
     tooltip: "Banks love this! Fees Skyrocket 😭",
     status: "High Fees 😭",
+    meme: "High Fees",
   },
 };
 export const decentralizationMeme = {
@@ -26,12 +28,14 @@ export const decentralizationMeme = {
     img: `${good}nicholas-cage-hair.gif`,
     tooltip: "Decentralized & Censorship Resistant 🗽",
     status: "Decentralized 🗽",
+    meme: "Decentralized",
   },
   [BAD_RATING]: {
     title: DECENTRALIZATION,
     img: `${bad}unlimited-power.webp`,
     tooltip: "Centralized & Censorable 🔫",
     status: "Centralized 🔫",
+    meme: "Centralized",
   },
 };
 export const securityMeme = {
@@ -40,11 +44,13 @@ export const securityMeme = {
     img: `${good}realistic-pepe.jpg`,
     tooltip: "Bitcoin's security is ensured! 🥰",
     status: "Security Budget is High 🥰",
+    meme: "Secure",
   },
   [BAD_RATING]: {
     title: SECURITY,
     img: `${bad}bis-wins.png`,
     tooltip: "Bitcoin is too attractive to attack! 🤮",
     status: "Security budget is Low 🤮",
+    meme: "Insecure",
   },
 };
