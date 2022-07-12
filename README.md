@@ -3,7 +3,7 @@
 </h1>
 
 
-This repo contains code for [btcsecuritybudget.com](btcsecuritybudget.com).
+This repo contains code for [btcsecuritybudget.com](https://www.btcsecuritybudget.com).
 
 If you find any bugs, please open an issue.
 
