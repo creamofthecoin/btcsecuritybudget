@@ -9,6 +9,7 @@ const bgBoilerPlate = {
   left: "0px",
   opacity: "0.1",
   zIndex: "-1",
+  height: "100vh",
 };
 
 const styles = {
