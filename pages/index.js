@@ -31,6 +31,9 @@ export default function Home() {
   const isVisible = useVisibility((window) => {
     return window.innerWidth > 991 || window.innerWidth < 768;
   });
+  const statusVis = useVisibility((window) => {
+    return window.innerWidth > 991;
+  });
 
   const {
     transactionsPerBlock,
@@ -68,9 +71,7 @@ export default function Home() {
       >
         <Container center={true}>
           <Metatags />
-          <Section>
-            <Status ratings={ratings} />
-          </Section>
+          <Section>{statusVis && <Status ratings={ratings} />}</Section>
           <Section
             flexDir={{ base: "column", lg: "row" }}
             alignItems="center"
@@ -94,6 +95,7 @@ export default function Home() {
               isVisible={isVisible}
             />
             {isVisible && <Meme ratings={ratings} />}
+            {!statusVis && <Status ratings={ratings} />}
             <Chart
               xAxisLabels={YEARS}
               marketCap={marketCap}

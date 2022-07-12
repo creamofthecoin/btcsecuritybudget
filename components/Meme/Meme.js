@@ -14,7 +14,7 @@ function Meme({ ratings }) {
 
   return (
     <Flex
-      flexDir={{ base: "row", lg: "column" }}
+      flexDir={{ base: "row", md: "column" }}
       zIndex="0"
       gap={{ base: 4, md: 8 }}
     >

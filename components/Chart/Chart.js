@@ -162,7 +162,7 @@ export default function Chart({
       borderRadius="3xl"
       w="clamp(200px, 90vw, 900px)"
       py="2.5rem"
-      px="2.5rem"
+      px={{ base: "0", lg: "2.5rem" }}
       bg={{
         base: "transparent",
         xl:
