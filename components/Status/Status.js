@@ -53,7 +53,8 @@ function SingleStatus({ memeSrc, rating, fadeStyle }) {
       <Text
         p="0"
         m="0 .25rem 0 0 !important"
-        fontSize={{ base: "xs", md: "sm" }}
+        // fontSize={{ base: "xs", md: "sm" }}
+        fontSize="xs"
         fontWeight="900"
         alignSelf="flex-start"
         color={rating === GOOD_RATING ? "green.300" : "red.300"}
@@ -65,7 +66,8 @@ function SingleStatus({ memeSrc, rating, fadeStyle }) {
       <Text
         p="0"
         m="0"
-        fontSize={{ base: "xs", md: "sm" }}
+        // fontSize={{ base: "xs", md: "sm" }}
+        fontSize="xs"
         fontWeight="600"
         color="gray.400"
         {...fadeStyle}
