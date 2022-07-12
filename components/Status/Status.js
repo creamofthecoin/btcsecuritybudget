@@ -60,7 +60,7 @@ function SingleStatus({ memeSrc, rating, fadeStyle }) {
         color={rating === GOOD_RATING ? "green.300" : "red.300"}
         {...fadeStyle}
       >
-        {`${memeSrc[rating].title}:`}
+        {`${memeSrc[rating].meme}:`}
       </Text>
 
       <Text

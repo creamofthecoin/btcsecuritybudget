@@ -11,7 +11,7 @@ export const feeMeme = {
     title: FEES,
     img: `${good}hope-wojak.png`,
     tooltip: "Plebs win! It's cheap to participate 😊",
-    status: "Cheap. Plebs Can Participate on Layer 1",
+    status: "Plebs Can Use Layer 1",
     meme: "Low Fees",
   },
   [BAD_RATING]: {
@@ -43,14 +43,14 @@ export const securityMeme = {
     title: SECURITY,
     img: `${good}realistic-pepe.jpg`,
     tooltip: "Bitcoin's security is ensured! 🥰",
-    status: "Network is Secured by Profit Motive",
+    status: "Network Secured by Profit Motive",
     meme: "Secure",
   },
   [BAD_RATING]: {
     title: SECURITY,
     img: `${bad}bis-wins.png`,
     tooltip: "Bitcoin is too attractive to attack! 🤮",
-    status: "Miner Profits Too Low To Incentivize Network Security",
+    status: "Network Vulnerable: Profits Too Low",
     meme: "Insecure",
   },
 };
