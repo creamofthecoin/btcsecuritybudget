@@ -7,11 +7,10 @@ import {
   feeMeme,
   securityMeme,
 } from "../../utils/memeSrc";
-import { useFadeInOut } from "./useFadeInOut";
+import { useFadeInOut } from "../../utils/useFadeInOut";
 
 function Status({ ratings }) {
-  const duration = 200;
-  const [currRatings, fade] = useFadeInOut(ratings, duration);
+  const [currRatings, fadeStyle] = useFadeInOut(ratings);
   const { avgFeeRating, securityRating, decentralizationRating } = currRatings;
 
   return (
@@ -31,30 +30,23 @@ function Status({ ratings }) {
       <SingleStatus
         memeSrc={feeMeme}
         rating={avgFeeRating}
-        fade={fade}
-        duration={duration}
+        fadeStyle={fadeStyle}
       />
       <SingleStatus
         memeSrc={decentralizationMeme}
         rating={decentralizationRating}
-        fade={fade}
-        duration={duration}
+        fadeStyle={fadeStyle}
       />
       <SingleStatus
         memeSrc={securityMeme}
         rating={securityRating}
-        fade={fade}
-        duration={duration}
+        fadeStyle={fadeStyle}
       />
     </Stack>
   );
 }
 
-function SingleStatus({ memeSrc, rating, fade, duration }) {
-  const fadeStyle = {
-    transition: `opacity ${duration}ms ease`,
-    opacity: fade ? 1 : 0,
-  };
+function SingleStatus({ memeSrc, rating, fadeStyle }) {
   return (
     <HStack m="0 !important" p="0 0.5rem">
       <Heading
