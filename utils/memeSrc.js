@@ -11,14 +11,14 @@ export const feeMeme = {
     title: FEES,
     img: `${good}hope-wojak.png`,
     tooltip: "Plebs win! It's cheap to participate 😊",
-    status: "Cheap For Plebs To Participate 😊",
+    status: "Cheap — Plebs Can Participate on Layer 1 😊",
     meme: "Low Fees",
   },
   [BAD_RATING]: {
     title: FEES,
     img: `${bad}pink-upset-wojak.jpg`,
     tooltip: "Banks love this! Fees Skyrocket 😭",
-    status: "Banks Corner The Market 😭",
+    status: "Banks Dominate Layer 1 😭",
     meme: "High Fees",
   },
 };
@@ -43,7 +43,7 @@ export const securityMeme = {
     title: SECURITY,
     img: `${good}realistic-pepe.jpg`,
     tooltip: "Bitcoin's security is ensured! 🥰",
-    status: "Network Is Secured by Profit Motive 🥰",
+    status: "Network is Secured by Profit Motive 🥰",
     meme: "Secure",
   },
   [BAD_RATING]: {
