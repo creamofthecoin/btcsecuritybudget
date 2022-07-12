@@ -6,11 +6,21 @@ export default function FAQ() {
     <>
       <ModalHeading>What is this website for?</ModalHeading>
       <Text>
-        This website shows how bitcoin's security budget is affected by fees,
-        block size, price appreciation, and the block reward. A declining
-        security budget may become a problem as early as the 2030s. You can help
-        keep the future of BTC safe by engaging in discussions about this
-        subject, and thinking about potential solutions.
+        This website is a thought experiment that shows how bitcoin's security
+        budget is affected by fees, block size, price appreciation, and the
+        block reward. A declining security budget may become a problem as early
+        as the 2030s. You can help keep the future of BTC safe by engaging in
+        discussions about this subject, and thinking about potential solutions.
+      </Text>
+
+      <ModalHeading>
+        How are the meme states for fee, decentralization, and security
+        determined?
+      </ModalHeading>
+      <Text>
+        The meme states are set by comparing each value to an arbitrary
+        threshold. These thresholds are subjective, and are only meant to
+        illustrate the various tradeoffs.
       </Text>
 
       <ModalHeading>What is the security budget?</ModalHeading>
@@ -102,6 +112,9 @@ export default function FAQ() {
         security. There is no profit motive, so they would be willing to use
         non-profitable energy sources to obtain 51% of the hash power.
       </Text>
+
+      <ModalHeading>Why memes?</ModalHeading>
+      <Text>Memes are useful for discussion.</Text>
     </>
   );
 }
