@@ -11,7 +11,7 @@ export const feeMeme = {
     title: FEES,
     img: `${good}hope-wojak.png`,
     tooltip: "Plebs win! It's cheap to participate 😊",
-    status: "Cheap — Plebs Can Participate on Layer 1",
+    status: "Cheap. Plebs Can Participate on Layer 1",
     meme: "Low Fees",
   },
   [BAD_RATING]: {

@@ -1,4 +1,4 @@
-import { Heading, HStack, Stack, Text } from "@chakra-ui/react";
+import { HStack, Stack, Text } from "@chakra-ui/react";
 import _ from "lodash";
 import React from "react";
 import { GOOD_RATING } from "../../utils/constants";
@@ -49,19 +49,17 @@ function Status({ ratings }) {
 function SingleStatus({ memeSrc, rating, fadeStyle }) {
   return (
     <HStack m="0 !important" p="0 0.5rem">
-      <Heading
-        as="h3"
+      <Text
         p="0"
         m="0 .25rem 0 0 !important"
         fontSize={{ base: "xs", md: "sm" }}
         fontWeight="900"
-        pt="2px !important"
         alignSelf="flex-start"
         color={rating === GOOD_RATING ? "green.300" : "red.300"}
         {...fadeStyle}
       >
         {`${memeSrc[rating].title}:`}
-      </Heading>
+      </Text>
 
       <Text
         p="0"
