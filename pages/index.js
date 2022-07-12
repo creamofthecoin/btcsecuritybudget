@@ -1,4 +1,4 @@
-import { ChakraProvider, Spinner, useColorMode } from "@chakra-ui/react";
+import { ChakraProvider, useColorMode } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import _ from "lodash";
 import { useState } from "react";
@@ -67,7 +67,7 @@ export default function Home() {
       <motion.div
         initial={{ opacity: 1 }}
         animate={{ opacity: 0 }}
-        transition={{ delay: 0.5 }}
+        transition={{ delay: 0.1 }}
         style={{
           backgroundColor: "#1A202C",
           position: "fixed",
@@ -80,13 +80,11 @@ export default function Home() {
           left: "0",
           placeItems: "center",
         }}
-      >
-        <Spinner size="xl" color="white" />
-      </motion.div>
+      />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.1 }}
+        transition={{ delay: 0.33 }}
       >
         <Container center={true}>
           <Metatags />
