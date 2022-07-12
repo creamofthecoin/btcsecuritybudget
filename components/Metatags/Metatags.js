@@ -26,7 +26,9 @@ export default function Metatags() {
         property="og:image:secure_url"
         content="https://www.btcsecuritybudget.com/BtcSecurityBudget-OpenGraph.png"
       />
+      <meta property="og:image:width" content="1200" />
 
+      <meta property="og:image:height" content="630" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta property="twitter:domain" content="" />
       <meta property="twitter:url" content="https://btcsecuritybudget.com/" />
@@ -40,7 +42,7 @@ export default function Metatags() {
       />
       <meta
         name="twitter:image"
-        content="https://www.btcsecuritybudget.com/BtcSecurityBudget-OpenGraph.png"
+        content="https://www.btcsecuritybudget.com/btcsecuritybudget-socialmedia.jpg"
       />
       <link
         rel="apple-touch-icon"
