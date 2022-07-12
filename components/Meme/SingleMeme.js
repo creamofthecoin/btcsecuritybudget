@@ -40,7 +40,7 @@ export default function SingleMeme({ memeSrc, rating }) {
         placeSelf="flex-end center"
         fontSize={{ base: "clamp(0.25rem, 4vw, .9rem)", sm: "md", md: "lg" }}
         userSelect="none"
-        textShadow="2px 2px 3px #000000"
+        textShadow="2px 2px 3px #000000, 0px 0px 4px rgba(0, 0 , 0, 1)"
         letterSpacing={{ base: "-0.05rem", md: "-0.05rem" }}
         fontWeight="600"
         {...fadeStyle}
