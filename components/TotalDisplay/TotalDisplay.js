@@ -67,7 +67,7 @@ function SingleTotal({ label, total, bold, large, tooltipLabel }) {
       color="white"
       hasArrow
     >
-      <Stack>
+      <Stack userSelect="none">
         <Heading
           as="h3"
           fontSize={large ? "md" : "sm"}

@@ -45,7 +45,6 @@ export default function ControlPanel({
       borderRadius="3xl"
       zIndex="6"
       h="100%"
-      id="LKJLKJ"
     >
       <Flex flexDir="column" w="100%" mr={{ base: "0", md: "2.5rem", lg: "0" }}>
         <Header />

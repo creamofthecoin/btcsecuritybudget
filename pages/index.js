@@ -65,9 +65,26 @@ export default function Home() {
   return (
     <ChakraProvider theme={theme}>
       <motion.div
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 0 }}
+        transition={{ delay: 0.1 }}
+        style={{
+          backgroundColor: "#1A202C",
+          position: "fixed",
+          height: "100%",
+          width: "100%",
+          display: "grid",
+          top: "0",
+          bottom: "0",
+          right: "0",
+          left: "0",
+          placeItems: "center",
+        }}
+      />
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.1 }}
+        transition={{ delay: 0.33 }}
       >
         <Container center={true}>
           <Metatags />

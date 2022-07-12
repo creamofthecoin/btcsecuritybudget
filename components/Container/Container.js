@@ -17,7 +17,6 @@ function GridContainerCentered({
 }) {
   return (
     <Grid
-      id="GRIDCONTAINER"
       w="100%"
       minH={h}
       placeContent={{ base: "flex-start center", md: "center" }}
