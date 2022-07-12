@@ -161,7 +161,7 @@ export default function Chart({
       h="100%"
       borderRadius="3xl"
       w="clamp(200px, 90vw, 900px)"
-      py="2.5rem"
+      py={{ base: "1.5rem", md: "2.5rem" }}
       px={{ base: "0", lg: "2.5rem" }}
       bg={{
         base: "transparent",
