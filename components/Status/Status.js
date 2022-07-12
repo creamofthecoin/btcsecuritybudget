@@ -17,10 +17,10 @@ function Status({ ratings }) {
     <Stack
       flexDirection={{ base: "column", lg: "row" }}
       gap={{ base: 1, xl: 10 }}
-      bg="rgba(0,0,0,0.125)"
+      bg={{ base: "rgba(0,0,0,0.5)", lg: "rgba(0,0,0,0.125)" }}
       borderRadius="3xl"
       w="100%"
-      minH={{ base: "68px", xl: "auto" }}
+      minH={{ base: "100px", lg: "68px", xl: "auto" }}
       py="1rem"
       px="1rem"
       mt="2rem"
