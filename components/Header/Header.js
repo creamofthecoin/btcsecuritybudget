@@ -44,6 +44,7 @@ export default function Header() {
             // mt="5rem"
             color={color}
             whiteSpace="nowrap"
+            userSelect="none"
           >
             Security Budget
           </Heading>
