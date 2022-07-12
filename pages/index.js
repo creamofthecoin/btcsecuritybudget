@@ -1,4 +1,4 @@
-import { ChakraProvider, useColorMode } from "@chakra-ui/react";
+import { ChakraProvider, Spinner, useColorMode } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import _ from "lodash";
 import { useState } from "react";
@@ -64,6 +64,21 @@ export default function Home() {
 
   return (
     <ChakraProvider theme={theme}>
+      <motion.div
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 0 }}
+        transition={{ delay: 0.5 }}
+        style={{
+          backgroundColor: "#1A202C",
+          position: "absolute",
+          height: "100vh",
+          width: "100vw",
+          display: "grid",
+          placeItems: "center",
+        }}
+      >
+        <Spinner size="xl" color="white" />
+      </motion.div>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
