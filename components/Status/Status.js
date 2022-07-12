@@ -23,7 +23,8 @@ function Status({ ratings }) {
       minH={{ base: "auto", lg: "80px", xl: "auto" }}
       py="1rem"
       px="1rem"
-      mt="2rem"
+      mt={{ base: "1.5rem", lg: "2rem" }}
+      mb={{ base: "0", sm: "1rem", lg: "0" }}
       justifyContent="center"
       alignItems={{ base: "flex-start", lg: "center" }}
     >
