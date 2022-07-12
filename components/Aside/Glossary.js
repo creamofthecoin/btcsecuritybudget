@@ -5,14 +5,14 @@ export default function Glossary() {
   return (
     <>
       <Item image="/memes/good/hope-wojak.png" alt="Happy Wojak">
-        <ModalHeading>Happy wojak</ModalHeading>
+        <ModalHeading>Fees Low</ModalHeading>
         <Text>
           Low fees make it easy for the average person to send and receive
           bitcoin.
         </Text>
       </Item>
       <Item image="/memes/bad/pink-upset-wojak.jpg" alt="Pink Upset Wojak">
-        <ModalHeading>Sad wojak</ModalHeading>
+        <ModalHeading>High Fees</ModalHeading>
         <Text>
           High fees make it difficult for the average person to send and receive
           bitcoin. Transactions will be done by those who can afford it, e.g.
@@ -23,7 +23,7 @@ export default function Glossary() {
         image="/memes/good/nicholas-cage-hair.gif"
         alt="Nicholas Cage Hair In Galaxy"
       >
-        <ModalHeading>Nicholas Cage meme</ModalHeading>
+        <ModalHeading>Decentralized</ModalHeading>
         <Text>
           Small blocks make it easy to download the blockchain and run a full
           node. As a result, more people run their own node, the level of
@@ -35,7 +35,7 @@ export default function Glossary() {
         image="/memes/bad/unlimited-power.webp"
         alt="Palpatine Unlimited Power Lightning"
       >
-        <ModalHeading>Unlimited power meme</ModalHeading>
+        <ModalHeading>Centralized</ModalHeading>
         <Text>
           Large blocks result in more centralization (fewer nodes). In the
           extreme case, there exists only 1 node operator, and this operator has
@@ -46,7 +46,7 @@ export default function Glossary() {
         image="/memes/good/realistic-pepe.jpg"
         alt="Happy Fancy Realistic Pepe"
       >
-        <ModalHeading>Rich pepe</ModalHeading>
+        <ModalHeading>High Security Budget</ModalHeading>
         <Text>
           The security budget is high, which makes it difficult to perform a 51%
           attack.
@@ -56,10 +56,11 @@ export default function Glossary() {
         image="/memes/bad/bis-wins.png"
         alt="Agustin Carstens of Bank for International Settlements (BIS)"
       >
-        <ModalHeading>Agustin Carstens</ModalHeading>
+        <ModalHeading>Low Security Budget</ModalHeading>
         <Text>
           The security budget is low, making it easier to attack the network and
-          weaken bitcoin. Central bankers like this scenario.
+          weaken bitcoin. Central bankers (like Agustin Carstens of BIS) and
+          governments are happy with this scenario.
         </Text>
       </Item>
     </>
