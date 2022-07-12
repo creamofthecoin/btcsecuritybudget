@@ -80,7 +80,9 @@ export default function FAQ() {
         deterred from using the blockchain at all. To avoid exorbitant fees,
         people will let banks hold their coins, perform on-chain transactions,
         and move their coins on and off layer 2 networks (e.g. Lightning
-        network). This turns bitcoin into a banking system.
+        network). Even worse, they could avoid open Layer 2 technologies, and
+        re-create something like Fedwire, which is used to settle between banks
+        in the US today. This turns bitcoin into a censorable banking system.
       </Text>
       <ModalHeading>
         Miners will mine for the benefit of the network, instead of for profit.
