@@ -19,7 +19,7 @@ export default function Metatags() {
       <meta property="og:url" content="https://www.btcsecuritybudget.com/" />
       <meta
         property="og:description"
-        content="Bitcoin security budget: The block reward is vanishing, and depending on transaction fees for security may not be a sufficient incentive to keep up with network value (or market cap). State actors are also motivated by ideology, not profit. So, help us keep BTC safe by engaging in the discussion."
+        content="Will Bitcoin thrive once it has to depend on transaction fees to incentivize miners to keep mining? Play with this thought experiment and join the discussion!"
       />
       <meta property="og:type" content="website" />
       <meta
