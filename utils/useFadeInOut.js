@@ -1,7 +1,7 @@
 import _ from "lodash";
 import { useEffect, useState } from "react";
 
-export function useFadeInOut(inObject, duration) {
+export function useFadeInOut(inObject, duration = 200) {
   const [loaded, setLoaded] = useState(false);
   const [currObject, setCurrObject] = useState(inObject);
   const [timeoutId, setTimeoutId] = useState(null);
@@ -25,12 +25,10 @@ export function useFadeInOut(inObject, duration) {
     );
   }, _.values(inObject));
 
-  return [currObject, fade];
-}
-
-export function getFadeStyle(fade, duration) {
-  return {
+  const fadeStyle = {
     transition: `opacity ${duration}ms ease`,
     opacity: fade ? 1 : 0,
   };
+
+  return [currObject, fadeStyle];
 }

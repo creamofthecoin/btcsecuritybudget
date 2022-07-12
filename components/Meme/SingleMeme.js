@@ -3,7 +3,7 @@ import "@fontsource/inter/600.css";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { BAD_RATING, GOOD_RATING } from "../../utils/constants";
-import { getFadeStyle, useFadeInOut } from "../../utils/useFadeInOut";
+import { useFadeInOut } from "../../utils/useFadeInOut";
 
 export default function SingleMeme({ memeSrc, rating }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -14,13 +14,7 @@ export default function SingleMeme({ memeSrc, rating }) {
     setIsHovered(false);
   };
   const condition = rating === GOOD_RATING ? "180" : "0";
-
-  const duration = 200;
-  const [{ title }, fade] = useFadeInOut(
-    { title: memeSrc[rating].meme },
-    duration
-  );
-  const fadeStyle = getFadeStyle(fade, duration);
+  const [{ title }, fadeStyle] = useFadeInOut({ title: memeSrc[rating].meme });
 
   const sizes = {
     base: "clamp(2rem, 30vw, 100px)",
