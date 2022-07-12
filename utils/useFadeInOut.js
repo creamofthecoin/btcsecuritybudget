@@ -1,9 +1,9 @@
 import _ from "lodash";
 import { useEffect, useState } from "react";
 
-export function useFadeInOut(ratings, duration) {
+export function useFadeInOut(inObject, duration) {
   const [loaded, setLoaded] = useState(false);
-  const [currRatings, setCurrRatings] = useState(ratings);
+  const [currObject, setCurrObject] = useState(inObject);
   const [timeoutId, setTimeoutId] = useState(null);
   const [fade, setFade] = useState(true);
 
@@ -19,11 +19,18 @@ export function useFadeInOut(ratings, duration) {
     clearTimeout(timeoutId);
     setTimeoutId(
       setTimeout(() => {
-        setCurrRatings(ratings);
+        setCurrObject(inObject);
         setFade(true);
       }, duration + 25)
     );
-  }, _.values(ratings));
+  }, _.values(inObject));
 
-  return [currRatings, fade];
+  return [currObject, fade];
+}
+
+export function getFadeStyle(fade, duration) {
+  return {
+    transition: `opacity ${duration}ms ease`,
+    opacity: fade ? 1 : 0,
+  };
 }

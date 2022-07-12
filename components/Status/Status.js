@@ -7,7 +7,7 @@ import {
   feeMeme,
   securityMeme,
 } from "../../utils/memeSrc";
-import { useFadeInOut } from "./useFadeInOut";
+import { getFadeStyle, useFadeInOut } from "../../utils/useFadeInOut";
 
 function Status({ ratings }) {
   const duration = 200;
@@ -51,10 +51,7 @@ function Status({ ratings }) {
 }
 
 function SingleStatus({ memeSrc, rating, fade, duration }) {
-  const fadeStyle = {
-    transition: `opacity ${duration}ms ease`,
-    opacity: fade ? 1 : 0,
-  };
+  const fadeStyle = getFadeStyle(fade, duration);
   return (
     <HStack m="0 !important" p="0 0.5rem">
       <Heading
