@@ -2,7 +2,7 @@ const bgBoilerPlate = {
   content: '""',
   backgroundSize: "cover",
   backgroundPosition: "center",
-  position: "absolute",
+  position: "fixed",
   top: "0px",
   right: "0px",
   bottom: "0px",
