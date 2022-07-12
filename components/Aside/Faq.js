@@ -82,7 +82,8 @@ export default function FAQ() {
         and move their coins on and off layer 2 networks (e.g. Lightning
         network). Even worse, they could avoid open Layer 2 technologies, and
         re-create something like Fedwire, which is used to settle between banks
-        in the US today. This turns bitcoin into a censorable banking system.
+        in the US today. Both scenarios turn bitcoin into a censorable banking
+        system.
       </Text>
       <ModalHeading>
         Miners will mine for the benefit of the network, instead of for profit.
