@@ -5,7 +5,7 @@ export default function Glossary() {
   return (
     <>
       <Item image="/memes/good/hope-wojak.png" alt="Happy Wojak">
-        <ModalHeading>Fees Low</ModalHeading>
+        <ModalHeading>Low Fees</ModalHeading>
         <Text>
           Low fees make it easy for the average person to send and receive
           bitcoin.
