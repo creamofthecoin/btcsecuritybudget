@@ -21,7 +21,7 @@ function Status({ ratings }) {
       bg={{ base: "rgba(0,0,0,0.5)", lg: "rgba(0,0,0,0.125)" }}
       borderRadius="3xl"
       w="100%"
-      minH={{ base: "100px", lg: "auto" }}
+      minH={{ base: "auto", lg: "80px", xl: "auto" }}
       py="1rem"
       px="1rem"
       mt="2rem"
@@ -63,6 +63,8 @@ function SingleStatus({ memeSrc, rating, fade, duration }) {
         m="0 .25rem 0 0 !important"
         fontSize="sm"
         fontWeight="900"
+        pt={{ base: "0", lg: "2px !important", xl: "1px !important" }}
+        alignSelf={{ base: "center", lg: "flex-start", xl: "center" }}
         color={rating === GOOD_RATING ? "green.300" : "red.300"}
         {...fadeStyle}
       >
