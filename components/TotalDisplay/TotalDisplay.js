@@ -42,7 +42,7 @@ export default function TotalDisplay({
       />
       <HStack>
         <SingleTotal
-          label="Relative Miner Revenue"
+          label="Relative Miner Revenue/Year"
           total={`${minerReward}`}
           tooltipLabel="(Miner Revenue Per Year) / (Market Cap)"
           bold={true}
@@ -71,8 +71,8 @@ function SingleTotal({ label, total, bold, large, tooltipLabel }) {
           as="h3"
           fontSize={large ? "md" : "sm"}
           mb="-.5rem"
-          fontWeight={bold ? "900" : "400"}
-          letterSpacing="unset"
+          fontWeight={bold ? "600" : "400"}
+          letterSpacing="tight"
         >
           {label}
         </Heading>

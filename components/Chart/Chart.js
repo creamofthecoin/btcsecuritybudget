@@ -119,14 +119,14 @@ export default function Chart({
 }) {
   const yDataAbs = [
     {
-      label: "BTC market cap",
+      label: "BTC Market Cap",
       data: marketCap,
       borderColor: "rgb(247, 147, 26)",
       backgroundColor: "rgba(247, 147, 26, 0.5)",
       yAxisID: "y",
     },
     {
-      label: "Miner revenue / year",
+      label: "Miner Revenue / Year",
       data: usdMinerReward,
       borderColor: "rgb(53, 162, 235)",
       backgroundColor: "rgba(53, 162, 235, 0.5)",
@@ -136,7 +136,7 @@ export default function Chart({
 
   const yDataRel = [
     {
-      label: "Relative miner revenue / year",
+      label: "Relative Miner Revenue / Year",
       data: relativeMinerReward,
       borderColor: "rgb(42, 170, 42)",
       backgroundColor: "rgba(42, 170, 42, 0.5)",
@@ -235,7 +235,7 @@ export default function Chart({
           isChecked={isLog}
         />
         <GraphToggle
-          label={"Show Relative Miner Revenue"}
+          label={"Relative Miner Revenue/Year"}
           onChange={onRelMinerRewardToggle}
           isChecked={isUsingRel}
         />
