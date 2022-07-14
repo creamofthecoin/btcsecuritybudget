@@ -18,7 +18,6 @@ export default function ControlPanel({
   year,
   setYear,
   priceFuture,
-  transactionsPerBlock,
   relativeMinerReward,
   colorMode,
   ratings,
@@ -66,7 +65,6 @@ export default function ControlPanel({
           setFinalMarketCap={setFinalMarketCap}
           priceFuture={priceFuture}
           year={year}
-          transactionsPerBlock={transactionsPerBlock}
         />
         <Spacer />
         <TotalDisplay

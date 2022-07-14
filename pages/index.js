@@ -52,7 +52,6 @@ export default function Home() {
 
   const {
     priceFuture,
-    transactionsPerBlock,
     avgFeeUsd,
     marketCap,
     usdMinerReward,
@@ -130,7 +129,6 @@ export default function Home() {
               year={year}
               setYear={setYear}
               priceFuture={priceFuture}
-              transactionsPerBlock={transactionsPerBlock}
               relativeMinerReward={relativeMinerReward}
               colorMode={colorMode}
               ratings={ratings}
