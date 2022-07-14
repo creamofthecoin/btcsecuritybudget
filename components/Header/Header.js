@@ -32,7 +32,6 @@ export default function Header() {
           alt="Bitcoin / BTC logo"
         />
 
-        {/* <Spacer display={{ base: "none", xl: "inline-block" }} /> */}
         <Box>
           <Heading
             as="h1"

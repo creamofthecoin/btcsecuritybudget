@@ -59,7 +59,12 @@ export default function TotalDisplay({
         />
         <Spacer />
         <DarkToolTip label="Reset">
-          <IconButton icon={<FaRedoAlt />} size="lg" borderRadius="full" />
+          <IconButton
+            icon={<FaRedoAlt />}
+            // size={{ base: "sm", lg: "md" }}
+            borderRadius="full"
+            w="min-content"
+          />
         </DarkToolTip>
       </HStack>
 
