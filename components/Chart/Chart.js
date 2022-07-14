@@ -1,4 +1,11 @@
-import { Flex, useColorMode } from "@chakra-ui/react";
+import {
+  Flex,
+  FormLabel,
+  HStack,
+  Stack,
+  Switch,
+  useColorMode,
+} from "@chakra-ui/react";
 import {
   CategoryScale,
   Chart as ChartJS,
@@ -154,15 +161,13 @@ export default function Chart({
   }
 
   return (
-    <Flex
-      flexDir="row"
-      alignItems="center"
+    <Stack
+      w="clamp(200px, 90vw, 900px)"
       minH="500px"
       h="100%"
-      borderRadius="3xl"
-      w="clamp(200px, 90vw, 900px)"
       py={{ base: "1.5rem", md: "2.5rem" }}
       px={{ base: "0", lg: "2.5rem" }}
+      borderRadius="3xl"
       bg={{
         base: "transparent",
         xl:
@@ -170,29 +175,35 @@ export default function Chart({
             ? "rgba(255, 255, 255, 0.75)"
             : "rgba(0, 0, 0, 0.25)",
       }}
-      zIndex="6"
       overflow="hidden"
     >
-      <Line
-        options={chartOptions}
-        data={data}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-      />
-    </Flex>
+      <Flex flexDir="row" alignItems="center" h="100%" zIndex="6">
+        <Line
+          options={chartOptions}
+          data={data}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+        />
+      </Flex>
+      <Stack
+        px="2rem"
+        flexDir={{ base: "row", lg: "column" }}
+        gap={{ base: 5, lg: 1 }}
+      >
+        <GraphToggle label={"Log Mode"} gap="1rem" />
+        <GraphToggle label={"Market Cap / Miner Reward"} />
+      </Stack>
+    </Stack>
   );
 }
 
-// useEffect(() => {
-//   setChartOptions(
-//     update(chartOptions, {
-//       plugins: {
-//         annotation: {
-//           annotations: {
-//             line1: { xMin: { $set: yearIdx }, xMax: { $set: yearIdx } },
-//           },
-//         },
-//       },
-//     })
-//   );
-// }, [yearIdx]);
+function GraphToggle({ label }) {
+  return (
+    <HStack alignItems="center" justifyContent="stretch" mt="0 !important">
+      <Switch size="sm" />
+      <FormLabel fontSize="sm" color="gray.200" fontWeight="200">
+        {label}
+      </FormLabel>
+    </HStack>
+  );
+}

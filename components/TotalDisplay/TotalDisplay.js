@@ -1,6 +1,15 @@
-import { Heading, Stack, Text, Tooltip } from "@chakra-ui/react";
+import {
+  Heading,
+  HStack,
+  IconButton,
+  Spacer,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
+import { FaRedoAlt } from "react-icons/fa";
 import { END_YEAR, START_FUTURE_YEAR, START_YEAR } from "../../utils/constants";
 import BaseSlider from "../Controls/BaseSlider/BaseSlider";
+import DarkToolTip from "../DarkToolTip/DarkToolTip";
 
 export default function TotalDisplay({
   year,
@@ -40,13 +49,20 @@ export default function TotalDisplay({
         max={END_YEAR}
         mb="0"
       />
-      <SingleTotal
-        label="Relative Miner Reward"
-        total={`${minerReward}`}
-        tooltipLabel="(Miner Reward Per Year) / (Market Cap)"
-        bold={true}
-        large={true}
-      />
+      <HStack>
+        <SingleTotal
+          label="Relative Miner Reward"
+          total={`${minerReward}`}
+          tooltipLabel="(Miner Reward Per Year) / (Market Cap)"
+          bold={true}
+          large={true}
+        />
+        <Spacer />
+        <DarkToolTip label="Reset">
+          <IconButton icon={<FaRedoAlt />} size="lg" borderRadius="full" />
+        </DarkToolTip>
+      </HStack>
+
       {/* <SingleTotal
         label={`"Cost To Attack"`}
         total={`$${costToAttack}`}
@@ -60,13 +76,7 @@ export default function TotalDisplay({
 
 function SingleTotal({ label, total, bold, large, tooltipLabel }) {
   return (
-    <Tooltip
-      label={tooltipLabel}
-      aria-label="Tool Tip For a Good Condition"
-      bg="gray.900"
-      color="white"
-      hasArrow
-    >
+    <DarkToolTip label={tooltipLabel} ariaLabel="Tool Tip For a Good Condition">
       <Stack userSelect="none">
         <Heading
           as="h3"
@@ -78,7 +88,7 @@ function SingleTotal({ label, total, bold, large, tooltipLabel }) {
           {label}
         </Heading>
         <Text
-          fontSize={large ? "4xl" : "2xl"}
+          fontSize={large ? "3xl" : "2xl"}
           fontWeight={bold ? "900" : "400"}
           lineHeight="shorter"
           letterSpacing="tighter"
@@ -88,6 +98,6 @@ function SingleTotal({ label, total, bold, large, tooltipLabel }) {
           {total}
         </Text>
       </Stack>
-    </Tooltip>
+    </DarkToolTip>
   );
 }
