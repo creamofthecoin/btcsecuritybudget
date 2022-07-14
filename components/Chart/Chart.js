@@ -112,40 +112,56 @@ export default function Chart({
   marketCap,
   usdMinerReward,
   blockchainSize,
+  relativeMinerReward,
   yearIdx,
 }) {
-  const data = {
-    labels: xAxisLabels,
-    datasets: [
-      {
-        label: "BTC market cap",
-        data: marketCap,
-        borderColor: "rgb(247, 147, 26)",
-        backgroundColor: "rgba(247, 147, 26, 0.5)",
-        yAxisID: "y",
-      },
-      {
-        label: "Miner reward",
-        data: usdMinerReward,
-        borderColor: "rgb(53, 162, 235)",
-        backgroundColor: "rgba(53, 162, 235, 0.5)",
-        yAxisID: "y",
-      },
-      {
-        label: "Blockchain Size",
-        data: blockchainSize,
-        borderColor: "rgb(255, 99, 132)",
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
-        yAxisID: "y1",
-      },
-    ],
-  };
+  const yDataAbs = [
+    {
+      label: "BTC market cap",
+      data: marketCap,
+      borderColor: "rgb(247, 147, 26)",
+      backgroundColor: "rgba(247, 147, 26, 0.5)",
+      yAxisID: "y",
+    },
+    {
+      label: "Miner reward",
+      data: usdMinerReward,
+      borderColor: "rgb(53, 162, 235)",
+      backgroundColor: "rgba(53, 162, 235, 0.5)",
+      yAxisID: "y",
+    },
+  ];
+
+  const yDataRel = [
+    {
+      label: "Relative miner reward",
+      data: relativeMinerReward,
+      borderColor: "rgb(247, 147, 26)",
+      backgroundColor: "rgba(247, 147, 26, 0.5)",
+      yAxisID: "y",
+    },
+  ];
+
+  const y1Data = [
+    {
+      label: "Blockchain Size",
+      data: blockchainSize,
+      borderColor: "rgb(255, 99, 132)",
+      backgroundColor: "rgba(255, 99, 132, 0.5)",
+      yAxisID: "y1",
+    },
+  ];
 
   options.plugins.annotation.annotations.line1.xMin = yearIdx;
   options.plugins.annotation.annotations.line1.xMax = yearIdx;
 
   const [chartOptions, setChartOptions] = useState(options);
+  const [data, setData] = useState({
+    labels: xAxisLabels,
+    datasets: [...yDataAbs, ...y1Data],
+  });
   const isLog = chartOptions.scales.y.type === "logarithmic";
+  const isUsingRel = data.datasets.length === 2;
 
   const { colorMode } = useColorMode();
 
@@ -165,6 +181,16 @@ export default function Chart({
     const value = e.target.checked ? "logarithmic" : "linear";
     setChartOptions(
       update(chartOptions, { scales: { y: { type: { $set: value } } } })
+    );
+  }
+
+  function onRelMinerRewardToggle(e) {
+    const newYData = e.target.checked ? yDataRel : yDataAbs;
+    setData(update(data, { datasets: { $set: [...newYData, ...y1Data] } }));
+    setChartOptions(
+      update(chartOptions, {
+        scales: { y: { ticks: { format: { $set: { style: "percent" } } } } },
+      })
     );
   }
 
@@ -204,7 +230,11 @@ export default function Chart({
           onChange={onLogToggle}
           isChecked={isLog}
         />
-        <GraphToggle label={"Market Cap / Miner Reward"} />
+        <GraphToggle
+          label={"Market Cap / Miner Reward"}
+          onChange={onRelMinerRewardToggle}
+          isChecked={isUsingRel}
+        />
       </Stack>
     </Stack>
   );

@@ -129,6 +129,7 @@ export default function Home() {
               marketCap={marketCap}
               usdMinerReward={usdMinerReward}
               blockchainSize={blockchainSize}
+              relativeMinerReward={relativeMinerReward}
               yearIdx={yearIdx}
             />
           </Section>
