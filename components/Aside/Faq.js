@@ -30,7 +30,7 @@ export default function FAQ() {
         Note that "security budget" is not an official bitcoin term, and it
         isn't a budget that is set by a committee or governing body. It's simply
         a term used for discussing bitcoin's level of security. An alternative
-        term is "total miner reward".
+        term is "total miner revenue".
       </Text>
       <ModalHeading>Why is it important?</ModalHeading>
       <Text>

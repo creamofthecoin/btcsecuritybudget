@@ -76,12 +76,13 @@ const options = {
       },
     },
     y: {
-      type: "logarithmic",
+      type: "linear",
       display: true,
       position: "left",
       title: { text: "USD", display: true },
       ticks: {
         format: COMPACT,
+        maxTicksLimit: 7,
       },
       // grid line settings
       grid: {
@@ -125,7 +126,7 @@ export default function Chart({
       yAxisID: "y",
     },
     {
-      label: "Miner reward",
+      label: "Miner revenue / year",
       data: usdMinerReward,
       borderColor: "rgb(53, 162, 235)",
       backgroundColor: "rgba(53, 162, 235, 0.5)",
@@ -135,7 +136,7 @@ export default function Chart({
 
   const yDataRel = [
     {
-      label: "Relative miner reward",
+      label: "Relative miner revenue / year",
       data: relativeMinerReward,
       borderColor: "rgb(42, 170, 42)",
       backgroundColor: "rgba(42, 170, 42, 0.5)",
@@ -234,7 +235,7 @@ export default function Chart({
           isChecked={isLog}
         />
         <GraphToggle
-          label={"Show Relative Miner Reward"}
+          label={"Show Relative Miner Revenue"}
           onChange={onRelMinerRewardToggle}
           isChecked={isUsingRel}
         />

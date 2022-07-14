@@ -42,9 +42,9 @@ export default function TotalDisplay({
       />
       <HStack>
         <SingleTotal
-          label="Relative Miner Reward"
+          label="Relative Miner Revenue"
           total={`${minerReward}`}
-          tooltipLabel="(Miner Reward Per Year) / (Market Cap)"
+          tooltipLabel="(Miner Revenue Per Year) / (Market Cap)"
           bold={true}
           large={true}
         />
