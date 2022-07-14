@@ -62,8 +62,9 @@ export default function TotalDisplay({
         <DarkToolTip label="Reset">
           <IconButton
             icon={<FaRedoAlt />}
-            size="lg"
+            // size={{ base: "sm", lg: "md" }}
             borderRadius="full"
+            w="min-content"
             onClick={reset}
           />
         </DarkToolTip>
