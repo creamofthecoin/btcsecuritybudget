@@ -6,6 +6,8 @@ import LogSlider from "./LogSlider/LogSlider";
 export default function Controls({
   avgFee,
   setAvgFee,
+  feeIsUsd,
+  setFeeIsUsd,
   blockSize,
   setBlockSize,
   finalMarketCap,
@@ -16,7 +18,12 @@ export default function Controls({
 
   return (
     <>
-      <FeeSlider avgFee={avgFee} setAvgFee={setAvgFee} />
+      <FeeSlider
+        avgFee={avgFee}
+        setAvgFee={setAvgFee}
+        feeIsUsd={feeIsUsd}
+        setFeeIsUsd={setFeeIsUsd}
+      />
       <LogSlider
         label="Average Block Size"
         output={`${twoDecimals.format(blockSize)} MB`}

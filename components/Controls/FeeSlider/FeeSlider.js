@@ -1,19 +1,22 @@
-import { useState } from "react";
 import { TWO_DECIMALS } from "../../../utils/numberFormats";
 import LogSlider from "../LogSlider/LogSlider";
 
-export default function FeeSlider({ avgFee, setAvgFee }) {
+export default function FeeSlider({
+  avgFee,
+  setAvgFee,
+  feeIsUsd,
+  setFeeIsUsd,
+}) {
   const twoDecimals = new Intl.NumberFormat("en", TWO_DECIMALS);
-  const [feeAsUsd, setFeeAsUsd] = useState(true);
-
+  const unitsLabel = feeIsUsd ? "USD" : "sats";
   function feeOnLabelClick() {
-    setFeeAsUsd((x) => !x);
+    setFeeIsUsd((x) => !x);
   }
 
   return (
     <LogSlider
       label="Average Fee"
-      output={`${twoDecimals.format(avgFee)} ${feeAsUsd ? "USD" : "sats"}`}
+      output={`${twoDecimals.format(avgFee)} ${unitsLabel}`}
       value={avgFee}
       onChange={setAvgFee}
       min={0}

@@ -27,7 +27,8 @@ const initYear = 2032;
 
 export default function Home() {
   const [blockSize, setBlockSize] = useState(CURR_AVG_BLOCK_SIZE_MB); // megabytes
-  const [avgFee, setAvgFee] = useState(CURR_AVG_FEE); // usd
+  const [avgFee, setAvgFee] = useState(CURR_AVG_FEE); // usd or sats
+  const [feeIsUsd, setFeeIsUsd] = useState(true);
   const [finalMarketCap, setFinalMarketCap] = useState(initMarketCap); // market cap in END_YEAR
   const [year, setYear] = useState(initYear);
   const yearIdx = getYearIdx(year);
@@ -47,16 +48,16 @@ export default function Home() {
 
   const {
     transactionsPerBlock,
-    avgUsdFeePerYear,
+    avgFeeUsd,
     marketCap,
     usdMinerReward,
     blockchainSize,
     relativeMinerReward,
     blockSizePerYear,
-  } = deriveValues({ avgFee, blockSize, finalMarketCap });
+  } = deriveValues({ avgFee, blockSize, finalMarketCap, feeIsUsd });
 
   const ratings = getRating({
-    avgUsdFeePerYear,
+    avgFeeUsd,
     relativeMinerReward,
     blockSizePerYear,
     year,
@@ -107,6 +108,8 @@ export default function Home() {
             <ControlPanel
               avgFee={avgFee}
               setAvgFee={setAvgFee}
+              feeIsUsd={feeIsUsd}
+              setFeeIsUsd={setFeeIsUsd}
               blockSize={blockSize}
               setBlockSize={setBlockSize}
               finalMarketCap={finalMarketCap}

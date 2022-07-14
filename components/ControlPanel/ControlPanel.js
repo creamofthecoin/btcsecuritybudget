@@ -7,6 +7,8 @@ import TotalDisplay from "../TotalDisplay/TotalDisplay";
 export default function ControlPanel({
   avgFee,
   setAvgFee,
+  feeIsUsd,
+  setFeeIsUsd,
   blockSize,
   setBlockSize,
   finalMarketCap,
@@ -51,6 +53,8 @@ export default function ControlPanel({
         <Controls
           avgFee={avgFee}
           setAvgFee={setAvgFee}
+          feeIsUsd={feeIsUsd}
+          setFeeIsUsd={setFeeIsUsd}
           blockSize={blockSize}
           setBlockSize={setBlockSize}
           finalMarketCap={finalMarketCap}

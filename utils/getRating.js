@@ -2,13 +2,13 @@ import { BAD_RATING, GOOD_RATING } from "./constants";
 import { getYearIdx } from "./utils";
 
 export function getRating({
-  avgUsdFeePerYear,
+  avgFeeUsd,
   relativeMinerReward,
   blockSizePerYear,
   year,
 }) {
   const idx = getYearIdx(year);
-  const avgFeeRating = avgUsdFeePerYear[idx] < 100 ? GOOD_RATING : BAD_RATING;
+  const avgFeeRating = avgFeeUsd[idx] < 100 ? GOOD_RATING : BAD_RATING;
   const securityRating =
     relativeMinerReward[idx] > 0.01 ? GOOD_RATING : BAD_RATING;
   const decentralizationRating =
