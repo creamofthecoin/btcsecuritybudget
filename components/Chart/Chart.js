@@ -192,7 +192,7 @@ export default function Chart({
   function onRelMinerRewardToggle(e) {
     setShowRel(e.target.checked);
     const [newFormat, newMax, newTitle] = e.target.checked
-      ? [PERCENT, 0.1, "Yearly Miner Revenue / Market Cap"]
+      ? [PERCENT, 0.1, "(Miner Revenue Per Year) / (Market Cap)"]
       : [COMPACT, 1e14, "Value (USD)"];
     setChartOptions(
       update(chartOptions, {
@@ -238,7 +238,7 @@ export default function Chart({
         gap={{ base: 5, lg: 1 }}
       >
         <GraphToggle
-          label={"Log Mode"}
+          label={"Log Scale"}
           gap="1rem"
           onChange={onLogToggle}
           isChecked={isLog}
