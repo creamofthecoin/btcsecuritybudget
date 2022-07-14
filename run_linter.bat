@@ -1,1 +1,1 @@
-call yarn eslint components pages theme
+call yarn eslint .
