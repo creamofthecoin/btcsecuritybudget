@@ -1,6 +1,6 @@
-import { Box, chakra, Grid, Heading, Tooltip } from "@chakra-ui/react";
+import { Box, Grid, Heading, Tooltip } from "@chakra-ui/react";
 import "@fontsource/inter/600.css";
-import { isValidMotionProp, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { BAD_RATING, GOOD_RATING } from "../../utils/constants";
 import { useFadeInOut } from "../../utils/useFadeInOut";
@@ -24,9 +24,6 @@ export default function SingleMeme({ memeSrc, rating }) {
     xl: "150px",
   };
 
-  const ChakraBox = chakra(motion.div, {
-    shouldForwardProp: (prop) => isValidMotionProp(prop) || prop === "children",
-  });
   return (
     <Grid
       gridTemplateColumns="[c-1] 1fr [c-2]"
@@ -36,10 +33,9 @@ export default function SingleMeme({ memeSrc, rating }) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <ChakraBox
+      <Box
         gridColumn="c-1 / c-2"
         gridRow="r-1 / r-2"
-        bg="rgba(0,0,0,0.9)"
         h="min-content"
         w="min-content"
         py=".1rem"
@@ -47,24 +43,22 @@ export default function SingleMeme({ memeSrc, rating }) {
         borderRadius="full"
         placeSelf="flex-end center"
         zIndex="3"
-        layout
       >
         <Heading
           as="h3"
           zIndex="8"
           fontSize={{ base: "clamp(0.25rem, 4vw, .9rem)", sm: "md", md: "lg" }}
           userSelect="none"
-          // textShadow="2px 2px 3px #000000, 0px 0px 4px rgba(0, 0 , 0, 1)"
+          textShadow="2px 2px 3px #000000, 0px 0px 4px rgba(0, 0 , 0, 1)"
           letterSpacing={{ base: "-0.05rem", md: "-0.05rem" }}
           fontWeight="600"
           whiteSpace="nowrap"
           {...fadeStyle}
-          color={rating === GOOD_RATING ? "green.300" : "red.300"}
-          // color="white"
+          color="white"
         >
           {title}
         </Heading>
-      </ChakraBox>
+      </Box>
       <Box
         as={motion.div}
         placeSelf="center"
