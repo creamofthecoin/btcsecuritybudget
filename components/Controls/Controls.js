@@ -28,6 +28,8 @@ export default function Controls({
         min={0}
         max={8}
         step={0.01}
+        cursor="pointer"
+        toolTipLabel="test"
       />
       <LogSlider
         label="Average Block Size"
