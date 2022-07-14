@@ -79,7 +79,7 @@ const options = {
       type: "linear",
       display: true,
       position: "left",
-      title: { text: "USD", display: true },
+      title: { text: "Value (USD)", display: true },
       ticks: {
         format: COMPACT,
         maxTicksLimit: 7,
@@ -93,7 +93,7 @@ const options = {
       type: "linear",
       display: true,
       position: "right",
-      title: { text: "GB", display: true },
+      title: { text: "Blockchain Size (GB)", display: true },
       ticks: {
         format: COMPACT,
       },
