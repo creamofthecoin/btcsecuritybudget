@@ -20,3 +20,7 @@ export function mbToTransactions(blockSize) {
 export function transactionsToMB(blockSize) {
   return CURR_AVG_BLOCK_SIZE_MB * (blockSize / CURR_AVG_TRANSACTIONS_PER_BLOCK);
 }
+
+export function base10Log(x) {
+  return Math.log(x) / Math.log(10);
+}

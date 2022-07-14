@@ -1,14 +1,28 @@
 import { COMPACT, TWO_DECIMALS } from "../../../utils/numberFormats";
-import { mbToTransactions, transactionsToMB } from "../../../utils/utils";
+import {
+  base10Log,
+  mbToTransactions,
+  transactionsToMB,
+} from "../../../utils/utils";
 import LogSlider from "../LogSlider/LogSlider";
 
 function unitsLabel(blockSizeIsMB) {
-  return blockSizeIsMB ? "MB" : "Transactions";
+  return blockSizeIsMB ? "MB" : "Txns";
 }
 
 function getFormatter(blockSizeIsMB) {
   return new Intl.NumberFormat("en", blockSizeIsMB ? TWO_DECIMALS : COMPACT);
 }
+
+function minMaxTxns(minMB, maxMB) {
+  return [
+    base10Log(mbToTransactions(minMB)),
+    base10Log(mbToTransactions(maxMB)),
+  ];
+}
+
+const minMB = 0.1;
+const maxMB = 100;
 
 export default function BlockSizeSlider({
   blockSize,
@@ -16,7 +30,9 @@ export default function BlockSizeSlider({
   blockSizeIsMB,
   setBlockSizeIsMB,
 }) {
-  const [min, max] = blockSizeIsMB ? [-1, 2] : [2, 6];
+  const [min, max] = blockSizeIsMB
+    ? [base10Log(minMB), base10Log(maxMB)]
+    : minMaxTxns(minMB, maxMB);
   const equivalent = blockSizeIsMB
     ? mbToTransactions(blockSize)
     : transactionsToMB(blockSize);
