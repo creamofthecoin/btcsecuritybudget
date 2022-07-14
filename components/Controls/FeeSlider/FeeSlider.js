@@ -22,7 +22,7 @@ export default function FeeSlider({
     ? (avgFee / priceAtYear) * SATS_PER_BTC
     : (avgFee / SATS_PER_BTC) * priceAtYear;
 
-  function feeOnLabelClick() {
+  function onLabelClick() {
     setFeeIsUsd((x) => !x);
     setAvgFee(equivalent);
   }
@@ -42,7 +42,7 @@ export default function FeeSlider({
       step={0.01}
       cursor="pointer"
       toolTipLabel={toolTipLabel}
-      onLabelClick={feeOnLabelClick}
+      onLabelClick={onLabelClick}
     />
   );
 }

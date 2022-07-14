@@ -27,9 +27,10 @@ const initYear = 2032;
 
 // eslint-disable-next-line import/no-unused-modules
 export default function Home() {
-  const [blockSize, setBlockSize] = useState(CURR_AVG_BLOCK_SIZE_MB); // megabytes
   const [avgFee, setAvgFee] = useState(CURR_AVG_FEE); // usd or sats
   const [feeIsUsd, setFeeIsUsd] = useState(true);
+  const [blockSize, setBlockSize] = useState(CURR_AVG_BLOCK_SIZE_MB); // megabytes or # transactions
+  const [blockSizeIsMB, setBlockSizeIsMB] = useState(true);
   const [finalMarketCap, setFinalMarketCap] = useState(initMarketCap); // market cap in END_YEAR
   const [year, setYear] = useState(initYear);
   const yearIdx = getYearIdx(year);
@@ -41,9 +42,10 @@ export default function Home() {
   });
 
   function reset() {
-    setBlockSize(CURR_AVG_BLOCK_SIZE_MB);
     setAvgFee(CURR_AVG_FEE);
     setFeeIsUsd(true);
+    setBlockSize(CURR_AVG_BLOCK_SIZE_MB);
+    setBlockSizeIsMB(true);
     setFinalMarketCap(initMarketCap);
     setYear(initYear);
   }
@@ -57,7 +59,13 @@ export default function Home() {
     blockchainSize,
     relativeMinerReward,
     blockSizePerYear,
-  } = deriveValues({ avgFee, blockSize, finalMarketCap, feeIsUsd });
+  } = deriveValues({
+    avgFee,
+    blockSize,
+    finalMarketCap,
+    feeIsUsd,
+    blockSizeIsMB,
+  });
 
   const ratings = getRating({
     avgFeeUsd,
@@ -115,6 +123,8 @@ export default function Home() {
               setFeeIsUsd={setFeeIsUsd}
               blockSize={blockSize}
               setBlockSize={setBlockSize}
+              blockSizeIsMB={blockSizeIsMB}
+              setBlockSizeIsMB={setBlockSizeIsMB}
               finalMarketCap={finalMarketCap}
               setFinalMarketCap={setFinalMarketCap}
               year={year}

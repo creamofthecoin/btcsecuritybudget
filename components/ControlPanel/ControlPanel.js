@@ -11,6 +11,8 @@ export default function ControlPanel({
   setFeeIsUsd,
   blockSize,
   setBlockSize,
+  blockSizeIsMB,
+  setBlockSizeIsMB,
   finalMarketCap,
   setFinalMarketCap,
   year,
@@ -58,6 +60,8 @@ export default function ControlPanel({
           setFeeIsUsd={setFeeIsUsd}
           blockSize={blockSize}
           setBlockSize={setBlockSize}
+          blockSizeIsMB={blockSizeIsMB}
+          setBlockSizeIsMB={setBlockSizeIsMB}
           finalMarketCap={finalMarketCap}
           setFinalMarketCap={setFinalMarketCap}
           priceFuture={priceFuture}

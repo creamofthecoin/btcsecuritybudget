@@ -6,8 +6,6 @@ import {
   BLOCKS_PER_YEAR,
   BLOCK_REWARD_FUTURE,
   BTC_SUPPLY_FUTURE,
-  CURR_AVG_BLOCK_SIZE_MB,
-  CURR_AVG_TRANSACTIONS_PER_BLOCK,
   CURR_PRICE,
   MARKET_CAP_HISTORY,
   MINER_REWARD_USD_HISTORY,
@@ -15,6 +13,7 @@ import {
   NUM_HISTORICAL_YEARS,
   SATS_PER_BTC,
 } from "./constants";
+import { mbToTransactions, transactionsToMB } from "./utils";
 
 // t is the amount to translation, t=2: e^-(x-2)
 // s is the stretch: s=3: e^-(3x)
@@ -69,11 +68,17 @@ function getBlockchainSize(yearlyBlockSize) {
   return BLOCKCHAIN_SIZE_HISTORY.concat(blockchainSizeFuture);
 }
 
-export function deriveValues({ avgFee, blockSize, finalMarketCap, feeIsUsd }) {
-  const transactionsPerBlock = parseInt(
-    CURR_AVG_TRANSACTIONS_PER_BLOCK * (blockSize / CURR_AVG_BLOCK_SIZE_MB)
-  );
-  const yearlyBlockSize = (blockSize * BLOCKS_PER_YEAR) / 1000; // GB
+export function deriveValues({
+  avgFee,
+  blockSize,
+  finalMarketCap,
+  feeIsUsd,
+  blockSizeIsMB,
+}) {
+  const [transactionsPerBlock, mbPerBlock] = blockSizeIsMB
+    ? [mbToTransactions(blockSize), blockSize]
+    : [blockSize, transactionsToMB(blockSize)];
+  const yearlyBlockSize = (mbPerBlock * BLOCKS_PER_YEAR) / 1000; // GB
   const priceFuture = getPriceFuture(finalMarketCap);
   const avgFeeUsd = getAvgFeeUsd(priceFuture, avgFee, feeIsUsd);
   const usdMinerReward = getUsdMinerReward(
@@ -83,7 +88,7 @@ export function deriveValues({ avgFee, blockSize, finalMarketCap, feeIsUsd }) {
   );
   const marketCap = getMarketCap(priceFuture);
   const relativeMinerReward = usdMinerReward.map((x, i) => x / marketCap[i]);
-  const blockSizePerYear = getBlockSizePerYear(blockSize);
+  const blockSizePerYear = getBlockSizePerYear(mbPerBlock);
   const blockchainSize = getBlockchainSize(yearlyBlockSize);
 
   return {

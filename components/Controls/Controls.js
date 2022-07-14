@@ -1,5 +1,6 @@
 import { END_YEAR } from "../../utils/constants";
-import { COMPACT, TWO_DECIMALS } from "../../utils/numberFormats";
+import { COMPACT } from "../../utils/numberFormats";
+import BlockSizeSlider from "./BlockSizeSlider/BlockSizeSlider";
 import FeeSlider from "./FeeSlider/FeeSlider";
 import LogSlider from "./LogSlider/LogSlider";
 
@@ -10,13 +11,14 @@ export default function Controls({
   setFeeIsUsd,
   blockSize,
   setBlockSize,
+  blockSizeIsMB,
+  setBlockSizeIsMB,
   finalMarketCap,
   setFinalMarketCap,
   priceFuture,
   year,
 }) {
   const compact = new Intl.NumberFormat("en", COMPACT);
-  const twoDecimals = new Intl.NumberFormat("en", TWO_DECIMALS);
 
   return (
     <>
@@ -28,14 +30,11 @@ export default function Controls({
         priceFuture={priceFuture}
         year={year}
       />
-      <LogSlider
-        label="Average Block Size"
-        output={`${twoDecimals.format(blockSize)} MB`}
-        value={blockSize}
-        onChange={setBlockSize}
-        min={-1}
-        max={2}
-        step={0.01}
+      <BlockSizeSlider
+        blockSize={blockSize}
+        setBlockSize={setBlockSize}
+        blockSizeIsMB={blockSizeIsMB}
+        setBlockSizeIsMB={setBlockSizeIsMB}
       />
       <LogSlider
         label={`Market Cap in ${END_YEAR}`}
