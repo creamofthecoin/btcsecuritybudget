@@ -33,3 +33,7 @@ export function satsToUsd(avgFee, priceAtYear) {
 export function base10Log(x) {
   return Math.log(x) / Math.log(10);
 }
+
+export function pow10(x) {
+  return Math.pow(10, x);
+}

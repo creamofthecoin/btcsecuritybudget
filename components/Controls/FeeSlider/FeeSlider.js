@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import { SATS_PER_BTC } from "../../../utils/constants";
 import { TWO_DECIMALS } from "../../../utils/numberFormats";
 import {
   base10Log,
   getFutureYearIdx,
+  pow10,
   satsToUsd,
   usdToSats,
 } from "../../../utils/utils";
@@ -35,6 +37,7 @@ export default function FeeSlider({
   const [min, max] = feeIsUsd
     ? minMaxUsd(minSats, maxSats, priceAtYear)
     : [base10Log(minSats), base10Log(maxSats)];
+
   const equivalent = feeIsUsd
     ? usdToSats(avgFee, priceAtYear)
     : satsToUsd(avgFee, priceAtYear);
@@ -43,6 +46,14 @@ export default function FeeSlider({
     setFeeIsUsd((x) => !x);
     setAvgFee(equivalent);
   }
+
+  useEffect(() => {
+    if (avgFee < pow10(min)) {
+      setAvgFee(pow10(min));
+    } else if (avgFee > pow10(max)) {
+      setAvgFee(pow10(max));
+    }
+  }, [min, max]);
 
   const toolTipLabel = `${twoDecimals.format(equivalent)} ${unitsLabel(
     !feeIsUsd
