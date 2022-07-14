@@ -88,6 +88,7 @@ const options = {
       grid: {
         display: false,
       },
+      max: 1e14,
     },
     y1: {
       type: "linear",
@@ -190,10 +191,18 @@ export default function Chart({
 
   function onRelMinerRewardToggle(e) {
     setShowRel(e.target.checked);
-    const newFormat = e.target.checked ? PERCENT : COMPACT;
+    const [newFormat, newMax, newTitle] = e.target.checked
+      ? [PERCENT, 0.1, "Yearly Miner Revenue / Market Cap"]
+      : [COMPACT, 1e14, "Value (USD)"];
     setChartOptions(
       update(chartOptions, {
-        scales: { y: { ticks: { format: { $set: newFormat } } } },
+        scales: {
+          y: {
+            ticks: { format: { $set: newFormat } },
+            max: { $set: newMax },
+            title: { text: { $set: newTitle } },
+          },
+        },
       })
     );
   }

@@ -22,7 +22,7 @@ import {
 import { getRating } from "../utils/getRating";
 import useVisibility from "../utils/useVisibility";
 
-const initMarketCap = 1e13;
+const initMarketCap = 1e14;
 const initYear = 2032;
 
 export default function Home() {
