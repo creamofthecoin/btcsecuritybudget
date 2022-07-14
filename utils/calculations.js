@@ -87,6 +87,7 @@ export function deriveValues({ avgFee, blockSize, finalMarketCap, feeIsUsd }) {
   const blockchainSize = getBlockchainSize(yearlyBlockSize);
 
   return {
+    priceFuture,
     transactionsPerBlock,
     avgFeeUsd,
     marketCap,

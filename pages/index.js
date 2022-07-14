@@ -25,6 +25,7 @@ import { getYearIdx } from "../utils/utils";
 const initMarketCap = 1e14;
 const initYear = 2032;
 
+// eslint-disable-next-line import/no-unused-modules
 export default function Home() {
   const [blockSize, setBlockSize] = useState(CURR_AVG_BLOCK_SIZE_MB); // megabytes
   const [avgFee, setAvgFee] = useState(CURR_AVG_FEE); // usd or sats
@@ -42,11 +43,13 @@ export default function Home() {
   function reset() {
     setBlockSize(CURR_AVG_BLOCK_SIZE_MB);
     setAvgFee(CURR_AVG_FEE);
+    setFeeIsUsd(true);
     setFinalMarketCap(initMarketCap);
     setYear(initYear);
   }
 
   const {
+    priceFuture,
     transactionsPerBlock,
     avgFeeUsd,
     marketCap,
@@ -116,6 +119,7 @@ export default function Home() {
               setFinalMarketCap={setFinalMarketCap}
               year={year}
               setYear={setYear}
+              priceFuture={priceFuture}
               transactionsPerBlock={transactionsPerBlock}
               relativeMinerReward={relativeMinerReward}
               colorMode={colorMode}

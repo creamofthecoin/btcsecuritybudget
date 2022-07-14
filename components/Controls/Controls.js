@@ -12,6 +12,8 @@ export default function Controls({
   setBlockSize,
   finalMarketCap,
   setFinalMarketCap,
+  priceFuture,
+  year,
 }) {
   const compact = new Intl.NumberFormat("en", COMPACT);
   const twoDecimals = new Intl.NumberFormat("en", TWO_DECIMALS);
@@ -23,6 +25,8 @@ export default function Controls({
         setAvgFee={setAvgFee}
         feeIsUsd={feeIsUsd}
         setFeeIsUsd={setFeeIsUsd}
+        priceFuture={priceFuture}
+        year={year}
       />
       <LogSlider
         label="Average Block Size"
