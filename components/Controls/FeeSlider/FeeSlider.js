@@ -16,15 +16,16 @@ export default function FeeSlider({
   year,
 }) {
   const twoDecimals = new Intl.NumberFormat("en", TWO_DECIMALS);
-  function feeOnLabelClick() {
-    setFeeIsUsd((x) => !x);
-  }
-  const [min, max] = feeIsUsd ? [-2, 6] : [0, 8];
-
+  const [min, max] = feeIsUsd ? [-2, 4] : [0, 8];
   const priceAtYear = priceFuture[getFutureYearIdx(year)];
   const equivalent = feeIsUsd
     ? (avgFee / priceAtYear) * SATS_PER_BTC
     : (avgFee / SATS_PER_BTC) * priceAtYear;
+
+  function feeOnLabelClick() {
+    setFeeIsUsd((x) => !x);
+    setAvgFee(equivalent);
+  }
 
   const toolTipLabel = `${twoDecimals.format(equivalent)} ${unitsLabel(
     !feeIsUsd

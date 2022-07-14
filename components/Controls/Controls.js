@@ -42,7 +42,7 @@ export default function Controls({
         output={`$${compact.format(finalMarketCap)}`}
         value={finalMarketCap}
         onChange={setFinalMarketCap}
-        min={10}
+        min={11}
         max={14}
         step={0.01}
       />
