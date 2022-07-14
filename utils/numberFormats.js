@@ -9,5 +9,4 @@ export const PERCENT = {
   minimumFractionDigits: 0,
 };
 
-
-export const COMPACT = {notation: "compact"}
+export const COMPACT = { notation: "compact" };
