@@ -136,8 +136,8 @@ export default function Chart({
     {
       label: "Relative miner reward",
       data: relativeMinerReward,
-      borderColor: "rgb(247, 147, 26)",
-      backgroundColor: "rgba(247, 147, 26, 0.5)",
+      borderColor: "rgb(53, 162, 235)",
+      backgroundColor: "rgba(53, 162, 235, 0.5)",
       yAxisID: "y",
     },
   ];
@@ -156,14 +156,16 @@ export default function Chart({
   options.plugins.annotation.annotations.line1.xMax = yearIdx;
 
   const [chartOptions, setChartOptions] = useState(options);
-  const [data, setData] = useState({
+  const [showRel, setShowRel] = useState(false);
+  const { colorMode } = useColorMode();
+
+  const data = {
     labels: xAxisLabels,
-    datasets: [...yDataAbs, ...y1Data],
-  });
+    datasets: [...(showRel ? yDataRel : yDataAbs), ...y1Data],
+  };
+
   const isLog = chartOptions.scales.y.type === "logarithmic";
   const isUsingRel = data.datasets.length === 2;
-
-  const { colorMode } = useColorMode();
 
   function onMouseEnter() {
     setChartOptions(
@@ -185,9 +187,7 @@ export default function Chart({
   }
 
   function onRelMinerRewardToggle(e) {
-    const newYData = e.target.checked ? yDataRel : yDataAbs;
-    setData(update(data, { datasets: { $set: [...newYData, ...y1Data] } }));
-
+    setShowRel(e.target.checked);
     const newFormat = e.target.checked
       ? { style: "percent" }
       : { notation: "compact" };
