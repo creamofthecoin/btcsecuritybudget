@@ -187,9 +187,13 @@ export default function Chart({
   function onRelMinerRewardToggle(e) {
     const newYData = e.target.checked ? yDataRel : yDataAbs;
     setData(update(data, { datasets: { $set: [...newYData, ...y1Data] } }));
+
+    const newFormat = e.target.checked
+      ? { style: "percent" }
+      : { notation: "compact" };
     setChartOptions(
       update(chartOptions, {
-        scales: { y: { ticks: { format: { $set: { style: "percent" } } } } },
+        scales: { y: { ticks: { format: { $set: newFormat } } } },
       })
     );
   }
