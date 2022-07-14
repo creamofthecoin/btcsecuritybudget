@@ -8,7 +8,8 @@ export default function Footer() {
       <VStack gap={5}>
         <Aside />
         <Text p="0 !important" fontSize="xs" color="gray.100">
-          A thought experiment to encourage discussion.
+          A thought experiment on the profit motive for participating in mining,
+          and thus securing the Bitcoin network.
         </Text>
         <Link
           target="_blank"

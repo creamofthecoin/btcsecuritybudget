@@ -22,11 +22,14 @@ import {
 import { getRating } from "../utils/getRating";
 import useVisibility from "../utils/useVisibility";
 
+const initMarketCap = 1e14;
+const initYear = 2032;
+
 export default function Home() {
   const [blockSize, setBlockSize] = useState(CURR_AVG_BLOCK_SIZE_MB); // megabytes
   const [avgFee, setAvgFee] = useState(CURR_AVG_FEE); // sats
-  const [finalMarketCap, setFinalMarketCap] = useState(1e13); // market cap in END_YEAR
-  const [year, setYear] = useState(2032);
+  const [finalMarketCap, setFinalMarketCap] = useState(initMarketCap); // market cap in END_YEAR
+  const [year, setYear] = useState(initYear);
   const yearIdx = year - START_YEAR;
   const isVisible = useVisibility((window) => {
     return window.innerWidth > 991 || window.innerWidth < 768;
@@ -35,6 +38,13 @@ export default function Home() {
     return window.innerWidth > 991;
   });
 
+  function reset() {
+    setBlockSize(CURR_AVG_BLOCK_SIZE_MB);
+    setAvgFee(CURR_AVG_FEE);
+    setFinalMarketCap(initMarketCap);
+    setYear(initYear);
+  }
+
   const {
     transactionsPerBlock,
     avgUsdFeePerYear,
@@ -42,7 +52,6 @@ export default function Home() {
     usdMinerReward,
     blockchainSize,
     relativeMinerReward,
-    usdCostToAttack,
     blockSizePerYear,
   } = deriveValues({ avgFee, blockSize, finalMarketCap });
 
@@ -106,10 +115,10 @@ export default function Home() {
               setYear={setYear}
               transactionsPerBlock={transactionsPerBlock}
               relativeMinerReward={relativeMinerReward}
-              usdCostToAttack={usdCostToAttack}
               colorMode={colorMode}
               ratings={ratings}
               isVisible={isVisible}
+              reset={reset}
             />
             {isVisible && <Meme ratings={ratings} />}
             {!statusVis && <Status ratings={ratings} />}
@@ -118,6 +127,7 @@ export default function Home() {
               marketCap={marketCap}
               usdMinerReward={usdMinerReward}
               blockchainSize={blockchainSize}
+              relativeMinerReward={relativeMinerReward}
               yearIdx={yearIdx}
             />
           </Section>

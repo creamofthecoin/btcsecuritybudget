@@ -1,9 +1,10 @@
-import { Box, Grid, Heading, Tooltip } from "@chakra-ui/react";
+import { Box, Grid, Heading } from "@chakra-ui/react";
 import "@fontsource/inter/600.css";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { BAD_RATING, GOOD_RATING } from "../../utils/constants";
 import { useFadeInOut } from "../../utils/useFadeInOut";
+import DarkToolTip from "../DarkToolTip/DarkToolTip";
 
 export default function SingleMeme({ memeSrc, rating }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -23,6 +24,7 @@ export default function SingleMeme({ memeSrc, rating }) {
     lg: "130px",
     xl: "150px",
   };
+
   return (
     <Grid
       gridTemplateColumns="[c-1] 1fr [c-2]"
@@ -32,21 +34,32 @@ export default function SingleMeme({ memeSrc, rating }) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <Heading
+      <Box
         gridColumn="c-1 / c-2"
         gridRow="r-1 / r-2"
-        as="h3"
-        zIndex="8"
+        h="min-content"
+        w="min-content"
+        py=".1rem"
+        px=".5rem"
+        borderRadius="full"
         placeSelf="flex-end center"
-        fontSize={{ base: "clamp(0.25rem, 4vw, .9rem)", sm: "md", md: "lg" }}
-        userSelect="none"
-        textShadow="2px 2px 3px #000000, 0px 0px 4px rgba(0, 0 , 0, 1)"
-        letterSpacing={{ base: "-0.05rem", md: "-0.05rem" }}
-        fontWeight="600"
-        {...fadeStyle}
+        zIndex="3"
       >
-        {title}
-      </Heading>
+        <Heading
+          as="h3"
+          zIndex="8"
+          fontSize={{ base: "clamp(0.25rem, 4vw, .9rem)", sm: "md", md: "lg" }}
+          userSelect="none"
+          textShadow="2px 2px 3px #000000, 0px 0px 4px rgba(0, 0 , 0, 1)"
+          letterSpacing={{ base: "-0.05rem", md: "-0.05rem" }}
+          fontWeight="600"
+          whiteSpace="nowrap"
+          {...fadeStyle}
+          color="white"
+        >
+          {title}
+        </Heading>
+      </Box>
       <Box
         as={motion.div}
         placeSelf="center"
@@ -58,13 +71,13 @@ export default function SingleMeme({ memeSrc, rating }) {
         opacity={isHovered ? "1" : ".75"}
         transition="0.5s"
         sx={{ perspective: "500px" }}
+        // bg={rating === GOOD_RATING ? "green.500" : "red.500"}
+        bg="black"
+        borderRadius="full"
       >
-        <Tooltip
+        <DarkToolTip
           label={memeSrc[rating].tooltip}
-          aria-label="Tool Tip For a Good/Bad Condition"
-          bg="gray.900"
-          color="white"
-          hasArrow
+          ariaLabel="Tool Tip For a Good/Bad Condition"
         >
           <Box
             position="relative"
@@ -101,7 +114,7 @@ export default function SingleMeme({ memeSrc, rating }) {
               overflow="hidden"
             />
           </Box>
-        </Tooltip>
+        </DarkToolTip>
       </Box>
     </Grid>
   );

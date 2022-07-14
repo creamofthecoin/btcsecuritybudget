@@ -1,4 +1,5 @@
 import { END_YEAR } from "../../utils/constants";
+import { COMPACT } from "../../utils/numberFormats";
 import LogSlider from "./LogSlider/LogSlider";
 
 export default function Controls({
@@ -9,9 +10,7 @@ export default function Controls({
   finalMarketCap,
   setFinalMarketCap,
 }) {
-  const compact = new Intl.NumberFormat("en", {
-    notation: "compact",
-  });
+  const compact = new Intl.NumberFormat("en", COMPACT);
 
   const twoDecimals = new Intl.NumberFormat("en", {
     notation: "standard",

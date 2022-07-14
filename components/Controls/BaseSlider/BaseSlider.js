@@ -25,9 +25,16 @@ export default function BaseSlider({
         display="flex"
         flexDir={{ base: "row", lg: "column", xl: "row" }}
       >
-        <Box whiteSpace="noWrap">{label}</Box>
+        <Box
+          whiteSpace="noWrap"
+          mr="1rem"
+          fontSize={{ base: "sm", md: "sm", lg: "md" }}
+          letterSpacing={{ base: "-0.3pt", md: "0" }}
+        >
+          {label}
+        </Box>
         <Spacer />
-        <Box>{output}</Box>
+        <Box fontSize={{ base: "sm", md: "sm", lg: "md" }}>{output}</Box>
       </FormLabel>
       <Slider
         aria-label="slider-ex-1"
