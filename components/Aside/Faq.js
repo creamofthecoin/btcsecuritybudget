@@ -19,8 +19,8 @@ export default function FAQ() {
       </ModalHeading>
       <Text>
         The three memes are in a "good" state if the fee is less than 100 USD,
-        the relative miner revenue is greater than 1%, and the block size is
-        less than 10 MB. These thresholds are subjective, and are only meant to
+        the block size is less than 10 MB, and the relative miner revenue is
+        greater than 1%. These thresholds are subjective, and are only meant to
         illustrate the various tradeoffs.
       </Text>
 
