@@ -9,29 +9,29 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@chakra-ui/icons": "^2.0.2",
-    "@chakra-ui/react": "^2.2.1",
-    "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
-    "@fontsource/inter": "^4.5.11",
-    "chart.js": "^3.8.0",
-    "chartjs-plugin-annotation": "^1.4.0",
-    "framer-motion": "^6.3.16",
-    "immutability-helper": "^3.1.1",
-    "lodash": "^4.17.21",
+    "@chakra-ui/icons": "2.0.2",
+    "@chakra-ui/react": "2.2.1",
+    "@emotion/react": "11.9.3",
+    "@emotion/styled": "11.9.3",
+    "@fontsource/inter": "4.5.11",
+    "chart.js": "3.8.0",
+    "chartjs-plugin-annotation": "1.4.0",
+    "framer-motion": "6.3.16",
+    "immutability-helper": "3.1.1",
+    "lodash": "4.17.21",
     "next": "12.2.0",
     "react": "18.2.0",
-    "react-chartjs-2": "^4.2.0",
+    "react-chartjs-2": "4.2.0",
     "react-dom": "18.2.0",
-    "react-icons": "^4.4.0"
+    "react-icons": "4.4.0"
   },
   "devDependencies": {
     "eslint": "8.18.0",
     "eslint-config-next": "12.2.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-unused-imports": "^2.0.0",
-    "prettier": "^2.7.1",
-    "prettier-plugin-organize-imports": "^3.0.0",
-    "typescript": "^4.7.4"
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-unused-imports": "2.0.0",
+    "prettier": "2.7.1",
+    "prettier-plugin-organize-imports": "3.0.0",
+    "typescript": "4.7.4"
   }
 }
