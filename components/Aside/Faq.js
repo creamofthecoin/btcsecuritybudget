@@ -18,8 +18,9 @@ export default function FAQ() {
         determined?
       </ModalHeading>
       <Text>
-        The meme states are set by comparing each value to an arbitrary
-        threshold. These thresholds are subjective, and are only meant to
+        The three memes are in a "good" state if the fee is less than 100 USD,
+        the relative miner revenue is greater than 1%, and the block size is
+        less than 10 MB. These thresholds are subjective, and are only meant to
         illustrate the various tradeoffs.
       </Text>
 
