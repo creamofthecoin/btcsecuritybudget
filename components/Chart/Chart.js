@@ -137,8 +137,8 @@ export default function Chart({
     {
       label: "Relative miner reward",
       data: relativeMinerReward,
-      borderColor: "rgb(53, 162, 235)",
-      backgroundColor: "rgba(53, 162, 235, 0.5)",
+      borderColor: "rgb(42, 170, 42)",
+      backgroundColor: "rgba(42, 170, 42, 0.5)",
       yAxisID: "y",
     },
   ];
