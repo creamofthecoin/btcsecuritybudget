@@ -1,4 +1,4 @@
-import { Tooltip } from "chart.js";
+import { Tooltip } from "@chakra-ui/react";
 
 export default function DarkToolTip({ label, ariaLabel, bg, color, ...props }) {
   return (
