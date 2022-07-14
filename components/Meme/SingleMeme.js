@@ -1,9 +1,10 @@
-import { Box, Grid, Heading, Tooltip } from "@chakra-ui/react";
+import { Box, Grid, Heading } from "@chakra-ui/react";
 import "@fontsource/inter/600.css";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { BAD_RATING, GOOD_RATING } from "../../utils/constants";
 import { useFadeInOut } from "../../utils/useFadeInOut";
+import DarkToolTip from "../DarkToolTip/DarkToolTip";
 
 export default function SingleMeme({ memeSrc, rating }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -74,12 +75,9 @@ export default function SingleMeme({ memeSrc, rating }) {
         bg="black"
         borderRadius="full"
       >
-        <Tooltip
+        <DarkToolTip
           label={memeSrc[rating].tooltip}
-          aria-label="Tool Tip For a Good/Bad Condition"
-          bg="gray.900"
-          color="white"
-          hasArrow
+          ariaLabel="Tool Tip For a Good/Bad Condition"
         >
           <Box
             position="relative"
@@ -116,7 +114,7 @@ export default function SingleMeme({ memeSrc, rating }) {
               overflow="hidden"
             />
           </Box>
-        </Tooltip>
+        </DarkToolTip>
       </Box>
     </Grid>
   );

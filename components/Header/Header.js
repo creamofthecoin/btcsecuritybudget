@@ -1,24 +1,14 @@
-import {
-  Box,
-  Flex,
-  Heading,
-  Image,
-  Tooltip,
-  useColorMode,
-} from "@chakra-ui/react";
-
+import { Box, Flex, Heading, Image, useColorMode } from "@chakra-ui/react";
+import DarkToolTip from "../DarkToolTip/DarkToolTip";
 export default function Header() {
   const { colorMode } = useColorMode();
   const clr = colorMode === "light";
   const color = clr ? "black" : "white";
 
   return (
-    <Tooltip
+    <DarkToolTip
       label="Profit motive for participating in mining, and thus securing the Bitcoin network."
-      aria-label="Short Explanation for Bitcoin Security Budget"
-      bg="gray.900"
-      color="white"
-      hasArrow
+      ariaLabel="Short Explanation for Bitcoin Security Budget"
     >
       <Flex flexDir="row" alignItems="center" w="100%" mb="3rem">
         <Image
@@ -49,6 +39,6 @@ export default function Header() {
           </Heading>
         </Box>
       </Flex>
-    </Tooltip>
+    </DarkToolTip>
   );
 }

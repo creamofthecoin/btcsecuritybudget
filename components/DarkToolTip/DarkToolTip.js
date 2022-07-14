@@ -1,6 +1,12 @@
 import { Tooltip } from "@chakra-ui/react";
 
-export default function DarkToolTip({ label, ariaLabel, bg, color, ...props }) {
+export default function DarkToolTip({
+  label,
+  ariaLabel,
+  bg = "gray.900",
+  color = "white",
+  ...props
+}) {
   return (
     <Tooltip
       label={label}
