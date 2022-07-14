@@ -16,6 +16,7 @@ export default function TotalDisplay({
   setYear,
   relativeMinerReward,
   usdCostToAttack,
+  reset,
 }) {
   const percentFormatter = new Intl.NumberFormat("en", {
     style: "percent",
@@ -59,7 +60,12 @@ export default function TotalDisplay({
         />
         <Spacer />
         <DarkToolTip label="Reset">
-          <IconButton icon={<FaRedoAlt />} size="lg" borderRadius="full" />
+          <IconButton
+            icon={<FaRedoAlt />}
+            size="lg"
+            borderRadius="full"
+            onClick={reset}
+          />
         </DarkToolTip>
       </HStack>
 

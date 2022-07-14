@@ -160,6 +160,12 @@ export default function Chart({
     );
   }
 
+  function onLogToggle(){
+    setChartOptions(
+      update(chartOptions, { scales: { y: { type: { $set: 0 } } } })
+    );
+  }
+
   return (
     <Stack
       w="clamp(200px, 90vw, 900px)"
@@ -197,10 +203,10 @@ export default function Chart({
   );
 }
 
-function GraphToggle({ label }) {
+function GraphToggle({ label, onChange }) {
   return (
     <HStack alignItems="center" justifyContent="stretch" mt="0 !important">
-      <Switch size="sm" />
+      <Switch size="sm" onChange={onChange} />
       <FormLabel fontSize="sm" color="gray.200" fontWeight="200">
         {label}
       </FormLabel>

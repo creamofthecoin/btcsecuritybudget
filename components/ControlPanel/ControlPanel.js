@@ -19,6 +19,7 @@ export default function ControlPanel({
   colorMode,
   ratings,
   isVisible,
+  reset,
 }) {
   return (
     <Flex
@@ -63,6 +64,7 @@ export default function ControlPanel({
           setYear={setYear}
           relativeMinerReward={relativeMinerReward}
           usdCostToAttack={usdCostToAttack}
+          reset={reset}
         />
       </Flex>
       {!isVisible && <Meme ratings={ratings} />}
