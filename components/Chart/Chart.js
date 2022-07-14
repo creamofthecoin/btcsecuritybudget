@@ -234,7 +234,7 @@ export default function Chart({
           isChecked={isLog}
         />
         <GraphToggle
-          label={"Market Cap / Miner Reward"}
+          label={"Show Relative Miner Reward"}
           onChange={onRelMinerRewardToggle}
           isChecked={isUsingRel}
         />
