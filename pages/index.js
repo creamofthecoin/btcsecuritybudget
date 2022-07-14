@@ -52,7 +52,6 @@ export default function Home() {
     usdMinerReward,
     blockchainSize,
     relativeMinerReward,
-    usdCostToAttack,
     blockSizePerYear,
   } = deriveValues({ avgFee, blockSize, finalMarketCap });
 
@@ -116,7 +115,6 @@ export default function Home() {
               setYear={setYear}
               transactionsPerBlock={transactionsPerBlock}
               relativeMinerReward={relativeMinerReward}
-              usdCostToAttack={usdCostToAttack}
               colorMode={colorMode}
               ratings={ratings}
               isVisible={isVisible}

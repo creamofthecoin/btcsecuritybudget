@@ -15,7 +15,6 @@ export default function ControlPanel({
   setYear,
   transactionsPerBlock,
   relativeMinerReward,
-  usdCostToAttack,
   colorMode,
   ratings,
   isVisible,
@@ -63,7 +62,6 @@ export default function ControlPanel({
           year={year}
           setYear={setYear}
           relativeMinerReward={relativeMinerReward}
-          usdCostToAttack={usdCostToAttack}
           reset={reset}
         />
       </Flex>

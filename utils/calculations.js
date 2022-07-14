@@ -75,7 +75,6 @@ export function deriveValues({ avgFee, blockSize, finalMarketCap }) {
   const avgUsdFeePerYear = getAvgUsdFeePerYear(priceFuture, avgFeeInBtc);
   const usdMinerReward = getUsdMinerReward(totalFees, priceFuture);
   const marketCap = getMarketCap(priceFuture);
-  const usdCostToAttack = usdMinerReward.map((x) => x * 0.51);
   const relativeMinerReward = usdMinerReward.map((x, i) => x / marketCap[i]);
   const blockSizePerYear = getBlockSizePerYear(blockSize);
   const blockchainSize = getBlockchainSize(yearlyBlockSize);
@@ -87,7 +86,6 @@ export function deriveValues({ avgFee, blockSize, finalMarketCap }) {
     usdMinerReward,
     blockchainSize,
     relativeMinerReward,
-    usdCostToAttack,
     blockSizePerYear,
   };
 }

@@ -15,7 +15,6 @@ export default function TotalDisplay({
   year,
   setYear,
   relativeMinerReward,
-  usdCostToAttack,
   reset,
 }) {
   const percentFormatter = new Intl.NumberFormat("en", {
@@ -23,15 +22,9 @@ export default function TotalDisplay({
     minimumFractionDigits: 0,
     maximumFractionDigits: 3,
   });
-  const standardFormatter = new Intl.NumberFormat("en", {
-    notation: "compact",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 2,
-  });
 
   const idx = year - START_YEAR;
   const minerReward = percentFormatter.format(relativeMinerReward[idx]);
-  const costToAttack = standardFormatter.format(usdCostToAttack[idx]);
   return (
     <Stack
       alignItems="stretch"
@@ -69,14 +62,6 @@ export default function TotalDisplay({
           />
         </DarkToolTip>
       </HStack>
-
-      {/* <SingleTotal
-        label={`"Cost To Attack"`}
-        total={`$${costToAttack}`}
-        tooltipLabel="(Miner Reward Per Year) * 51%"
-        bold={true}
-        large={true}
-      /> */}
     </Stack>
   );
 }
