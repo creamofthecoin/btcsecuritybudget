@@ -78,7 +78,7 @@ const options = {
       type: "logarithmic",
       display: true,
       position: "left",
-      title: { text: "USD (log scale)", display: true },
+      title: { text: "USD", display: true },
       ticks: {
         format: { notation: "compact" },
       },
@@ -145,6 +145,7 @@ export default function Chart({
   options.plugins.annotation.annotations.line1.xMax = yearIdx;
 
   const [chartOptions, setChartOptions] = useState(options);
+  const isLog = chartOptions.scales.y.type === "logarithmic";
 
   const { colorMode } = useColorMode();
 
@@ -160,9 +161,10 @@ export default function Chart({
     );
   }
 
-  function onLogToggle(){
+  function onLogToggle(e) {
+    const value = e.target.checked ? "logarithmic" : "linear";
     setChartOptions(
-      update(chartOptions, { scales: { y: { type: { $set: 0 } } } })
+      update(chartOptions, { scales: { y: { type: { $set: value } } } })
     );
   }
 
@@ -196,17 +198,22 @@ export default function Chart({
         flexDir={{ base: "row", lg: "column" }}
         gap={{ base: 5, lg: 1 }}
       >
-        <GraphToggle label={"Log Mode"} gap="1rem" />
+        <GraphToggle
+          label={"Log Mode"}
+          gap="1rem"
+          onChange={onLogToggle}
+          isChecked={isLog}
+        />
         <GraphToggle label={"Market Cap / Miner Reward"} />
       </Stack>
     </Stack>
   );
 }
 
-function GraphToggle({ label, onChange }) {
+function GraphToggle({ label, onChange, isChecked }) {
   return (
     <HStack alignItems="center" justifyContent="stretch" mt="0 !important">
-      <Switch size="sm" onChange={onChange} />
+      <Switch size="sm" onChange={onChange} isChecked={isChecked} />
       <FormLabel fontSize="sm" color="gray.200" fontWeight="200">
         {label}
       </FormLabel>
