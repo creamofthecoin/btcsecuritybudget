@@ -1,1 +1,1 @@
-call yarn prettier components pages theme --write
+call yarn prettier . --write

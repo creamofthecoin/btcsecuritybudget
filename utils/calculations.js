@@ -16,21 +16,19 @@ import {
   SATS_PER_BTC,
 } from "./constants";
 
-
 // t is the amount to translation, t=2: e^-(x-2)
 // s is the stretch: s=3: e^-(3x)
-function partSigmoid(x, t=33, s=0.05){
-  const eST = Math.exp(s*t)
-  const eX = Math.exp(-s*(x-t))
-  return (eST - eX) / ((1+eX)*(1+eST))
+function partSigmoid(x, t = 33, s = 0.05) {
+  const eST = Math.exp(s * t);
+  const eX = Math.exp(-s * (x - t));
+  return (eST - eX) / ((1 + eX) * (1 + eST));
 }
 
-
 function getPriceFuture(finalMarketCap) {
-  const finalPrice = finalMarketCap / BTC_SUPPLY_FUTURE[NUM_FUTURE_YEARS-1]
-  const logMul = (finalPrice - CURR_PRICE) / partSigmoid(NUM_FUTURE_YEARS)
+  const finalPrice = finalMarketCap / BTC_SUPPLY_FUTURE[NUM_FUTURE_YEARS - 1];
+  const logMul = (finalPrice - CURR_PRICE) / partSigmoid(NUM_FUTURE_YEARS);
   return _.range(NUM_FUTURE_YEARS).map(
-    (x, idx) => CURR_PRICE + logMul*partSigmoid(idx+1)
+    (x, idx) => CURR_PRICE + logMul * partSigmoid(idx + 1)
   );
 }
 
