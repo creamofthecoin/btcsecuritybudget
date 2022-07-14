@@ -16,21 +16,21 @@ import {
   CURR_AVG_BLOCK_SIZE_MB,
   CURR_AVG_FEE,
   GOOD_RATING,
-  START_YEAR,
   YEARS,
 } from "../utils/constants";
 import { getRating } from "../utils/getRating";
 import useVisibility from "../utils/useVisibility";
+import { getYearIdx } from "../utils/utils";
 
 const initMarketCap = 1e14;
 const initYear = 2032;
 
 export default function Home() {
   const [blockSize, setBlockSize] = useState(CURR_AVG_BLOCK_SIZE_MB); // megabytes
-  const [avgFee, setAvgFee] = useState(CURR_AVG_FEE); // sats
+  const [avgFee, setAvgFee] = useState(CURR_AVG_FEE); // usd
   const [finalMarketCap, setFinalMarketCap] = useState(initMarketCap); // market cap in END_YEAR
   const [year, setYear] = useState(initYear);
-  const yearIdx = year - START_YEAR;
+  const yearIdx = getYearIdx(year);
   const isVisible = useVisibility((window) => {
     return window.innerWidth > 991 || window.innerWidth < 768;
   });

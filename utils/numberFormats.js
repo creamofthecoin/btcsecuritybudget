@@ -10,3 +10,9 @@ export const PERCENT = {
 };
 
 export const COMPACT = { notation: "compact" };
+
+export const TWO_DECIMALS = {
+  notation: "standard",
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+};

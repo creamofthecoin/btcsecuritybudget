@@ -20,6 +20,7 @@ export default function BaseSlider({
   cursor = "auto",
   toolTipLabel,
   ariaLabel,
+  onLabelClick,
   ...props
 }) {
   return (
@@ -37,6 +38,7 @@ export default function BaseSlider({
           borderRadius="md"
           w="100%"
           userSelect="none"
+          onClick={onLabelClick}
         >
           <Box
             whiteSpace="noWrap"
