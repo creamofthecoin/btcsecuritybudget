@@ -8,6 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { FaRedoAlt } from "react-icons/fa";
 import { END_YEAR, START_FUTURE_YEAR, START_YEAR } from "../../utils/constants";
+import { PERCENT_3_DECIMALS } from "../../utils/numberFormats";
 import BaseSlider from "../Controls/BaseSlider/BaseSlider";
 import DarkToolTip from "../DarkToolTip/DarkToolTip";
 
@@ -17,11 +18,7 @@ export default function TotalDisplay({
   relativeMinerReward,
   reset,
 }) {
-  const percentFormatter = new Intl.NumberFormat("en", {
-    style: "percent",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 3,
-  });
+  const percentFormatter = new Intl.NumberFormat("en", PERCENT_3_DECIMALS);
 
   const idx = year - START_YEAR;
   const minerReward = percentFormatter.format(relativeMinerReward[idx]);

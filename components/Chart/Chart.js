@@ -21,6 +21,7 @@ import annotationPlugin from "chartjs-plugin-annotation";
 import update from "immutability-helper";
 import { useState } from "react";
 import { Line } from "react-chartjs-2";
+import { COMPACT, PERCENT } from "../../utils/numberFormats";
 
 ChartJS.register(
   annotationPlugin,
@@ -80,7 +81,7 @@ const options = {
       position: "left",
       title: { text: "USD", display: true },
       ticks: {
-        format: { notation: "compact" },
+        format: COMPACT,
       },
       // grid line settings
       grid: {
@@ -93,7 +94,7 @@ const options = {
       position: "right",
       title: { text: "GB", display: true },
       ticks: {
-        format: { notation: "compact" },
+        format: COMPACT,
       },
       // grid line settings
       grid: {
@@ -188,9 +189,7 @@ export default function Chart({
 
   function onRelMinerRewardToggle(e) {
     setShowRel(e.target.checked);
-    const newFormat = e.target.checked
-      ? { style: "percent" }
-      : { notation: "compact" };
+    const newFormat = e.target.checked ? PERCENT : COMPACT;
     setChartOptions(
       update(chartOptions, {
         scales: { y: { ticks: { format: { $set: newFormat } } } },
