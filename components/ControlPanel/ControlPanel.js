@@ -7,14 +7,18 @@ import TotalDisplay from "../TotalDisplay/TotalDisplay";
 export default function ControlPanel({
   avgFee,
   setAvgFee,
+  feeIsUsd,
+  setFeeIsUsd,
   blockSize,
   setBlockSize,
+  blockSizeIsMB,
+  setBlockSizeIsMB,
   finalMarketCap,
   setFinalMarketCap,
   year,
   setYear,
-  transactionsPerBlock,
-  relativeMinerReward,
+  priceAtYear,
+  relativeMinerRewardAtYear,
   colorMode,
   ratings,
   isVisible,
@@ -51,17 +55,21 @@ export default function ControlPanel({
         <Controls
           avgFee={avgFee}
           setAvgFee={setAvgFee}
+          feeIsUsd={feeIsUsd}
+          setFeeIsUsd={setFeeIsUsd}
           blockSize={blockSize}
           setBlockSize={setBlockSize}
+          blockSizeIsMB={blockSizeIsMB}
+          setBlockSizeIsMB={setBlockSizeIsMB}
           finalMarketCap={finalMarketCap}
           setFinalMarketCap={setFinalMarketCap}
-          transactionsPerBlock={transactionsPerBlock}
+          priceAtYear={priceAtYear}
         />
         <Spacer />
         <TotalDisplay
           year={year}
           setYear={setYear}
-          relativeMinerReward={relativeMinerReward}
+          relativeMinerRewardAtYear={relativeMinerRewardAtYear}
           reset={reset}
         />
       </Flex>

@@ -25,9 +25,8 @@ export default function MainModal({ buttonText, body }) {
         {buttonText}
       </Button>
 
-      <Modal onClose={onClose} isOpen={isOpen} size="2xl">
+      <Modal onClose={onClose} isOpen={isOpen} size="2xl" isCentered>
         <ModalOverlay
-          isCentered
           // bg="rgba(26,32,44, 0.5)"
           bg="rgba(0,0,0, 0.66)"
           backdropFilter="blur(10px)"

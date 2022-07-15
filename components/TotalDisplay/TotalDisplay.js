@@ -6,22 +6,16 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
+import React from "react";
 import { FaRedoAlt } from "react-icons/fa";
-import { END_YEAR, START_FUTURE_YEAR, START_YEAR } from "../../utils/constants";
+import { END_YEAR, START_FUTURE_YEAR } from "../../utils/constants";
 import { PERCENT_3_DECIMALS } from "../../utils/numberFormats";
 import BaseSlider from "../Controls/BaseSlider/BaseSlider";
 import DarkToolTip from "../DarkToolTip/DarkToolTip";
 
-export default function TotalDisplay({
-  year,
-  setYear,
-  relativeMinerReward,
-  reset,
-}) {
+function TotalDisplay({ year, setYear, relativeMinerRewardAtYear, reset }) {
   const percentFormatter = new Intl.NumberFormat("en", PERCENT_3_DECIMALS);
-
-  const idx = year - START_YEAR;
-  const minerReward = percentFormatter.format(relativeMinerReward[idx]);
+  const minerReward = percentFormatter.format(relativeMinerRewardAtYear);
   return (
     <Stack
       alignItems="stretch"
@@ -90,3 +84,11 @@ function SingleTotal({ label, total, bold, large, tooltipLabel }) {
     </DarkToolTip>
   );
 }
+
+export default React.memo(
+  TotalDisplay,
+  (prev, next) =>
+    prev.year === next.year &&
+    Math.abs(prev.relativeMinerRewardAtYear - next.relativeMinerRewardAtYear) <
+      1e-8
+);

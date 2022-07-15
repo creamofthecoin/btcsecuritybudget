@@ -1,51 +1,38 @@
-import { END_YEAR } from "../../utils/constants";
-import { COMPACT } from "../../utils/numberFormats";
-import LogSlider from "./LogSlider/LogSlider";
+import BlockSizeSlider from "./BlockSizeSlider/BlockSizeSlider";
+import FeeSlider from "./FeeSlider/FeeSlider";
+import MarketCapSlider from "./MarketCapSlider/MarketCapSlider";
 
 export default function Controls({
   avgFee,
   setAvgFee,
+  feeIsUsd,
+  setFeeIsUsd,
   blockSize,
   setBlockSize,
+  blockSizeIsMB,
+  setBlockSizeIsMB,
   finalMarketCap,
   setFinalMarketCap,
+  priceAtYear,
 }) {
-  const compact = new Intl.NumberFormat("en", COMPACT);
-
-  const twoDecimals = new Intl.NumberFormat("en", {
-    notation: "standard",
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-
   return (
     <>
-      <LogSlider
-        label="Average Fee"
-        output={`${twoDecimals.format(avgFee)} sats`}
-        value={avgFee}
-        onChange={setAvgFee}
-        min={0}
-        max={8}
-        step={0.01}
+      <FeeSlider
+        avgFee={avgFee}
+        setAvgFee={setAvgFee}
+        feeIsUsd={feeIsUsd}
+        setFeeIsUsd={setFeeIsUsd}
+        priceAtYear={priceAtYear}
       />
-      <LogSlider
-        label="Average Block Size"
-        output={`${twoDecimals.format(blockSize)} MB`}
-        value={blockSize}
-        onChange={setBlockSize}
-        min={-1}
-        max={2}
-        step={0.01}
+      <BlockSizeSlider
+        blockSize={blockSize}
+        setBlockSize={setBlockSize}
+        blockSizeIsMB={blockSizeIsMB}
+        setBlockSizeIsMB={setBlockSizeIsMB}
       />
-      <LogSlider
-        label={`Market Cap in ${END_YEAR}`}
-        output={`$${compact.format(finalMarketCap)}`}
-        value={finalMarketCap}
-        onChange={setFinalMarketCap}
-        min={10}
-        max={14}
-        step={0.01}
+      <MarketCapSlider
+        finalMarketCap={finalMarketCap}
+        setFinalMarketCap={setFinalMarketCap}
       />
     </>
   );

@@ -16,21 +16,23 @@ import {
   CURR_AVG_BLOCK_SIZE_MB,
   CURR_AVG_FEE,
   GOOD_RATING,
-  START_YEAR,
   YEARS,
 } from "../utils/constants";
-import { getRating } from "../utils/getRating";
 import useVisibility from "../utils/useVisibility";
+import { getYearIdx } from "../utils/utils";
 
 const initMarketCap = 1e14;
 const initYear = 2032;
 
+// eslint-disable-next-line import/no-unused-modules
 export default function Home() {
-  const [blockSize, setBlockSize] = useState(CURR_AVG_BLOCK_SIZE_MB); // megabytes
-  const [avgFee, setAvgFee] = useState(CURR_AVG_FEE); // sats
+  const [avgFee, setAvgFee] = useState(CURR_AVG_FEE); // usd or sats
+  const [feeIsUsd, setFeeIsUsd] = useState(true);
+  const [blockSize, setBlockSize] = useState(CURR_AVG_BLOCK_SIZE_MB); // megabytes or # transactions
+  const [blockSizeIsMB, setBlockSizeIsMB] = useState(true);
   const [finalMarketCap, setFinalMarketCap] = useState(initMarketCap); // market cap in END_YEAR
   const [year, setYear] = useState(initYear);
-  const yearIdx = year - START_YEAR;
+  const yearIdx = getYearIdx(year);
   const isVisible = useVisibility((window) => {
     return window.innerWidth > 991 || window.innerWidth < 768;
   });
@@ -39,28 +41,31 @@ export default function Home() {
   });
 
   function reset() {
-    setBlockSize(CURR_AVG_BLOCK_SIZE_MB);
     setAvgFee(CURR_AVG_FEE);
+    setFeeIsUsd(true);
+    setBlockSize(CURR_AVG_BLOCK_SIZE_MB);
+    setBlockSizeIsMB(true);
     setFinalMarketCap(initMarketCap);
     setYear(initYear);
   }
 
   const {
-    transactionsPerBlock,
-    avgUsdFeePerYear,
     marketCap,
     usdMinerReward,
     blockchainSize,
     relativeMinerReward,
-    blockSizePerYear,
-  } = deriveValues({ avgFee, blockSize, finalMarketCap });
-
-  const ratings = getRating({
-    avgUsdFeePerYear,
-    relativeMinerReward,
-    blockSizePerYear,
+    priceAtYear,
+    relativeMinerRewardAtYear,
+    ratings,
+  } = deriveValues({
+    avgFee,
+    blockSize,
+    finalMarketCap,
+    feeIsUsd,
+    blockSizeIsMB,
     year,
   });
+
   const { colorMode } = useColorMode();
 
   if (_.every(ratings, (x) => x === GOOD_RATING)) {
@@ -107,14 +112,18 @@ export default function Home() {
             <ControlPanel
               avgFee={avgFee}
               setAvgFee={setAvgFee}
+              feeIsUsd={feeIsUsd}
+              setFeeIsUsd={setFeeIsUsd}
               blockSize={blockSize}
               setBlockSize={setBlockSize}
+              blockSizeIsMB={blockSizeIsMB}
+              setBlockSizeIsMB={setBlockSizeIsMB}
               finalMarketCap={finalMarketCap}
               setFinalMarketCap={setFinalMarketCap}
               year={year}
               setYear={setYear}
-              transactionsPerBlock={transactionsPerBlock}
-              relativeMinerReward={relativeMinerReward}
+              priceAtYear={priceAtYear}
+              relativeMinerRewardAtYear={relativeMinerRewardAtYear}
               colorMode={colorMode}
               ratings={ratings}
               isVisible={isVisible}

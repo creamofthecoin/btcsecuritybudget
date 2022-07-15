@@ -8,6 +8,7 @@ import {
   SliderTrack,
   Spacer,
 } from "@chakra-ui/react";
+import DarkToolTip from "../../DarkToolTip/DarkToolTip";
 
 export default function BaseSlider({
   value,
@@ -16,26 +17,41 @@ export default function BaseSlider({
   label,
   output = "n/a",
   mb = "1rem",
+  cursor = "auto",
+  toolTipLabel,
+  ariaLabel,
+  onLabelClick,
   ...props
 }) {
   return (
     <FormControl mb={mb}>
-      <FormLabel
-        mb="0"
-        display="flex"
-        flexDir={{ base: "row", lg: "column", xl: "row" }}
-      >
-        <Box
-          whiteSpace="noWrap"
-          mr="1rem"
-          fontSize={{ base: "sm", md: "sm", lg: "md" }}
-          letterSpacing={{ base: "-0.3pt", md: "0" }}
+      <ToolTipSwitch toolTipLabel={toolTipLabel} ariaLabel={ariaLabel}>
+        <FormLabel
+          mb="0"
+          display="flex"
+          flexDir={{ base: "row", lg: "column", xl: "row" }}
+          cursor={cursor}
+          _hover={{
+            backgroundColor: cursor === "pointer" ? "gray.900" : "none",
+          }}
+          p="0.1rem 0.25rem"
+          borderRadius="md"
+          w="100%"
+          userSelect="none"
+          onClick={onLabelClick}
         >
-          {label}
-        </Box>
-        <Spacer />
-        <Box fontSize={{ base: "sm", md: "sm", lg: "md" }}>{output}</Box>
-      </FormLabel>
+          <Box
+            whiteSpace="noWrap"
+            mr="1rem"
+            fontSize={{ base: "sm", md: "sm", lg: "md" }}
+            letterSpacing={{ base: "-0.3pt", md: "0" }}
+          >
+            {label}
+          </Box>
+          <Spacer />
+          <Box fontSize={{ base: "sm", md: "sm", lg: "md" }}>{output}</Box>
+        </FormLabel>
+      </ToolTipSwitch>
       <Slider
         aria-label="slider-ex-1"
         value={value}
@@ -51,4 +67,14 @@ export default function BaseSlider({
       </Slider>
     </FormControl>
   );
+}
+
+function ToolTipSwitch({ toolTipLabel, ariaLabel, children }) {
+  if (toolTipLabel) {
+    return (
+      <DarkToolTip label={toolTipLabel} ariaLabel={ariaLabel}>
+        {children}
+      </DarkToolTip>
+    );
+  } else return <>{children}</>;
 }

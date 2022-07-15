@@ -4,4 +4,4 @@
 
 This repo contains code for [btcsecuritybudget.com](https://www.btcsecuritybudget.com).
 
-If you find any bugs, please open an issue.
+If you find any bugs or want to suggest a feature, please open an issue.
