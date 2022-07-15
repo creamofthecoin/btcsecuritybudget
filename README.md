@@ -10,6 +10,6 @@ If you find any bugs or want to suggest a feature, please open an issue.
 
 ## Contributors
 
-Jeff Musgrave created the design, and wrote all the design and layout code (Javascript, React, CSS).
+Jeff Musgrave created the design, and wrote all the design and layout code (React, CSS).
 
 Kevin Musgrave wrote code for calculating miner revenue etc., and various state management logic in React.
