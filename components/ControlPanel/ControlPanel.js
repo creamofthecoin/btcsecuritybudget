@@ -18,7 +18,7 @@ export default function ControlPanel({
   year,
   setYear,
   priceAtYear,
-  relativeMinerReward,
+  relativeMinerRewardAtYear,
   colorMode,
   ratings,
   isVisible,
@@ -69,7 +69,7 @@ export default function ControlPanel({
         <TotalDisplay
           year={year}
           setYear={setYear}
-          relativeMinerReward={relativeMinerReward}
+          relativeMinerRewardAtYear={relativeMinerRewardAtYear}
           reset={reset}
         />
       </Flex>

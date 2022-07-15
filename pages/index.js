@@ -55,6 +55,7 @@ export default function Home() {
     blockchainSize,
     relativeMinerReward,
     priceAtYear,
+    relativeMinerRewardAtYear,
     ratings,
   } = deriveValues({
     avgFee,
@@ -122,7 +123,7 @@ export default function Home() {
               year={year}
               setYear={setYear}
               priceAtYear={priceAtYear}
-              relativeMinerReward={relativeMinerReward}
+              relativeMinerRewardAtYear={relativeMinerRewardAtYear}
               colorMode={colorMode}
               ratings={ratings}
               isVisible={isVisible}

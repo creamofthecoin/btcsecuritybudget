@@ -14,10 +14,15 @@ import {
   SATS_PER_BTC,
 } from "./constants";
 import { getRatings } from "./getRatings";
-import { getFutureYearIdx, mbToTransactions, transactionsToMB } from "./utils";
+import {
+  getFutureYearIdx,
+  getYearIdx,
+  mbToTransactions,
+  transactionsToMB,
+} from "./utils";
 
-// t is the amount to translation, t=2: e^-(x-2)
-// s is the stretch: s=3: e^-(3x)
+// t is the amount to translation, t=33: e^-(x-33)
+// s is the stretch: s=0.05: e^-0.05(x-33)
 function partSigmoid(x, t = 33, s = 0.05) {
   const eST = Math.exp(s * t);
   const eX = Math.exp(-s * (x - t));
@@ -93,6 +98,7 @@ export function deriveValues({
   const blockSizePerYear = getBlockSizePerYear(mbPerBlock);
   const blockchainSize = getBlockchainSize(yearlyBlockSize);
   const priceAtYear = priceFuture[getFutureYearIdx(year)];
+  const relativeMinerRewardAtYear = relativeMinerReward[getYearIdx(year)];
 
   const ratings = getRatings({
     avgFeeUsd,
@@ -107,6 +113,7 @@ export function deriveValues({
     blockchainSize,
     relativeMinerReward,
     priceAtYear,
+    relativeMinerRewardAtYear,
     ratings,
   };
 }
