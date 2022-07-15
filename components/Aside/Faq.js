@@ -24,6 +24,20 @@ export default function FAQ() {
         illustrate the various tradeoffs.
       </Text>
 
+      <ModalHeading>
+        Why does the Miner Revenue curve change when toggling the Average Fee
+        slider?
+      </ModalHeading>
+      <Text>
+        In USD mode, the fee in USD terms is the same each year. In sats mode,
+        the fee in BTC terms is the same each year, but the BTC/USD exchange
+        rate changes over time. For example, if you set the fee to $100 in USD
+        mode, then the fee is $100 in both 2032 and 2140. In contrast, if you
+        set the fee to 100 in sats mode, then the fee might be $0.5 in 2032, and
+        $5 in 2140. Thus, in USD mode, the fee is constant in USD terms, and in
+        sats mode, the fee changes over time in USD terms.
+      </Text>
+
       <ModalHeading>What is the security budget?</ModalHeading>
       <Text>
         The security budget is the amount of money paid to miners, which
