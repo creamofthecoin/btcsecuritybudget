@@ -1,8 +1,6 @@
-import { END_YEAR } from "../../utils/constants";
-import { COMPACT } from "../../utils/numberFormats";
 import BlockSizeSlider from "./BlockSizeSlider/BlockSizeSlider";
 import FeeSlider from "./FeeSlider/FeeSlider";
-import LogSlider from "./LogSlider/LogSlider";
+import MarketCapSlider from "./MarketCapSlider/MarketCapSlider";
 
 export default function Controls({
   avgFee,
@@ -15,11 +13,8 @@ export default function Controls({
   setBlockSizeIsMB,
   finalMarketCap,
   setFinalMarketCap,
-  priceFuture,
-  year,
+  priceAtYear,
 }) {
-  const compact = new Intl.NumberFormat("en", COMPACT);
-
   return (
     <>
       <FeeSlider
@@ -27,8 +22,7 @@ export default function Controls({
         setAvgFee={setAvgFee}
         feeIsUsd={feeIsUsd}
         setFeeIsUsd={setFeeIsUsd}
-        priceFuture={priceFuture}
-        year={year}
+        priceAtYear={priceAtYear}
       />
       <BlockSizeSlider
         blockSize={blockSize}
@@ -36,14 +30,9 @@ export default function Controls({
         blockSizeIsMB={blockSizeIsMB}
         setBlockSizeIsMB={setBlockSizeIsMB}
       />
-      <LogSlider
-        label={`Market Cap in ${END_YEAR}`}
-        output={`$${compact.format(finalMarketCap)}`}
-        value={finalMarketCap}
-        onChange={setFinalMarketCap}
-        min={11}
-        max={14}
-        step={0.01}
+      <MarketCapSlider
+        finalMarketCap={finalMarketCap}
+        setFinalMarketCap={setFinalMarketCap}
       />
     </>
   );

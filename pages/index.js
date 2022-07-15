@@ -58,12 +58,14 @@ export default function Home() {
     blockchainSize,
     relativeMinerReward,
     blockSizePerYear,
+    priceAtYear,
   } = deriveValues({
     avgFee,
     blockSize,
     finalMarketCap,
     feeIsUsd,
     blockSizeIsMB,
+    year,
   });
 
   const ratings = getRating({
@@ -72,6 +74,7 @@ export default function Home() {
     blockSizePerYear,
     year,
   });
+
   const { colorMode } = useColorMode();
 
   if (_.every(ratings, (x) => x === GOOD_RATING)) {
@@ -128,7 +131,7 @@ export default function Home() {
               setFinalMarketCap={setFinalMarketCap}
               year={year}
               setYear={setYear}
-              priceFuture={priceFuture}
+              priceAtYear={priceAtYear}
               relativeMinerReward={relativeMinerReward}
               colorMode={colorMode}
               ratings={ratings}

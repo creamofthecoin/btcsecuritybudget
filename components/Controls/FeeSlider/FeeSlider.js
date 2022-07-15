@@ -1,13 +1,7 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { SATS_PER_BTC } from "../../../utils/constants";
 import { TWO_DECIMALS } from "../../../utils/numberFormats";
-import {
-  base10Log,
-  getFutureYearIdx,
-  pow10,
-  satsToUsd,
-  usdToSats,
-} from "../../../utils/utils";
+import { base10Log, pow10, satsToUsd, usdToSats } from "../../../utils/utils";
 import LogSlider from "../LogSlider/LogSlider";
 
 function unitsLabel(feeIsUsd) {
@@ -24,16 +18,8 @@ function minMaxUsd(minSats, maxSats, priceAtYear) {
 const minSats = 1;
 const maxSats = SATS_PER_BTC;
 
-export default function FeeSlider({
-  avgFee,
-  setAvgFee,
-  feeIsUsd,
-  setFeeIsUsd,
-  priceFuture,
-  year,
-}) {
+function FeeSlider({ avgFee, setAvgFee, feeIsUsd, setFeeIsUsd, priceAtYear }) {
   const twoDecimals = new Intl.NumberFormat("en", TWO_DECIMALS);
-  const priceAtYear = priceFuture[getFutureYearIdx(year)];
   const [min, max] = feeIsUsd
     ? minMaxUsd(minSats, maxSats, priceAtYear)
     : [base10Log(minSats), base10Log(maxSats)];
@@ -74,3 +60,5 @@ export default function FeeSlider({
     />
   );
 }
+
+export default React.memo(FeeSlider);

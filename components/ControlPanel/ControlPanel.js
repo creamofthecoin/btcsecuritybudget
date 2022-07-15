@@ -17,7 +17,7 @@ export default function ControlPanel({
   setFinalMarketCap,
   year,
   setYear,
-  priceFuture,
+  priceAtYear,
   relativeMinerReward,
   colorMode,
   ratings,
@@ -63,8 +63,7 @@ export default function ControlPanel({
           setBlockSizeIsMB={setBlockSizeIsMB}
           finalMarketCap={finalMarketCap}
           setFinalMarketCap={setFinalMarketCap}
-          priceFuture={priceFuture}
-          year={year}
+          priceAtYear={priceAtYear}
         />
         <Spacer />
         <TotalDisplay

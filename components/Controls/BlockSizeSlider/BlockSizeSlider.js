@@ -1,3 +1,4 @@
+import React from "react";
 import { COMPACT, TWO_DECIMALS } from "../../../utils/numberFormats";
 import {
   base10Log,
@@ -24,7 +25,7 @@ function minMaxTxns(minMB, maxMB) {
 const minMB = 0.1;
 const maxMB = 100;
 
-export default function BlockSizeSlider({
+function BlockSizeSlider({
   blockSize,
   setBlockSize,
   blockSizeIsMB,
@@ -64,3 +65,5 @@ export default function BlockSizeSlider({
     />
   );
 }
+
+export default React.memo(BlockSizeSlider);
