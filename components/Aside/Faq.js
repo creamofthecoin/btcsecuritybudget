@@ -30,12 +30,25 @@ export default function FAQ() {
       </ModalHeading>
       <Text>
         In USD mode, the fee in USD terms is the same each year. In sats mode,
-        the fee in BTC terms is the same each year, but the BTC/USD exchange
+        the fee in BTC terms is the same each year, but the USD/BTC exchange
         rate changes over time. For example, if you set the fee to $100 in USD
         mode, then the fee is $100 in both 2032 and 2140. In contrast, if you
         set the fee to 100 in sats mode, then the fee might be $0.5 in 2032, and
         $5 in 2140. Thus, in USD mode, the fee is constant in USD terms, and in
         sats mode, the fee changes over time in USD terms.
+      </Text>
+
+      <ModalHeading>
+        Why does the Average Fee slider move when changing the market cap or the
+        year?
+      </ModalHeading>
+      <Text>
+        In USD mode, the min and max values of the slider are set to equal 1 sat
+        and 1 bitcoin respectively. Changing the market cap or the year changes
+        the USD/BTC exchange rate. This affects how many USD are equal to 1 sat
+        or 1 bitcoin, which affects the min and max bounds of the USD slider.
+        When the min and max bounds change, the slider handle has to move to
+        maintain its set value.
       </Text>
 
       <ModalHeading>What is the security budget?</ModalHeading>
