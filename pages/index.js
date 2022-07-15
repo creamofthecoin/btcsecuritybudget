@@ -18,7 +18,6 @@ import {
   GOOD_RATING,
   YEARS,
 } from "../utils/constants";
-import { getRating } from "../utils/getRating";
 import useVisibility from "../utils/useVisibility";
 import { getYearIdx } from "../utils/utils";
 
@@ -51,27 +50,18 @@ export default function Home() {
   }
 
   const {
-    priceFuture,
-    avgFeeUsd,
     marketCap,
     usdMinerReward,
     blockchainSize,
     relativeMinerReward,
-    blockSizePerYear,
     priceAtYear,
+    ratings,
   } = deriveValues({
     avgFee,
     blockSize,
     finalMarketCap,
     feeIsUsd,
     blockSizeIsMB,
-    year,
-  });
-
-  const ratings = getRating({
-    avgFeeUsd,
-    relativeMinerReward,
-    blockSizePerYear,
     year,
   });
 

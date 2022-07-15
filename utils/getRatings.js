@@ -1,7 +1,7 @@
 import { BAD_RATING, GOOD_RATING } from "./constants";
 import { getYearIdx } from "./utils";
 
-export function getRating({
+export function getRatings({
   avgFeeUsd,
   relativeMinerReward,
   blockSizePerYear,

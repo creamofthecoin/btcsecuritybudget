@@ -13,6 +13,7 @@ import {
   NUM_HISTORICAL_YEARS,
   SATS_PER_BTC,
 } from "./constants";
+import { getRatings } from "./getRatings";
 import { getFutureYearIdx, mbToTransactions, transactionsToMB } from "./utils";
 
 // t is the amount to translation, t=2: e^-(x-2)
@@ -93,15 +94,19 @@ export function deriveValues({
   const blockchainSize = getBlockchainSize(yearlyBlockSize);
   const priceAtYear = priceFuture[getFutureYearIdx(year)];
 
-  return {
-    priceFuture,
-    transactionsPerBlock,
+  const ratings = getRatings({
     avgFeeUsd,
+    relativeMinerReward,
+    blockSizePerYear,
+    year,
+  });
+
+  return {
     marketCap,
     usdMinerReward,
     blockchainSize,
     relativeMinerReward,
-    blockSizePerYear,
     priceAtYear,
+    ratings,
   };
 }
