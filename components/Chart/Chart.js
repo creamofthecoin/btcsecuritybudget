@@ -21,7 +21,7 @@ import annotationPlugin from "chartjs-plugin-annotation";
 import update from "immutability-helper";
 import { useState } from "react";
 import { Line } from "react-chartjs-2";
-import { COMPACT, PERCENT } from "../../utils/numberFormats";
+import { COMPACT, PERCENT_3_SIGFIGS } from "../../utils/numberFormats";
 
 ChartJS.register(
   annotationPlugin,
@@ -192,7 +192,7 @@ export default function Chart({
   function onRelMinerRewardToggle(e) {
     setShowRel(e.target.checked);
     const [newFormat, newMax, newTitle] = e.target.checked
-      ? [PERCENT, 0.1, "(Miner Revenue Per Year) / (Market Cap)"]
+      ? [PERCENT_3_SIGFIGS, 0.1, "(Miner Revenue Per Year) / (Market Cap)"]
       : [COMPACT, 1e14, "Value (USD)"];
     setChartOptions(
       update(chartOptions, {

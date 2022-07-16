@@ -4,9 +4,9 @@ export const PERCENT_3_DECIMALS = {
   maximumFractionDigits: 3,
 };
 
-export const PERCENT = {
+export const PERCENT_3_SIGFIGS = {
   style: "percent",
-  minimumFractionDigits: 0,
+  maximumSignificantDigits: 3,
 };
 
 export const COMPACT = { notation: "compact" };
