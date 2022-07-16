@@ -62,6 +62,12 @@ export default function Home() {
     setYear(initYear);
   }
 
+  function resetSettings() {
+    setFeeMemeThreshold(initFeeMemeThreshold);
+    setBlockSizeMemeThreshold(initBlockSizeMemeThreshold);
+    setSecurityMemeThreshold(initSetSecurityMemeThreshold);
+  }
+
   const {
     marketCap,
     usdMinerReward,
@@ -163,6 +169,7 @@ export default function Home() {
             setBlockSizeMemeThreshold={setBlockSizeMemeThreshold}
             securityMemeThreshold={securityMemeThreshold}
             setSecurityMemeThreshold={setSecurityMemeThreshold}
+            resetSettings={resetSettings}
           />
         </Container>
       </motion.div>
