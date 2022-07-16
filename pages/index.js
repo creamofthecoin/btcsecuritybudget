@@ -53,14 +53,14 @@ export default function Home() {
     return window.innerWidth > 991;
   });
 
-  function reset() {
+  const reset = useCallback(() => {
     setAvgFee(CURR_AVG_FEE);
     setFeeIsUsd(true);
     setBlockSize(CURR_AVG_BLOCK_SIZE_MB);
     setBlockSizeIsMB(true);
     setFinalMarketCap(initMarketCap);
     setYear(initYear);
-  }
+  }, []);
 
   const resetSettings = useCallback(() => {
     setFeeMemeThreshold(initFeeMemeThreshold);
