@@ -4,10 +4,10 @@ import FAQ from "./Faq";
 import Glossary from "./Glossary";
 import Settings from "./Settings";
 
-export default function Aside() {
+export default function Aside(props) {
   return (
     <HStack>
-      <MainModal body={<Settings />} buttonText="Settings" />
+      <MainModal body={<Settings {...props} />} buttonText="Settings" />
       <MainModal body={<FAQ />} buttonText="Explanation" />
       <MainModal body={<Glossary />} buttonText="Glossary" />
     </HStack>

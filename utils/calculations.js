@@ -81,6 +81,9 @@ export function deriveValues({
   feeIsUsd,
   blockSizeIsMB,
   year,
+  feeMemeThreshold,
+  blockSizeMemeThreshold,
+  securityMemeThreshold,
 }) {
   const [transactionsPerBlock, mbPerBlock] = blockSizeIsMB
     ? [mbToTransactions(blockSize), blockSize]
@@ -105,6 +108,9 @@ export function deriveValues({
     relativeMinerReward,
     blockSizePerYear,
     year,
+    feeMemeThreshold,
+    blockSizeMemeThreshold,
+    securityMemeThreshold,
   });
 
   return {
