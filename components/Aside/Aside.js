@@ -10,7 +10,7 @@ export default function Aside(props) {
       <MainModal
         body={<Settings {...props} />}
         buttonText="Settings"
-        size="sm"
+        size="xl"
         h="40vh"
         button={<Button borderRadius="full">Reset</Button>}
       />
