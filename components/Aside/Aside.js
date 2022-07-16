@@ -4,7 +4,7 @@ import FAQ from "./Faq";
 import Glossary from "./Glossary";
 import Settings from "./Settings";
 
-export default function Aside(props) {
+export default function Aside({ resetSettings, ...props }) {
   return (
     <HStack>
       <MainModal
@@ -12,7 +12,11 @@ export default function Aside(props) {
         buttonText="Settings"
         size="xl"
         h={{ base: "20rem", md: "18rem" }}
-        button={<Button borderRadius="full">Reset</Button>}
+        button={
+          <Button borderRadius="full" onClick={resetSettings}>
+            Reset
+          </Button>
+        }
       />
       <MainModal body={<FAQ />} buttonText="Explanation" />
       <MainModal body={<Glossary />} buttonText="Glossary" />
