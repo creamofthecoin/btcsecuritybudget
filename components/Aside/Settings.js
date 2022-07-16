@@ -27,8 +27,8 @@ export default function Settings({
           />
           <InputWithLabel
             label="Security Meme Threshold (%)"
-            value={securityMemeThreshold * 100}
-            onBlur={(x) => setSecurityMemeThreshold(x / 100)}
+            value={securityMemeThreshold}
+            onBlur={setSecurityMemeThreshold}
           />
         </VStack>
       </VStack>

@@ -25,7 +25,7 @@ const initMarketCap = 1e14;
 const initYear = 2032;
 const initFeeMemeThreshold = 100;
 const initBlockSizeMemeThreshold = 10;
-const initSetSecurityMemeThreshold = 0.01;
+const initSetSecurityMemeThreshold = 1;
 
 // eslint-disable-next-line import/no-unused-modules
 export default function Home() {

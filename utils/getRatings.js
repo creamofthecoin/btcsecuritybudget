@@ -14,7 +14,9 @@ export function getRatings({
   const avgFeeRating =
     avgFeeUsd[idx] < feeMemeThreshold ? GOOD_RATING : BAD_RATING;
   const securityRating =
-    relativeMinerReward[idx] > securityMemeThreshold ? GOOD_RATING : BAD_RATING;
+    relativeMinerReward[idx] > securityMemeThreshold / 100
+      ? GOOD_RATING
+      : BAD_RATING;
   const decentralizationRating =
     blockSizePerYear[idx] < blockSizeMemeThreshold ? GOOD_RATING : BAD_RATING;
 
