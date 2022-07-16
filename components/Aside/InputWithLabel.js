@@ -1,10 +1,16 @@
 import { FormLabel, HStack, Input, Spacer } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { STANDARD_NO_GROUPING } from "../../utils/numberFormats";
 
 export default function InputWithLabel({ label, value, onBlur }) {
   const formatter = new Intl.NumberFormat("en", STANDARD_NO_GROUPING);
   const [localVal, setLocalVal] = useState(value);
+
+  useEffect(() => {
+    if (localVal !== value) {
+      setLocalVal(value);
+    }
+  }, [value]);
 
   function localOnBlur() {
     const newVal = localVal ? formatter.format(localVal) : value;
