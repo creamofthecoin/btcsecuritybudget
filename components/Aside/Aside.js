@@ -17,8 +17,9 @@ export default function Aside({ resetSettings, ...props }) {
         buttonText="Settings"
         size="xl"
         h={{ base: "20rem", md: "18rem" }}
+        closeButtonText="OK"
         button={
-          <Button borderRadius="full" onClick={resetSettings}>
+          <Button borderRadius="full" variant="outline" onClick={resetSettings}>
             Reset
           </Button>
         }
