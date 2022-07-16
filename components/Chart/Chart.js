@@ -19,7 +19,7 @@ import {
 } from "chart.js";
 import annotationPlugin from "chartjs-plugin-annotation";
 import update from "immutability-helper";
-import { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Line } from "react-chartjs-2";
 import { COMPACT, PERCENT_3_SIGFIGS } from "../../utils/numberFormats";
 
@@ -182,30 +182,36 @@ export default function Chart({
     );
   }
 
-  function onLogToggle(e) {
-    const value = e.target.checked ? "logarithmic" : "linear";
-    setChartOptions(
-      update(chartOptions, { scales: { y: { type: { $set: value } } } })
-    );
-  }
+  const onLogToggle = useCallback(
+    (e) => {
+      const value = e.target.checked ? "logarithmic" : "linear";
+      setChartOptions(
+        update(chartOptions, { scales: { y: { type: { $set: value } } } })
+      );
+    },
+    [chartOptions]
+  );
 
-  function onRelMinerRewardToggle(e) {
-    setShowRel(e.target.checked);
-    const [newFormat, newMax, newTitle] = e.target.checked
-      ? [PERCENT_3_SIGFIGS, 0.1, "(Miner Revenue Per Year) / (Market Cap)"]
-      : [COMPACT, 1e14, "Value (USD)"];
-    setChartOptions(
-      update(chartOptions, {
-        scales: {
-          y: {
-            ticks: { format: { $set: newFormat } },
-            max: { $set: newMax },
-            title: { text: { $set: newTitle } },
+  const onRelMinerRewardToggle = useCallback(
+    (e) => {
+      setShowRel(e.target.checked);
+      const [newFormat, newMax, newTitle] = e.target.checked
+        ? [PERCENT_3_SIGFIGS, 0.1, "(Miner Revenue Per Year) / (Market Cap)"]
+        : [COMPACT, 1e14, "Value (USD)"];
+      setChartOptions(
+        update(chartOptions, {
+          scales: {
+            y: {
+              ticks: { format: { $set: newFormat } },
+              max: { $set: newMax },
+              title: { text: { $set: newTitle } },
+            },
           },
-        },
-      })
-    );
-  }
+        })
+      );
+    },
+    [chartOptions]
+  );
 
   return (
     <Stack
@@ -253,7 +259,7 @@ export default function Chart({
   );
 }
 
-function GraphToggle({ label, onChange, isChecked }) {
+const GraphToggle = React.memo(({ label, onChange, isChecked }) => {
   return (
     <HStack alignItems="center" justifyContent="stretch" mt="0 !important">
       <Switch size="sm" onChange={onChange} isChecked={isChecked} />
@@ -262,4 +268,4 @@ function GraphToggle({ label, onChange, isChecked }) {
       </FormLabel>
     </HStack>
   );
-}
+});
