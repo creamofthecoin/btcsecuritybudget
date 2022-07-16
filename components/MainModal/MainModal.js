@@ -27,6 +27,7 @@ export default function MainModal({
         maxW="fit-content"
         size="lg"
         fontWeight="black"
+        mt="0 !important"
       >
         {buttonText}
       </Button>
