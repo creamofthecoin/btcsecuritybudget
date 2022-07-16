@@ -11,7 +11,14 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
-export default function MainModal({ buttonText, body }) {
+export default function MainModal({
+  buttonText,
+  body,
+  size = "2xl",
+  h = "70vh",
+  button,
+  closeButtonText,
+}) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
@@ -21,11 +28,12 @@ export default function MainModal({ buttonText, body }) {
         maxW="fit-content"
         size="lg"
         fontWeight="black"
+        mt="0 !important"
       >
         {buttonText}
       </Button>
 
-      <Modal onClose={onClose} isOpen={isOpen} size="2xl" isCentered>
+      <Modal onClose={onClose} isOpen={isOpen} size={size} isCentered>
         <ModalOverlay
           // bg="rgba(26,32,44, 0.5)"
           bg="rgba(0,0,0, 0.66)"
@@ -38,16 +46,17 @@ export default function MainModal({ buttonText, body }) {
             <VStack
               alignItems="stretch"
               w="100%"
-              h="70vh"
+              h={h}
               overflowY="scroll"
               p="1rem 1.5rem"
             >
               {body}
             </VStack>
           </ModalBody>
-          <ModalFooter>
+          <ModalFooter gap="1rem">
+            {button}
             <Button borderRadius="full" onClick={onClose}>
-              Close
+              {closeButtonText}
             </Button>
           </ModalFooter>
         </ModalContent>

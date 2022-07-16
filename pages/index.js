@@ -1,7 +1,7 @@
 import { ChakraProvider, useColorMode } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import _ from "lodash";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Chart from "../components/Chart/Chart";
 import Container from "../components/Container/Container";
 import ControlPanel from "../components/ControlPanel/ControlPanel";
@@ -23,6 +23,9 @@ import { getYearIdx } from "../utils/utils";
 
 const initMarketCap = 1e14;
 const initYear = 2032;
+const initFeeMemeThreshold = 100;
+const initBlockSizeMemeThreshold = 10;
+const initSetSecurityMemeThreshold = 1;
 
 // eslint-disable-next-line import/no-unused-modules
 export default function Home() {
@@ -32,6 +35,16 @@ export default function Home() {
   const [blockSizeIsMB, setBlockSizeIsMB] = useState(true);
   const [finalMarketCap, setFinalMarketCap] = useState(initMarketCap); // market cap in END_YEAR
   const [year, setYear] = useState(initYear);
+
+  const [feeMemeThreshold, setFeeMemeThreshold] =
+    useState(initFeeMemeThreshold);
+  const [blockSizeMemeThreshold, setBlockSizeMemeThreshold] = useState(
+    initBlockSizeMemeThreshold
+  );
+  const [securityMemeThreshold, setSecurityMemeThreshold] = useState(
+    initSetSecurityMemeThreshold
+  );
+
   const yearIdx = getYearIdx(year);
   const isVisible = useVisibility((window) => {
     return window.innerWidth > 991 || window.innerWidth < 768;
@@ -40,14 +53,20 @@ export default function Home() {
     return window.innerWidth > 991;
   });
 
-  function reset() {
+  const reset = useCallback(() => {
     setAvgFee(CURR_AVG_FEE);
     setFeeIsUsd(true);
     setBlockSize(CURR_AVG_BLOCK_SIZE_MB);
     setBlockSizeIsMB(true);
     setFinalMarketCap(initMarketCap);
     setYear(initYear);
-  }
+  }, []);
+
+  const resetSettings = useCallback(() => {
+    setFeeMemeThreshold(initFeeMemeThreshold);
+    setBlockSizeMemeThreshold(initBlockSizeMemeThreshold);
+    setSecurityMemeThreshold(initSetSecurityMemeThreshold);
+  }, []);
 
   const {
     marketCap,
@@ -64,6 +83,9 @@ export default function Home() {
     feeIsUsd,
     blockSizeIsMB,
     year,
+    feeMemeThreshold,
+    blockSizeMemeThreshold,
+    securityMemeThreshold,
   });
 
   const { colorMode } = useColorMode();
@@ -140,7 +162,15 @@ export default function Home() {
               yearIdx={yearIdx}
             />
           </Section>
-          <Footer />
+          <Footer
+            feeMemeThreshold={feeMemeThreshold}
+            setFeeMemeThreshold={setFeeMemeThreshold}
+            blockSizeMemeThreshold={blockSizeMemeThreshold}
+            setBlockSizeMemeThreshold={setBlockSizeMemeThreshold}
+            securityMemeThreshold={securityMemeThreshold}
+            setSecurityMemeThreshold={setSecurityMemeThreshold}
+            resetSettings={resetSettings}
+          />
         </Container>
       </motion.div>
     </ChakraProvider>

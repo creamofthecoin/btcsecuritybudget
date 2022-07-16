@@ -1,12 +1,13 @@
 import { Image, Link, Text, VStack } from "@chakra-ui/react";
+import React from "react";
 import Aside from "../Aside/Aside";
 import Section from "../Section/Section";
 
-export default function Footer() {
+function Footer(props) {
   return (
     <Section outerPy="2rem" flexDir="column">
       <VStack gap={5}>
-        <Aside />
+        <Aside {...props} />
         <Text p="0 !important" fontSize="xs" color="gray.100">
           A thought experiment on the profit motive for participating in mining,
           and thus securing the Bitcoin network.
@@ -27,3 +28,5 @@ export default function Footer() {
     </Section>
   );
 }
+
+export default React.memo(Footer);

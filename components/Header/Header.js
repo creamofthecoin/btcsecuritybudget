@@ -1,6 +1,7 @@
 import { Box, Flex, Heading, Image, useColorMode } from "@chakra-ui/react";
+import React from "react";
 import DarkToolTip from "../DarkToolTip/DarkToolTip";
-export default function Header() {
+function Header() {
   const { colorMode } = useColorMode();
   const clr = colorMode === "light";
   const color = clr ? "black" : "white";
@@ -42,3 +43,5 @@ export default function Header() {
     </DarkToolTip>
   );
 }
+
+export default React.memo(Header);

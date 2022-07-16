@@ -9,13 +9,16 @@ import {
 import React from "react";
 import { FaRedoAlt } from "react-icons/fa";
 import { END_YEAR, START_FUTURE_YEAR } from "../../utils/constants";
-import { PERCENT_3_DECIMALS } from "../../utils/numberFormats";
+import { PERCENT_3_DECIMALS, THREE_SIGFIGS } from "../../utils/numberFormats";
 import BaseSlider from "../Controls/BaseSlider/BaseSlider";
 import DarkToolTip from "../DarkToolTip/DarkToolTip";
 
 function TotalDisplay({ year, setYear, relativeMinerRewardAtYear, reset }) {
+  const sigFigFormatter = new Intl.NumberFormat("en", THREE_SIGFIGS);
   const percentFormatter = new Intl.NumberFormat("en", PERCENT_3_DECIMALS);
-  const minerReward = percentFormatter.format(relativeMinerRewardAtYear);
+  const minerReward = percentFormatter.format(
+    sigFigFormatter.format(relativeMinerRewardAtYear)
+  );
   return (
     <Stack
       alignItems="stretch"
