@@ -16,3 +16,9 @@ export const TWO_DECIMALS = {
   minimumFractionDigits: 2,
   maximumFractionDigits: 2,
 };
+
+export const STANDARD_NO_GROUPING = {
+  notation: "standard",
+  useGrouping: false,
+  maximumFractionDigits: 20,
+};
