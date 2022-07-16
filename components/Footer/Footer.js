@@ -1,8 +1,9 @@
 import { Image, Link, Text, VStack } from "@chakra-ui/react";
+import React from "react";
 import Aside from "../Aside/Aside";
 import Section from "../Section/Section";
 
-export default function Footer(props) {
+function Footer(props) {
   return (
     <Section outerPy="2rem" flexDir="column">
       <VStack gap={5}>
@@ -27,3 +28,5 @@ export default function Footer(props) {
     </Section>
   );
 }
+
+export default React.memo(Footer);

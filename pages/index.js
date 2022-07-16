@@ -1,7 +1,7 @@
 import { ChakraProvider, useColorMode } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import _ from "lodash";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Chart from "../components/Chart/Chart";
 import Container from "../components/Container/Container";
 import ControlPanel from "../components/ControlPanel/ControlPanel";
@@ -62,11 +62,11 @@ export default function Home() {
     setYear(initYear);
   }
 
-  function resetSettings() {
+  const resetSettings = useCallback(() => {
     setFeeMemeThreshold(initFeeMemeThreshold);
     setBlockSizeMemeThreshold(initBlockSizeMemeThreshold);
     setSecurityMemeThreshold(initSetSecurityMemeThreshold);
-  }
+  }, []);
 
   const {
     marketCap,
