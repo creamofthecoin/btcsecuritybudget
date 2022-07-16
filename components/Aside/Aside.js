@@ -11,7 +11,7 @@ export default function Aside(props) {
         body={<Settings {...props} />}
         buttonText="Settings"
         size="xl"
-        h="40vh"
+        h={{ base: "20rem", md: "18rem" }}
         button={<Button borderRadius="full">Reset</Button>}
       />
       <MainModal body={<FAQ />} buttonText="Explanation" />
