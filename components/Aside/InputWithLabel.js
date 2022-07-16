@@ -10,11 +10,16 @@ export default function InputWithLabel({ label, value, onBlur }) {
   }, [value]);
 
   function localOnBlur(e) {
-    if (e.target.value) {
-      onBlur(e.target.value);
+    const x = e.target.value;
+    if (x) {
+      onBlur(x);
     } else {
       setLocalVal(value);
     }
+  }
+
+  function onChange(e) {
+    setLocalVal(e.target.value.startsWith("0") ? "0" : e.target.value);
   }
 
   return (
@@ -25,7 +30,7 @@ export default function InputWithLabel({ label, value, onBlur }) {
         type="number"
         w="10rem"
         value={localVal}
-        onChange={(e) => setLocalVal(e.target.value)}
+        onChange={onChange}
         onBlur={localOnBlur}
       />
     </HStack>
