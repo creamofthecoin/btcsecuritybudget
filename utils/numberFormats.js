@@ -22,3 +22,9 @@ export const STANDARD_NO_GROUPING = {
   useGrouping: false,
   maximumFractionDigits: 20,
 };
+
+export const THREE_SIGFIGS = {
+  minimumSignificantDigits: 3,
+  maximumSignificantDigits: 3,
+  useGrouping: false,
+};

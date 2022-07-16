@@ -23,7 +23,7 @@ function minMaxTxns(minMB, maxMB) {
 }
 
 const minMB = 0.1;
-const maxMB = 100;
+const maxMB = 1000;
 
 function BlockSizeSlider({
   blockSize,

@@ -13,20 +13,20 @@ export default function Settings({
   return (
     <>
       <VStack alignItems="stretch">
-        <ModalHeading>Settings</ModalHeading>
+        <ModalHeading>Meme Threshold Settings</ModalHeading>
         <VStack pt="2rem" alignItems="stretch">
           <InputWithLabel
-            label="Fee Meme Threshold (USD)"
+            label="Fee Threshold (USD)"
             value={feeMemeThreshold}
             onBlur={setFeeMemeThreshold}
           />
           <InputWithLabel
-            label="Block Size Meme Threshold (MB)"
+            label="Block Size Threshold (MB)"
             value={blockSizeMemeThreshold}
             onBlur={setBlockSizeMemeThreshold}
           />
           <InputWithLabel
-            label="Security Meme Threshold (%)"
+            label="Security Threshold (%)"
             value={securityMemeThreshold}
             onBlur={setSecurityMemeThreshold}
           />

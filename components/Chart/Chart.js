@@ -36,6 +36,14 @@ ChartJS.register(
 );
 
 ChartJS.defaults.color = "#ffffff";
+
+const MAX_MARKET_CAP = 1e14;
+const MAX_BLOCKSIZE = 1e4;
+const MAX_REL_REVENUE = 0.1;
+const MARKET_CAP_Y_TITLE = "Value (USD)";
+const BLOCKSIZE_Y_TITLE = "Blockchain Size (GB)";
+const REL_REVENUE_Y_TITLE = "(Miner Revenue Per Year) / (Market Cap)";
+
 const options = {
   animation: false,
   responsive: true,
@@ -79,7 +87,7 @@ const options = {
       type: "linear",
       display: true,
       position: "left",
-      title: { text: "Value (USD)", display: true },
+      title: { text: MARKET_CAP_Y_TITLE, display: true },
       ticks: {
         format: COMPACT,
         maxTicksLimit: 7,
@@ -88,13 +96,13 @@ const options = {
       grid: {
         display: false,
       },
-      max: 1e14,
+      max: MAX_MARKET_CAP,
     },
     y1: {
       type: "linear",
       display: true,
       position: "right",
-      title: { text: "Blockchain Size (GB)", display: true },
+      title: { text: BLOCKSIZE_Y_TITLE, display: true },
       ticks: {
         format: COMPACT,
       },
@@ -105,7 +113,7 @@ const options = {
         drawBorder: false,
         display: false,
       },
-      max: 1e4,
+      max: MAX_BLOCKSIZE,
     },
   },
 };
@@ -196,8 +204,8 @@ export default function Chart({
     (e) => {
       setShowRel(e.target.checked);
       const [newFormat, newMax, newTitle] = e.target.checked
-        ? [PERCENT_3_SIGFIGS, 0.1, "(Miner Revenue Per Year) / (Market Cap)"]
-        : [COMPACT, 1e14, "Value (USD)"];
+        ? [PERCENT_3_SIGFIGS, MAX_REL_REVENUE, REL_REVENUE_Y_TITLE]
+        : [COMPACT, MAX_MARKET_CAP, MARKET_CAP_Y_TITLE];
       setChartOptions(
         update(chartOptions, {
           scales: {
