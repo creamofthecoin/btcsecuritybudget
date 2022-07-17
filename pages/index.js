@@ -8,14 +8,10 @@ import theme from "../theme/theme";
 
 // eslint-disable-next-line import/no-unused-modules
 export default function Home() {
-  const [allGood, setAllGood] = useState([]);
-  if (allGood) {
-    theme.styles.global.body._before.opacity = "0";
-    theme.styles.global.body._after.opacity = "0.1";
-  } else {
-    theme.styles.global.body._before.opacity = "0.1";
-    theme.styles.global.body._after.opacity = "0";
-  }
+  const [allGood, setAllGood] = useState(false);
+  const backgroundImage = allGood
+    ? "url(/memes/good/saylor.gif)"
+    : "url(/memes/bad/sadness.gif)";
 
   return (
     <ChakraProvider theme={theme}>
@@ -46,7 +42,7 @@ export default function Home() {
           <Core setAllGood={setAllGood} />
         </Container>
       </motion.div>
-      {/* <Background /> */}
+      <Background backgroundImage={backgroundImage} />
     </ChakraProvider>
   );
 }
