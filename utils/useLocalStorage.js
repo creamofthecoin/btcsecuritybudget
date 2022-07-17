@@ -2,9 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 
 // modified from https://usehooks.com/useLocalStorage/
 // https://github.com/uidotdev/usehooks
-export function useLocalStorage(key, initialValue) {
-  // State to store our value
-  // Pass initial state function to useState so logic is only executed once
+export function useLocalStorage(key, initialValue, onLoadFromStorage) {
   const [storedValue, setStoredValue] = useState(initialValue);
 
   // Only support setValue(value) instead of setValue(fn(value))
@@ -15,9 +13,7 @@ export function useLocalStorage(key, initialValue) {
     }
     return (value) => {
       try {
-        // Save state
         setStoredValue(value);
-        // Save to local storage
         if (typeof window !== "undefined") {
           window.localStorage.setItem(key, JSON.stringify(value));
         }
@@ -30,11 +26,14 @@ export function useLocalStorage(key, initialValue) {
       return;
     }
     try {
-      // Get from local storage by key
       const item = window.localStorage.getItem(key);
-      // Parse stored json or if none return initialValue
       if (item) {
-        setStoredValue(JSON.parse(item));
+        const parsed = JSON.parse(item);
+        if (onLoadFromStorage) {
+          onLoadFromStorage(parsed, setStoredValue);
+        } else {
+          setStoredValue(parsed);
+        }
       }
     } catch (error) {}
   }, []);

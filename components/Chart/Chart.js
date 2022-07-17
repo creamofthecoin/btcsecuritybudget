@@ -22,6 +22,7 @@ import update from "immutability-helper";
 import React, { useCallback, useState } from "react";
 import { Line } from "react-chartjs-2";
 import { COMPACT, PERCENT_3_SIGFIGS } from "../../utils/numberFormats";
+import { useLocalStorage } from "../../utils/useLocalStorage";
 
 ChartJS.register(
   annotationPlugin,
@@ -167,7 +168,39 @@ export default function Chart({
   options.plugins.annotation.annotations.line1.xMax = yearIdx;
 
   const [chartOptions, setChartOptions] = useState(options);
-  const [showRel, setShowRel] = useState(false);
+
+  function setChartOptionsLog(newVal, setter) {
+    setter(newVal);
+    const value = newVal ? "logarithmic" : "linear";
+    setChartOptions((cOpts) =>
+      update(cOpts, { scales: { y: { type: { $set: value } } } })
+    );
+  }
+
+  function setChartOptionsShowRel(newVal, setter) {
+    setter(newVal);
+    const [newFormat, newMax, newTitle] = newVal
+      ? [PERCENT_3_SIGFIGS, MAX_REL_REVENUE, REL_REVENUE_Y_TITLE]
+      : [COMPACT, MAX_MARKET_CAP, MARKET_CAP_Y_TITLE];
+    setChartOptions((cOpts) =>
+      update(cOpts, {
+        scales: {
+          y: {
+            ticks: { format: { $set: newFormat } },
+            max: { $set: newMax },
+            title: { text: { $set: newTitle } },
+          },
+        },
+      })
+    );
+  }
+
+  const [isLog, setIsLog] = useLocalStorage("isLog", false, setChartOptionsLog);
+  const [showRel, setShowRel] = useLocalStorage(
+    "showRel",
+    false,
+    setChartOptionsShowRel
+  );
   const { colorMode } = useColorMode();
 
   const data = {
@@ -175,51 +208,21 @@ export default function Chart({
     datasets: [...(showRel ? yDataRel : yDataAbs), ...y1Data],
   };
 
-  const isLog = chartOptions.scales.y.type === "logarithmic";
-  const isUsingRel = data.datasets.length === 2;
-
-  function onMouseEnter() {
+  function setPointRadius(newRadius) {
     setChartOptions(
-      update(chartOptions, { elements: { point: { radius: { $set: 2 } } } })
+      update(chartOptions, {
+        elements: { point: { radius: { $set: newRadius } } },
+      })
     );
   }
 
-  function onMouseLeave() {
-    setChartOptions(
-      update(chartOptions, { elements: { point: { radius: { $set: 0 } } } })
-    );
-  }
+  const onLogToggle = useCallback((e) => {
+    setChartOptionsLog(e.target.checked, setIsLog(true));
+  }, []);
 
-  const onLogToggle = useCallback(
-    (e) => {
-      const value = e.target.checked ? "logarithmic" : "linear";
-      setChartOptions(
-        update(chartOptions, { scales: { y: { type: { $set: value } } } })
-      );
-    },
-    [chartOptions]
-  );
-
-  const onRelMinerRewardToggle = useCallback(
-    (e) => {
-      setShowRel(e.target.checked);
-      const [newFormat, newMax, newTitle] = e.target.checked
-        ? [PERCENT_3_SIGFIGS, MAX_REL_REVENUE, REL_REVENUE_Y_TITLE]
-        : [COMPACT, MAX_MARKET_CAP, MARKET_CAP_Y_TITLE];
-      setChartOptions(
-        update(chartOptions, {
-          scales: {
-            y: {
-              ticks: { format: { $set: newFormat } },
-              max: { $set: newMax },
-              title: { text: { $set: newTitle } },
-            },
-          },
-        })
-      );
-    },
-    [chartOptions]
-  );
+  const onRelMinerRewardToggle = useCallback((e) => {
+    setChartOptionsShowRel(e.target.checked, setShowRel(true));
+  }, []);
 
   return (
     <Stack
@@ -242,8 +245,8 @@ export default function Chart({
         <Line
           options={chartOptions}
           data={data}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
+          onMouseEnter={() => setPointRadius(2)}
+          onMouseLeave={() => setPointRadius(0)}
         />
       </Flex>
       <Stack
@@ -260,7 +263,7 @@ export default function Chart({
         <GraphToggle
           label={"Relative Miner Revenue/Year"}
           onChange={onRelMinerRewardToggle}
-          isChecked={isUsingRel}
+          isChecked={showRel}
         />
       </Stack>
     </Stack>
