@@ -39,7 +39,7 @@ function BlockSizeSlider({
     : transactionsToMB(blockSize);
 
   function onLabelClick() {
-    setBlockSizeIsMB((x) => !x);
+    setBlockSizeIsMB(!blockSizeIsMB);
     setBlockSize(equivalent);
   }
 

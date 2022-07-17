@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 // modified from https://usehooks.com/useLocalStorage/
 // https://github.com/uidotdev/usehooks
@@ -7,21 +7,18 @@ export function useLocalStorage(key, initialValue) {
   // Pass initial state function to useState so logic is only executed once
   const [storedValue, setStoredValue] = useState(initialValue);
 
-  // Return a wrapped version of useState's setter function that ...
-  // ... persists the new value to localStorage.
-  const setValue = (value) => {
+  // Only support setValue(value) instead of setValue(fn(value))
+  // so that useCallback is called just once
+  const setValue = useCallback((value) => {
     try {
-      // Allow value to be a function so we have same API as useState
-      const valueToStore =
-        value instanceof Function ? value(storedValue) : value;
       // Save state
-      setStoredValue(valueToStore);
+      setStoredValue(value);
       // Save to local storage
       if (typeof window !== "undefined") {
-        window.localStorage.setItem(key, JSON.stringify(valueToStore));
+        window.localStorage.setItem(key, JSON.stringify(value));
       }
     } catch (error) {}
-  };
+  }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") {
@@ -32,7 +29,7 @@ export function useLocalStorage(key, initialValue) {
       const item = window.localStorage.getItem(key);
       // Parse stored json or if none return initialValue
       if (item) {
-        setValue(JSON.parse(item));
+        setStoredValue(JSON.parse(item));
       }
     } catch (error) {}
   }, []);

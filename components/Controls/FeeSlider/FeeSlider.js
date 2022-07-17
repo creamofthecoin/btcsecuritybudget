@@ -29,7 +29,7 @@ function FeeSlider({ avgFee, setAvgFee, feeIsUsd, setFeeIsUsd, priceAtYear }) {
     : satsToUsd(avgFee, priceAtYear);
 
   function onLabelClick() {
-    setFeeIsUsd((x) => !x);
+    setFeeIsUsd(!feeIsUsd);
     setAvgFee(equivalent);
   }
 
