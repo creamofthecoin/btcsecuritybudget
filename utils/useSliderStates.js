@@ -39,18 +39,18 @@ export function useSliderStates() {
   );
 
   const reset = useCallback(() => {
-    setAvgFee(CURR_AVG_FEE);
-    setFeeIsUsd(true);
-    setBlockSize(CURR_AVG_BLOCK_SIZE_MB);
-    setBlockSizeIsMB(true);
-    setFinalMarketCap(initMarketCap);
-    setYear(initYear);
+    setAvgFee(true)(CURR_AVG_FEE);
+    setFeeIsUsd(true)(true);
+    setBlockSize(true)(CURR_AVG_BLOCK_SIZE_MB);
+    setBlockSizeIsMB(true)(true);
+    setFinalMarketCap(true)(initMarketCap);
+    setYear(true)(initYear);
   }, []);
 
   const resetSettings = useCallback(() => {
-    setFeeMemeThreshold(initFeeMemeThreshold);
-    setBlockSizeMemeThreshold(initBlockSizeMemeThreshold);
-    setSecurityMemeThreshold(initSetSecurityMemeThreshold);
+    setFeeMemeThreshold(true)(initFeeMemeThreshold);
+    setBlockSizeMemeThreshold(true)(initBlockSizeMemeThreshold);
+    setSecurityMemeThreshold(true)(initSetSecurityMemeThreshold);
   }, []);
 
   return {
