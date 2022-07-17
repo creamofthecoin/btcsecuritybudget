@@ -19,11 +19,9 @@ const minSats = 1;
 const maxSats = SATS_PER_BTC;
 
 function FeeSlider({ avgFee, setAvgFee, feeIsUsd, setFeeIsUsd, priceAtYear }) {
-  console.log("FeeSlider");
-
-  const setAvgFeeToMem = setAvgFee({ toStorage: false });
-  const setAvgFeeToStorage = setAvgFee({ toStorage: true });
-  const setFeeIsUsdToStorage = setFeeIsUsd({ toStorage: true });
+  const setAvgFeeToMem = setAvgFee(false);
+  const setAvgFeeToStorage = setAvgFee(true);
+  const setFeeIsUsdToStorage = setFeeIsUsd(true);
 
   const twoDecimals = new Intl.NumberFormat("en", TWO_DECIMALS);
   const [min, max] = feeIsUsd

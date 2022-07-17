@@ -31,11 +31,9 @@ function BlockSizeSlider({
   blockSizeIsMB,
   setBlockSizeIsMB,
 }) {
-  console.log("BlockSizeSlider");
-
-  const setBlockSizeToMem = setBlockSize({ toStorage: false });
-  const setBlockSizeToStorage = setBlockSize({ toStorage: true });
-  const setBlockSizeIsMBToStorage = setBlockSizeIsMB({ toStorage: true });
+  const setBlockSizeToMem = setBlockSize(false);
+  const setBlockSizeToStorage = setBlockSize(true);
+  const setBlockSizeIsMBToStorage = setBlockSizeIsMB(true);
 
   const [min, max] = blockSizeIsMB
     ? [base10Log(minMB), base10Log(maxMB)]

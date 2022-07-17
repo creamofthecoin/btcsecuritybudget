@@ -10,7 +10,7 @@ export function useLocalStorage(key, initialValue) {
   // Only support setValue(value) instead of setValue(fn(value))
   // so that useCallback is called just once
   const setValue = useCallback((toStorage) => {
-    if (toStorage) {
+    if (!toStorage) {
       return setStoredValue;
     }
     return (value) => {
