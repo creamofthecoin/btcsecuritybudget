@@ -1,6 +1,7 @@
 import { useColorMode } from "@chakra-ui/react";
+import { useEffect } from "react";
 import { deriveValues } from "../../utils/calculations";
-import { YEARS } from "../../utils/constants";
+import { GOOD_RATING, YEARS } from "../../utils/constants";
 import { useSliderStates } from "../../utils/useSliderStates";
 import useVisibility from "../../utils/useVisibility";
 import { getYearIdx } from "../../utils/utils";
@@ -11,7 +12,7 @@ import Meme from "../Meme/Meme";
 import Section from "../Section/Section";
 import Status from "../Status/Status";
 
-export default function Core({ changeBackground }) {
+export default function Core({ setAllGood }) {
   const {
     avgFee,
     setAvgFee,
@@ -64,7 +65,9 @@ export default function Core({ changeBackground }) {
   });
 
   const { colorMode } = useColorMode();
-  changeBackground(ratings);
+  useEffect(() => {
+    setAllGood(_.every(ratings, (x) => x === GOOD_RATING));
+  }, Object.values(ratings));
 
   return (
     <>

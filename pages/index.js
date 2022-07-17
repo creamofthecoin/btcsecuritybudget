@@ -1,56 +1,24 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import update from "immutability-helper";
-import _ from "lodash";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import Container from "../components/Container/Container";
 import Core from "../components/Core/Core";
 import Metatags from "../components/Metatags/Metatags";
 import theme from "../theme/theme";
-import { GOOD_RATING } from "../utils/constants";
 
 // eslint-disable-next-line import/no-unused-modules
 export default function Home() {
-  const [beforeOpacity, setBeforeOpacity] = useState(
-    theme.styles.global.body._before.opacity
-  );
-  const [afterOpacity, setAfterOpacity] = useState(
-    theme.styles.global.body._after.opacity
-  );
-  const changeBackground = useCallback(
-    (ratings) => {
-      if (_.every(ratings, (x) => x === GOOD_RATING)) {
-        if (beforeOpacity !== "0") {
-          setBeforeOpacity("0");
-        }
-        if (afterOpacity !== "0.1") {
-          setAfterOpacity("0.1");
-        }
-      } else {
-        if (beforeOpacity !== "0.1") {
-          setBeforeOpacity("0.1");
-        }
-        if (afterOpacity !== "0") {
-          setAfterOpacity("0");
-        }
-      }
-    },
-    [beforeOpacity, afterOpacity]
-  );
-
-  const currTheme = update(theme, {
-    styles: {
-      global: {
-        body: {
-          _before: { opacity: { $set: beforeOpacity } },
-          _after: { opacity: { $set: afterOpacity } },
-        },
-      },
-    },
-  });
+  const [allGood, setAllGood] = useState([]);
+  if (allGood) {
+    theme.styles.global.body._before.opacity = "0";
+    theme.styles.global.body._after.opacity = "0.1";
+  } else {
+    theme.styles.global.body._before.opacity = "0.1";
+    theme.styles.global.body._after.opacity = "0";
+  }
 
   return (
-    <ChakraProvider theme={currTheme}>
+    <ChakraProvider theme={theme}>
       <motion.div
         initial={{ opacity: 1 }}
         animate={{ opacity: 0 }}
@@ -75,7 +43,7 @@ export default function Home() {
       >
         <Container center={true}>
           <Metatags />
-          <Core changeBackground={changeBackground} />
+          <Core setAllGood={setAllGood} />
         </Container>
       </motion.div>
       <Background />
