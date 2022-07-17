@@ -1,87 +1,56 @@
-import { ChakraProvider, useColorMode } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import update from "immutability-helper";
 import _ from "lodash";
-import Chart from "../components/Chart/Chart";
+import { useCallback, useState } from "react";
 import Container from "../components/Container/Container";
-import ControlPanel from "../components/ControlPanel/ControlPanel";
-import Footer from "../components/Footer/Footer";
-import Meme from "../components/Meme/Meme";
+import Core from "../components/Core/Core";
 import Metatags from "../components/Metatags/Metatags";
-import Section from "../components/Section/Section";
-import Status from "../components/Status/Status";
 import theme from "../theme/theme";
-import { deriveValues } from "../utils/calculations";
-import { GOOD_RATING, YEARS } from "../utils/constants";
-import { useSliderStates } from "../utils/useSliderStates";
-
-import useVisibility from "../utils/useVisibility";
-import { getYearIdx } from "../utils/utils";
+import { GOOD_RATING } from "../utils/constants";
 
 // eslint-disable-next-line import/no-unused-modules
 export default function Home() {
-  const {
-    avgFee,
-    setAvgFee,
-    feeIsUsd,
-    setFeeIsUsd,
-    blockSize,
-    setBlockSize,
-    blockSizeIsMB,
-    setBlockSizeIsMB,
-    finalMarketCap,
-    setFinalMarketCap,
-    year,
-    setYear,
-    feeMemeThreshold,
-    setFeeMemeThreshold,
-    blockSizeMemeThreshold,
-    setBlockSizeMemeThreshold,
-    securityMemeThreshold,
-    setSecurityMemeThreshold,
-    reset,
-    resetSettings,
-  } = useSliderStates();
+  const [beforeOpacity, setBeforeOpacity] = useState(
+    theme.styles.global.body._before.opacity
+  );
+  const [afterOpacity, setAfterOpacity] = useState(
+    theme.styles.global.body._after.opacity
+  );
+  const changeBackground = useCallback(
+    (ratings) => {
+      if (_.every(ratings, (x) => x === GOOD_RATING)) {
+        if (beforeOpacity !== "0") {
+          setBeforeOpacity("0");
+        }
+        if (afterOpacity !== "0.1") {
+          setAfterOpacity("0.1");
+        }
+      } else {
+        if (beforeOpacity !== "0.1") {
+          setBeforeOpacity("0.1");
+        }
+        if (afterOpacity !== "0") {
+          setAfterOpacity("0");
+        }
+      }
+    },
+    [beforeOpacity, afterOpacity]
+  );
 
-  const isVisible = useVisibility((window) => {
-    return window.innerWidth > 991 || window.innerWidth < 768;
+  const currTheme = update(theme, {
+    styles: {
+      global: {
+        body: {
+          _before: { opacity: { $set: beforeOpacity } },
+          _after: { opacity: { $set: afterOpacity } },
+        },
+      },
+    },
   });
-  const statusVis = useVisibility((window) => {
-    return window.innerWidth > 991;
-  });
-
-  const yearIdx = getYearIdx(year);
-  const {
-    marketCap,
-    usdMinerReward,
-    blockchainSize,
-    relativeMinerReward,
-    priceAtYear,
-    relativeMinerRewardAtYear,
-    ratings,
-  } = deriveValues({
-    avgFee,
-    blockSize,
-    finalMarketCap,
-    feeIsUsd,
-    blockSizeIsMB,
-    year,
-    feeMemeThreshold,
-    blockSizeMemeThreshold,
-    securityMemeThreshold,
-  });
-
-  const { colorMode } = useColorMode();
-
-  if (_.every(ratings, (x) => x === GOOD_RATING)) {
-    theme.styles.global.body._before.opacity = "0";
-    theme.styles.global.body._after.opacity = "0.1";
-  } else {
-    theme.styles.global.body._before.opacity = "0.1";
-    theme.styles.global.body._after.opacity = "0";
-  }
 
   return (
-    <ChakraProvider theme={theme}>
+    <ChakraProvider theme={currTheme}>
       <motion.div
         initial={{ opacity: 1 }}
         animate={{ opacity: 0 }}
@@ -106,53 +75,7 @@ export default function Home() {
       >
         <Container center={true}>
           <Metatags />
-          <Section>{statusVis && <Status ratings={ratings} />}</Section>
-          <Section
-            flexDir={{ base: "column", lg: "row" }}
-            alignItems="center"
-            gap={{ base: 5, md: 0, xl: 10 }}
-            outerMt="2rem"
-          >
-            <ControlPanel
-              avgFee={avgFee}
-              setAvgFee={setAvgFee}
-              feeIsUsd={feeIsUsd}
-              setFeeIsUsd={setFeeIsUsd}
-              blockSize={blockSize}
-              setBlockSize={setBlockSize}
-              blockSizeIsMB={blockSizeIsMB}
-              setBlockSizeIsMB={setBlockSizeIsMB}
-              finalMarketCap={finalMarketCap}
-              setFinalMarketCap={setFinalMarketCap}
-              year={year}
-              setYear={setYear}
-              priceAtYear={priceAtYear}
-              relativeMinerRewardAtYear={relativeMinerRewardAtYear}
-              colorMode={colorMode}
-              ratings={ratings}
-              isVisible={isVisible}
-              reset={reset}
-            />
-            {isVisible && <Meme ratings={ratings} />}
-            {!statusVis && <Status ratings={ratings} />}
-            <Chart
-              xAxisLabels={YEARS}
-              marketCap={marketCap}
-              usdMinerReward={usdMinerReward}
-              blockchainSize={blockchainSize}
-              relativeMinerReward={relativeMinerReward}
-              yearIdx={yearIdx}
-            />
-          </Section>
-          <Footer
-            feeMemeThreshold={feeMemeThreshold}
-            setFeeMemeThreshold={setFeeMemeThreshold}
-            blockSizeMemeThreshold={blockSizeMemeThreshold}
-            setBlockSizeMemeThreshold={setBlockSizeMemeThreshold}
-            securityMemeThreshold={securityMemeThreshold}
-            setSecurityMemeThreshold={setSecurityMemeThreshold}
-            resetSettings={resetSettings}
-          />
+          <Core changeBackground={changeBackground} />
         </Container>
       </motion.div>
     </ChakraProvider>
