@@ -17,7 +17,7 @@ export default function MainModal({
   size = "2xl",
   h = "70vh",
   button,
-  closeButtonText,
+  closeButtonText = "close",
 }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
