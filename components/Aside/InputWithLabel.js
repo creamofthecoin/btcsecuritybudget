@@ -7,7 +7,9 @@ export default function InputWithLabel({ label, value, onBlur }) {
   const [localVal, setLocalVal] = useState(value);
 
   useEffect(() => {
-    setLocalVal(value);
+    if (localVal !== value) {
+      setLocalVal(value);
+    }
   }, [value]);
 
   function localOnBlur() {
