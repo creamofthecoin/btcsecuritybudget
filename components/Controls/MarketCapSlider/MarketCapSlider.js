@@ -4,6 +4,8 @@ import { COMPACT } from "../../../utils/numberFormats";
 import LogSlider from "../LogSlider/LogSlider";
 
 function MarketCapSlider({ finalMarketCap, setFinalMarketCap }) {
+  const setFinalMarketCapToMem = setFinalMarketCap(false);
+  const setFinalMarketCapToStorage = setFinalMarketCap(true);
   const compact = new Intl.NumberFormat("en", COMPACT);
 
   return (
@@ -11,7 +13,8 @@ function MarketCapSlider({ finalMarketCap, setFinalMarketCap }) {
       label={`Market Cap in ${END_YEAR}`}
       output={`$${compact.format(finalMarketCap)}`}
       value={finalMarketCap}
-      onChange={setFinalMarketCap}
+      onChange={setFinalMarketCapToMem}
+      onChangeEnd={setFinalMarketCapToStorage}
       min={11}
       max={14}
       step={0.01}

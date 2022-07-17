@@ -38,10 +38,12 @@ function FeeSlider({ avgFee, setAvgFee, feeIsUsd, setFeeIsUsd, priceAtYear }) {
   }
 
   useEffect(() => {
-    if (avgFee < pow10(min)) {
-      setAvgFeeToStorage(pow10(min));
+    if (!feeIsUsd) {
+      return;
+    } else if (avgFee < pow10(min)) {
+      setAvgFeeToMem(pow10(min));
     } else if (avgFee > pow10(max)) {
-      setAvgFeeToStorage(pow10(max));
+      setAvgFeeToMem(pow10(max));
     }
   }, [min, max]);
 

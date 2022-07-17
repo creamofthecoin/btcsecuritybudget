@@ -19,6 +19,10 @@ function TotalDisplay({ year, setYear, relativeMinerRewardAtYear, reset }) {
   const minerReward = percentFormatter.format(
     sigFigFormatter.format(relativeMinerRewardAtYear)
   );
+
+  const setYearToMem = setYear(false);
+  const setYearToStorage = setYear(true);
+
   return (
     <Stack
       alignItems="stretch"
@@ -32,7 +36,8 @@ function TotalDisplay({ year, setYear, relativeMinerRewardAtYear, reset }) {
         label={"Year"}
         output={year}
         value={year}
-        onChange={setYear}
+        onChange={setYearToMem}
+        onChangeEnd={setYearToStorage}
         min={START_FUTURE_YEAR}
         max={END_YEAR}
         mb="0"
