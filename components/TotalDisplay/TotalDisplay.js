@@ -39,18 +39,28 @@ function TotalDisplay({ year, setYear, relativeMinerRewardAtYear, reset }) {
         />
         <Spacer />
         <DarkToolTip label="Reset">
-          <IconButton
-            icon={<FaRedoAlt />}
-            // size={{ base: "sm", lg: "md" }}
-            borderRadius="full"
-            w="min-content"
-            onClick={reset}
-          />
+          <span>
+            <ResetButton reset={reset} />
+          </span>
         </DarkToolTip>
       </HStack>
     </Stack>
   );
 }
+
+// Has to be wrapped by <span>
+// https://chakra-ui.com/docs/components/tooltip#with-an-icon
+const ResetButton = React.memo(({ reset }) => {
+  return (
+    <IconButton
+      icon={<FaRedoAlt />}
+      // size={{ base: "sm", lg: "md" }}
+      borderRadius="full"
+      w="min-content"
+      onClick={reset}
+    />
+  );
+});
 
 function SingleTotal({ label, total, bold, large, tooltipLabel }) {
   return (
