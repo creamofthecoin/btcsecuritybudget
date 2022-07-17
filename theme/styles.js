@@ -15,16 +15,16 @@ const bgBoilerPlate = {
 const styles = {
   body: {
     flexGrow: 1,
-    // _before: {
-    //   backgroundImage: "url(/memes/bad/sadness.gif)",
-    //   ...bgBoilerPlate,
-    //   transitionDuration: "0.5s",
-    // },
-    // _after: {
-    //   backgroundImage: "url(/memes/good/saylor.gif)",
-    //   ...bgBoilerPlate,
-    //   transitionDuration: "0.5s",
-    // },
+    _before: {
+      backgroundImage: "url(/memes/bad/sadness.gif)",
+      ...bgBoilerPlate,
+      transitionDuration: "0.5s",
+    },
+    _after: {
+      backgroundImage: "url(/memes/good/saylor.gif)",
+      ...bgBoilerPlate,
+      transitionDuration: "0.5s",
+    },
     scrollbarWidth: "thin",
     scrollbarColor: "gray.300 transparent",
     scrollbarHeight: "thin",

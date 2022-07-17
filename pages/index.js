@@ -1,4 +1,4 @@
-import { Box, ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Container from "../components/Container/Container";
@@ -9,9 +9,13 @@ import theme from "../theme/theme";
 // eslint-disable-next-line import/no-unused-modules
 export default function Home() {
   const [allGood, setAllGood] = useState(false);
-  const backgroundImage = allGood
-    ? "url(/memes/good/saylor.gif)"
-    : "url(/memes/bad/sadness.gif)";
+  if (allGood) {
+    theme.styles.global.body._before.opacity = "0";
+    theme.styles.global.body._after.opacity = "0.1";
+  } else {
+    theme.styles.global.body._before.opacity = "0.1";
+    theme.styles.global.body._after.opacity = "0";
+  }
 
   return (
     <ChakraProvider theme={theme}>
@@ -42,28 +46,27 @@ export default function Home() {
           <Core setAllGood={setAllGood} />
         </Container>
       </motion.div>
-      <Background backgroundImage={backgroundImage} />
     </ChakraProvider>
   );
 }
 
-function Background({ backgroundImage }) {
-  return (
-    <Box
-      backgroundImage={backgroundImage}
-      backgroundColor="gray.900"
-      opacity="0.1"
-      backgroundSize="cover"
-      backgroundPosition="center"
-      transitionDuration="1s"
-      position="absolute"
-      top="0"
-      right="0"
-      bottom="0"
-      left="0"
-      w="100vw"
-      h="100%"
-      zIndex="-1"
-    />
-  );
-}
+// function Background({ backgroundImage }) {
+//   return (
+//     <Box
+//       backgroundImage={backgroundImage}
+//       backgroundColor="gray.900"
+//       opacity="0.1"
+//       backgroundSize="cover"
+//       backgroundPosition="center"
+//       transitionDuration="1s"
+//       position="absolute"
+//       top="0"
+//       right="0"
+//       bottom="0"
+//       left="0"
+//       w="100vw"
+//       h="100%"
+//       zIndex="-1"
+//     />
+//   );
+// }
