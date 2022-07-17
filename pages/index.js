@@ -55,7 +55,7 @@ function Background({ backgroundImage }) {
       opacity="0.1"
       backgroundSize="cover"
       backgroundPosition="center"
-      transitionDuration="opacity 0.5s ease"
+      transitionDuration="1s"
       position="absolute"
       top="0"
       right="0"
