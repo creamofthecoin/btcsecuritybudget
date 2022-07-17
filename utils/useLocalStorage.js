@@ -9,15 +9,20 @@ export function useLocalStorage(key, initialValue) {
 
   // Only support setValue(value) instead of setValue(fn(value))
   // so that useCallback is called just once
-  const setValue = useCallback((value) => {
-    try {
-      // Save state
-      setStoredValue(value);
-      // Save to local storage
-      if (typeof window !== "undefined") {
-        window.localStorage.setItem(key, JSON.stringify(value));
-      }
-    } catch (error) {}
+  const setValue = useCallback((toStorage) => {
+    if (toStorage) {
+      return setStoredValue;
+    }
+    return (value) => {
+      try {
+        // Save state
+        setStoredValue(value);
+        // Save to local storage
+        if (typeof window !== "undefined") {
+          window.localStorage.setItem(key, JSON.stringify(value));
+        }
+      } catch (error) {}
+    };
   }, []);
 
   useEffect(() => {

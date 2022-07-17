@@ -19,6 +19,12 @@ const minSats = 1;
 const maxSats = SATS_PER_BTC;
 
 function FeeSlider({ avgFee, setAvgFee, feeIsUsd, setFeeIsUsd, priceAtYear }) {
+  console.log("FeeSlider");
+
+  const setAvgFeeToMem = setAvgFee({ toStorage: false });
+  const setAvgFeeToStorage = setAvgFee({ toStorage: true });
+  const setFeeIsUsdToStorage = setFeeIsUsd({ toStorage: true });
+
   const twoDecimals = new Intl.NumberFormat("en", TWO_DECIMALS);
   const [min, max] = feeIsUsd
     ? minMaxUsd(minSats, maxSats, priceAtYear)
@@ -29,15 +35,15 @@ function FeeSlider({ avgFee, setAvgFee, feeIsUsd, setFeeIsUsd, priceAtYear }) {
     : satsToUsd(avgFee, priceAtYear);
 
   function onLabelClick() {
-    setFeeIsUsd(!feeIsUsd);
-    setAvgFee(equivalent);
+    setFeeIsUsdToStorage(!feeIsUsd);
+    setAvgFeeToStorage(equivalent);
   }
 
   useEffect(() => {
     if (avgFee < pow10(min)) {
-      setAvgFee(pow10(min));
+      setAvgFeeToStorage(pow10(min));
     } else if (avgFee > pow10(max)) {
-      setAvgFee(pow10(max));
+      setAvgFeeToStorage(pow10(max));
     }
   }, [min, max]);
 
@@ -50,7 +56,8 @@ function FeeSlider({ avgFee, setAvgFee, feeIsUsd, setFeeIsUsd, priceAtYear }) {
       label="Average Fee"
       output={`${twoDecimals.format(avgFee)} ${unitsLabel(feeIsUsd)}`}
       value={avgFee}
-      onChange={setAvgFee}
+      onChange={setAvgFeeToMem}
+      onChangeEnd={setAvgFeeToStorage}
       min={min}
       max={max}
       step={0.01}

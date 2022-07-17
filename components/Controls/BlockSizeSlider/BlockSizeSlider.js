@@ -31,6 +31,12 @@ function BlockSizeSlider({
   blockSizeIsMB,
   setBlockSizeIsMB,
 }) {
+  console.log("BlockSizeSlider");
+
+  const setBlockSizeToMem = setBlockSize({ toStorage: false });
+  const setBlockSizeToStorage = setBlockSize({ toStorage: true });
+  const setBlockSizeIsMBToStorage = setBlockSizeIsMB({ toStorage: true });
+
   const [min, max] = blockSizeIsMB
     ? [base10Log(minMB), base10Log(maxMB)]
     : minMaxTxns(minMB, maxMB);
@@ -39,8 +45,8 @@ function BlockSizeSlider({
     : transactionsToMB(blockSize);
 
   function onLabelClick() {
-    setBlockSizeIsMB(!blockSizeIsMB);
-    setBlockSize(equivalent);
+    setBlockSizeIsMBToStorage(!blockSizeIsMB);
+    setBlockSizeToStorage(equivalent);
   }
 
   const formatter = getFormatter(blockSizeIsMB);
@@ -55,7 +61,8 @@ function BlockSizeSlider({
       label="Block Size"
       output={`${formatter.format(blockSize)} ${unitsLabel(blockSizeIsMB)}`}
       value={blockSize}
-      onChange={setBlockSize}
+      onChange={setBlockSizeToMem}
+      onChangeEnd={setBlockSizeToStorage}
       min={min}
       max={max}
       step={0.01}
