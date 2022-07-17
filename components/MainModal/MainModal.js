@@ -55,9 +55,11 @@ export default function MainModal({
           </ModalBody>
           <ModalFooter gap="1rem">
             {button}
-            <Button borderRadius="full" onClick={onClose}>
-              {closeButtonText}
-            </Button>
+            {closeButtonText && (
+              <Button borderRadius="full" onClick={onClose}>
+                {closeButtonText}
+              </Button>
+            )}
           </ModalFooter>
         </ModalContent>
       </Modal>
