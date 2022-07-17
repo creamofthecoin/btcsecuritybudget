@@ -29,7 +29,6 @@ export default function Section(props) {
     outerBorderLeft = "none",
     outerBorderRight = "none",
     innerBorderTop = "none",
-    innerBorderBottom = "none",
     innerBorderLeft = "none",
     innerBorderRight = "none",
     outerMt = null,

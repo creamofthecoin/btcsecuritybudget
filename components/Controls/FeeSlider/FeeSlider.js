@@ -45,7 +45,7 @@ function FeeSlider({ avgFee, setAvgFee, feeIsUsd, setFeeIsUsd, priceAtYear }) {
     } else if (avgFee > pow10(max)) {
       setAvgFeeToMem(pow10(max));
     }
-  }, [min, max]);
+  }, [min, max, feeIsUsd]);
 
   const toolTipLabel = `${twoDecimals.format(equivalent)} ${unitsLabel(
     !feeIsUsd
