@@ -51,8 +51,11 @@ function Background({ backgroundImage }) {
   return (
     <Box
       backgroundImage={backgroundImage}
-      transitionDuration="0.5s"
       backgroundColor="gray.900"
+      opacity="0.1"
+      backgroundSize="cover"
+      backgroundPosition="center"
+      transitionDuration="opacity 0.5s ease"
       position="absolute"
       top="0"
       right="0"
