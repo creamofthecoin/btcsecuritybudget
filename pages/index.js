@@ -1,7 +1,7 @@
 import { ChakraProvider, useColorMode } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import _ from "lodash";
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import Chart from "../components/Chart/Chart";
 import Container from "../components/Container/Container";
 import ControlPanel from "../components/ControlPanel/ControlPanel";
@@ -18,6 +18,7 @@ import {
   GOOD_RATING,
   YEARS,
 } from "../utils/constants";
+import { useLocalStorage } from "../utils/useLocalStorage";
 import useVisibility from "../utils/useVisibility";
 import { getYearIdx } from "../utils/utils";
 
@@ -29,19 +30,32 @@ const initSetSecurityMemeThreshold = 1;
 
 // eslint-disable-next-line import/no-unused-modules
 export default function Home() {
-  const [avgFee, setAvgFee] = useState(CURR_AVG_FEE); // usd or sats
-  const [feeIsUsd, setFeeIsUsd] = useState(true);
-  const [blockSize, setBlockSize] = useState(CURR_AVG_BLOCK_SIZE_MB); // megabytes or # transactions
-  const [blockSizeIsMB, setBlockSizeIsMB] = useState(true);
-  const [finalMarketCap, setFinalMarketCap] = useState(initMarketCap); // market cap in END_YEAR
-  const [year, setYear] = useState(initYear);
+  const [avgFee, setAvgFee] = useLocalStorage("avgFee", CURR_AVG_FEE); // usd or sats
+  const [feeIsUsd, setFeeIsUsd] = useLocalStorage("feeIsUsd", true);
+  const [blockSize, setBlockSize] = useLocalStorage(
+    "blockSize",
+    CURR_AVG_BLOCK_SIZE_MB
+  ); // megabytes or # transactions
+  const [blockSizeIsMB, setBlockSizeIsMB] = useLocalStorage(
+    "blockSizeIsMB",
+    true
+  );
+  const [finalMarketCap, setFinalMarketCap] = useLocalStorage(
+    "finalMarketCap",
+    initMarketCap
+  ); // market cap in END_YEAR
+  const [year, setYear] = useLocalStorage("year", initYear);
 
-  const [feeMemeThreshold, setFeeMemeThreshold] =
-    useState(initFeeMemeThreshold);
-  const [blockSizeMemeThreshold, setBlockSizeMemeThreshold] = useState(
+  const [feeMemeThreshold, setFeeMemeThreshold] = useLocalStorage(
+    "feeMemeThreshold",
+    initFeeMemeThreshold
+  );
+  const [blockSizeMemeThreshold, setBlockSizeMemeThreshold] = useLocalStorage(
+    "blockSizeMemeThreshold",
     initBlockSizeMemeThreshold
   );
-  const [securityMemeThreshold, setSecurityMemeThreshold] = useState(
+  const [securityMemeThreshold, setSecurityMemeThreshold] = useLocalStorage(
+    "securityMemeThreshold",
     initSetSecurityMemeThreshold
   );
 
