@@ -1,7 +1,6 @@
 import { ChakraProvider, useColorMode } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import _ from "lodash";
-import { useCallback } from "react";
 import Chart from "../components/Chart/Chart";
 import Container from "../components/Container/Container";
 import ControlPanel from "../components/ControlPanel/ControlPanel";
@@ -12,54 +11,37 @@ import Section from "../components/Section/Section";
 import Status from "../components/Status/Status";
 import theme from "../theme/theme";
 import { deriveValues } from "../utils/calculations";
-import {
-  CURR_AVG_BLOCK_SIZE_MB,
-  CURR_AVG_FEE,
-  GOOD_RATING,
-  YEARS,
-} from "../utils/constants";
-import { useLocalStorage } from "../utils/useLocalStorage";
+import { GOOD_RATING, YEARS } from "../utils/constants";
+import { useSliderStates } from "../utils/useSliderStates";
+
 import useVisibility from "../utils/useVisibility";
 import { getYearIdx } from "../utils/utils";
 
-const initMarketCap = 1e14;
-const initYear = 2032;
-const initFeeMemeThreshold = 100;
-const initBlockSizeMemeThreshold = 10;
-const initSetSecurityMemeThreshold = 1;
-
 // eslint-disable-next-line import/no-unused-modules
 export default function Home() {
-  const [avgFee, setAvgFee] = useLocalStorage("avgFee", CURR_AVG_FEE); // usd or sats
-  const [feeIsUsd, setFeeIsUsd] = useLocalStorage("feeIsUsd", true);
-  const [blockSize, setBlockSize] = useLocalStorage(
-    "blockSize",
-    CURR_AVG_BLOCK_SIZE_MB
-  ); // megabytes or # transactions
-  const [blockSizeIsMB, setBlockSizeIsMB] = useLocalStorage(
-    "blockSizeIsMB",
-    true
-  );
-  const [finalMarketCap, setFinalMarketCap] = useLocalStorage(
-    "finalMarketCap",
-    initMarketCap
-  ); // market cap in END_YEAR
-  const [year, setYear] = useLocalStorage("year", initYear);
+  const {
+    avgFee,
+    setAvgFee,
+    feeIsUsd,
+    setFeeIsUsd,
+    blockSize,
+    setBlockSize,
+    blockSizeIsMB,
+    setBlockSizeIsMB,
+    finalMarketCap,
+    setFinalMarketCap,
+    year,
+    setYear,
+    feeMemeThreshold,
+    setFeeMemeThreshold,
+    blockSizeMemeThreshold,
+    setBlockSizeMemeThreshold,
+    securityMemeThreshold,
+    setSecurityMemeThreshold,
+    reset,
+    resetSettings,
+  } = useSliderStates();
 
-  const [feeMemeThreshold, setFeeMemeThreshold] = useLocalStorage(
-    "feeMemeThreshold",
-    initFeeMemeThreshold
-  );
-  const [blockSizeMemeThreshold, setBlockSizeMemeThreshold] = useLocalStorage(
-    "blockSizeMemeThreshold",
-    initBlockSizeMemeThreshold
-  );
-  const [securityMemeThreshold, setSecurityMemeThreshold] = useLocalStorage(
-    "securityMemeThreshold",
-    initSetSecurityMemeThreshold
-  );
-
-  const yearIdx = getYearIdx(year);
   const isVisible = useVisibility((window) => {
     return window.innerWidth > 991 || window.innerWidth < 768;
   });
@@ -67,21 +49,7 @@ export default function Home() {
     return window.innerWidth > 991;
   });
 
-  const reset = useCallback(() => {
-    setAvgFee(CURR_AVG_FEE);
-    setFeeIsUsd(true);
-    setBlockSize(CURR_AVG_BLOCK_SIZE_MB);
-    setBlockSizeIsMB(true);
-    setFinalMarketCap(initMarketCap);
-    setYear(initYear);
-  }, []);
-
-  const resetSettings = useCallback(() => {
-    setFeeMemeThreshold(initFeeMemeThreshold);
-    setBlockSizeMemeThreshold(initBlockSizeMemeThreshold);
-    setSecurityMemeThreshold(initSetSecurityMemeThreshold);
-  }, []);
-
+  const yearIdx = getYearIdx(year);
   const {
     marketCap,
     usdMinerReward,
