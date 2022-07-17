@@ -62,7 +62,7 @@ function Background({ backgroundImage }) {
       bottom="0"
       left="0"
       w="100vw"
-      h="100vh"
+      h="100%"
       zIndex="-1"
     />
   );
