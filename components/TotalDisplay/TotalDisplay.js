@@ -8,10 +8,9 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { FaRedoAlt } from "react-icons/fa";
-import { END_YEAR, START_FUTURE_YEAR } from "../../utils/constants";
 import { PERCENT_3_DECIMALS, THREE_SIGFIGS } from "../../utils/numberFormats";
-import BaseSlider from "../Controls/BaseSlider/BaseSlider";
 import DarkToolTip from "../DarkToolTip/DarkToolTip";
+import YearSlider from "./YearSlider/YearSlider";
 
 function TotalDisplay({ year, setYear, relativeMinerRewardAtYear, reset }) {
   const sigFigFormatter = new Intl.NumberFormat("en", THREE_SIGFIGS);
@@ -19,9 +18,6 @@ function TotalDisplay({ year, setYear, relativeMinerRewardAtYear, reset }) {
   const minerReward = percentFormatter.format(
     sigFigFormatter.format(relativeMinerRewardAtYear)
   );
-
-  const setYearToMem = setYear(false);
-  const setYearToStorage = setYear(true);
 
   return (
     <Stack
@@ -32,16 +28,7 @@ function TotalDisplay({ year, setYear, relativeMinerRewardAtYear, reset }) {
       pt="2.5rem"
       zIndex="5"
     >
-      <BaseSlider
-        label={"Year"}
-        output={year}
-        value={year}
-        onChange={setYearToMem}
-        onChangeEnd={setYearToStorage}
-        min={START_FUTURE_YEAR}
-        max={END_YEAR}
-        mb="0"
-      />
+      <YearSlider year={year} setYear={setYear} />
       <HStack>
         <SingleTotal
           label="Relative Miner Revenue/Year"
