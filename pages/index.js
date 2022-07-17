@@ -78,6 +78,25 @@ export default function Home() {
           <Core changeBackground={changeBackground} />
         </Container>
       </motion.div>
+      <Background />
     </ChakraProvider>
+  );
+}
+
+function Background({ backgroundImage }) {
+  return (
+    <Box
+      backgroundImage={backgroundImage}
+      transitionDuration="0.5s"
+      backgroundColor="gray.900"
+      position="absolute"
+      top="0"
+      right="0"
+      bottom="0"
+      left="0"
+      w="100vw"
+      h="100vh"
+      zIndex="-1"
+    />
   );
 }
