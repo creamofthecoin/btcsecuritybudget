@@ -1,4 +1,4 @@
-import { ChakraProvider } from "@chakra-ui/react";
+import { Box, ChakraProvider } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Container from "../components/Container/Container";
@@ -46,7 +46,7 @@ export default function Home() {
           <Core setAllGood={setAllGood} />
         </Container>
       </motion.div>
-      <Background />
+      {/* <Background /> */}
     </ChakraProvider>
   );
 }

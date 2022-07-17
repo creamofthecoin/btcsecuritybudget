@@ -22,7 +22,7 @@ export function useFadeInOut(inObject, duration = 200) {
         setFade(true);
       }, duration + 25)
     );
-  }, Object.values(inObject));
+  }, inObject);
 
   const fadeStyle = {
     transition: `opacity ${duration}ms ease`,

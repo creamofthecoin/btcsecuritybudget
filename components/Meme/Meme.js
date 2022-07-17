@@ -10,7 +10,7 @@ import {
 import SingleMeme from "./SingleMeme";
 
 function Meme({ ratings }) {
-  const { avgFeeRating, securityRating, decentralizationRating } = ratings;
+  const [avgFeeRating, decentralizationRating, securityRating] = ratings;
 
   return (
     <Flex

@@ -66,8 +66,8 @@ export default function Core({ setAllGood }) {
 
   const { colorMode } = useColorMode();
   useEffect(() => {
-    setAllGood(_.every(ratings, (x) => x === GOOD_RATING));
-  }, Object.values(ratings));
+    setAllGood(ratings.every((x) => x === GOOD_RATING));
+  }, ratings);
 
   return (
     <>
