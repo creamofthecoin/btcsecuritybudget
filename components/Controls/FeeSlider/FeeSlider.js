@@ -61,7 +61,7 @@ function FeeSlider({
   // The in-memory change is taken care of by the above useEffect.
   // This separate useEffect is to reduce writes to localstorage.
   useEffect(() => {
-    if (mktYearDoneChange) {
+    if (feeIsUsd && mktYearDoneChange) {
       setAvgFeeToStorage(avgFee);
     }
     setMktYearDoneChange(false);
