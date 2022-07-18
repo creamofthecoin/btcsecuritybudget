@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { CURR_AVG_BLOCK_SIZE_MB, CURR_AVG_FEE } from "../utils/constants";
 import { useLocalStorage } from "../utils/useLocalStorage";
 
@@ -38,6 +38,8 @@ export function useSliderStates() {
     initSetSecurityMemeThreshold
   );
 
+  const [mktYearDoneChange, setMktYearDoneChange] = useState(false);
+
   const reset = useCallback(() => {
     setAvgFee(true)(CURR_AVG_FEE);
     setFeeIsUsd(true)(true);
@@ -72,6 +74,8 @@ export function useSliderStates() {
     setBlockSizeMemeThreshold,
     securityMemeThreshold,
     setSecurityMemeThreshold,
+    mktYearDoneChange,
+    setMktYearDoneChange,
     reset,
     resetSettings,
   };

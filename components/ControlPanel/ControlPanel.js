@@ -22,6 +22,8 @@ export default function ControlPanel({
   colorMode,
   ratings,
   isVisible,
+  mktYearDoneChange,
+  setMktYearDoneChange,
   reset,
 }) {
   return (
@@ -64,12 +66,15 @@ export default function ControlPanel({
           finalMarketCap={finalMarketCap}
           setFinalMarketCap={setFinalMarketCap}
           priceAtYear={priceAtYear}
+          mktYearDoneChange={mktYearDoneChange}
+          setMktYearDoneChange={setMktYearDoneChange}
         />
         <Spacer />
         <TotalDisplay
           year={year}
           setYear={setYear}
           relativeMinerRewardAtYear={relativeMinerRewardAtYear}
+          setMktYearDoneChange={setMktYearDoneChange}
           reset={reset}
         />
       </Flex>

@@ -32,6 +32,8 @@ export default function Core({ setAllGood }) {
     setBlockSizeMemeThreshold,
     securityMemeThreshold,
     setSecurityMemeThreshold,
+    mktYearDoneChange,
+    setMktYearDoneChange,
     reset,
     resetSettings,
   } = useSliderStates();
@@ -96,6 +98,8 @@ export default function Core({ setAllGood }) {
           colorMode={colorMode}
           ratings={ratings}
           isVisible={isVisible}
+          mktYearDoneChange={mktYearDoneChange}
+          setMktYearDoneChange={setMktYearDoneChange}
           reset={reset}
         />
         {isVisible && <Meme ratings={ratings} />}

@@ -12,7 +12,13 @@ import { PERCENT_3_DECIMALS, THREE_SIGFIGS } from "../../utils/numberFormats";
 import DarkToolTip from "../DarkToolTip/DarkToolTip";
 import YearSlider from "./YearSlider/YearSlider";
 
-function TotalDisplay({ year, setYear, relativeMinerRewardAtYear, reset }) {
+function TotalDisplay({
+  year,
+  setYear,
+  relativeMinerRewardAtYear,
+  setMktYearDoneChange,
+  reset,
+}) {
   const sigFigFormatter = new Intl.NumberFormat("en", THREE_SIGFIGS);
   const percentFormatter = new Intl.NumberFormat("en", PERCENT_3_DECIMALS);
   const minerReward = percentFormatter.format(
@@ -28,7 +34,11 @@ function TotalDisplay({ year, setYear, relativeMinerRewardAtYear, reset }) {
       pt="2.5rem"
       zIndex="5"
     >
-      <YearSlider year={year} setYear={setYear} />
+      <YearSlider
+        year={year}
+        setYear={setYear}
+        setMktYearDoneChange={setMktYearDoneChange}
+      />
       <HStack>
         <SingleTotal
           label="Relative Miner Revenue/Year"
