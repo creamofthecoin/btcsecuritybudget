@@ -14,7 +14,9 @@ export default function InputWithLabel({ label, value, onBlur }) {
 
   function localOnBlur() {
     const newVal = localVal ? formatter.format(localVal) : value;
-    onBlur(newVal);
+    if (newVal !== value) {
+      onBlur(newVal);
+    }
     setLocalVal(newVal);
   }
 

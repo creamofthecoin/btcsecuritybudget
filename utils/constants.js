@@ -68,7 +68,7 @@ export const CURR_AVG_FEE = 1.5; // USD, July 2022
 export const CURR_PRICE = 24360; // 30-day average USD price of btc, July 2022
 const LAST_HISTORICAL_SUPPLY = 18915425 + BLOCKS_PER_YEAR * CURR_BLOCK_REWARD; // number of btc end of 2022 (# at end of 2021 + expected number for 2022)
 const PAST_YEARS = _.range(START_YEAR, START_FUTURE_YEAR);
-export const FUTURE_YEARS = _.range(START_FUTURE_YEAR, END_YEAR + 1);
+const FUTURE_YEARS = _.range(START_FUTURE_YEAR, END_YEAR + 1);
 export const YEARS = PAST_YEARS.concat(FUTURE_YEARS);
 
 // btc block reward per year starting 2023

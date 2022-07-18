@@ -8,17 +8,23 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { FaRedoAlt } from "react-icons/fa";
-import { END_YEAR, START_FUTURE_YEAR } from "../../utils/constants";
 import { PERCENT_3_DECIMALS, THREE_SIGFIGS } from "../../utils/numberFormats";
-import BaseSlider from "../Controls/BaseSlider/BaseSlider";
 import DarkToolTip from "../DarkToolTip/DarkToolTip";
+import YearSlider from "./YearSlider/YearSlider";
 
-function TotalDisplay({ year, setYear, relativeMinerRewardAtYear, reset }) {
+function TotalDisplay({
+  year,
+  setYear,
+  relativeMinerRewardAtYear,
+  setMktYearDoneChange,
+  reset,
+}) {
   const sigFigFormatter = new Intl.NumberFormat("en", THREE_SIGFIGS);
   const percentFormatter = new Intl.NumberFormat("en", PERCENT_3_DECIMALS);
   const minerReward = percentFormatter.format(
     sigFigFormatter.format(relativeMinerRewardAtYear)
   );
+
   return (
     <Stack
       alignItems="stretch"
@@ -28,14 +34,10 @@ function TotalDisplay({ year, setYear, relativeMinerRewardAtYear, reset }) {
       pt="2.5rem"
       zIndex="5"
     >
-      <BaseSlider
-        label={"Year"}
-        output={year}
-        value={year}
-        onChange={setYear}
-        min={START_FUTURE_YEAR}
-        max={END_YEAR}
-        mb="0"
+      <YearSlider
+        year={year}
+        setYear={setYear}
+        setMktYearDoneChange={setMktYearDoneChange}
       />
       <HStack>
         <SingleTotal
@@ -47,18 +49,28 @@ function TotalDisplay({ year, setYear, relativeMinerRewardAtYear, reset }) {
         />
         <Spacer />
         <DarkToolTip label="Reset">
-          <IconButton
-            icon={<FaRedoAlt />}
-            // size={{ base: "sm", lg: "md" }}
-            borderRadius="full"
-            w="min-content"
-            onClick={reset}
-          />
+          <span>
+            <ResetButton reset={reset} />
+          </span>
         </DarkToolTip>
       </HStack>
     </Stack>
   );
 }
+
+// Has to be wrapped by <span>
+// https://chakra-ui.com/docs/components/tooltip#with-an-icon
+const ResetButton = React.memo(({ reset }) => {
+  return (
+    <IconButton
+      icon={<FaRedoAlt />}
+      // size={{ base: "sm", lg: "md" }}
+      borderRadius="full"
+      w="min-content"
+      onClick={reset}
+    />
+  );
+});
 
 function SingleTotal({ label, total, bold, large, tooltipLabel }) {
   return (

@@ -1,4 +1,3 @@
-import _ from "lodash";
 import { useEffect, useState } from "react";
 
 export function useFadeInOut(inObject, duration = 200) {
@@ -23,7 +22,7 @@ export function useFadeInOut(inObject, duration = 200) {
         setFade(true);
       }, duration + 25)
     );
-  }, _.values(inObject));
+  }, inObject);
 
   const fadeStyle = {
     transition: `opacity ${duration}ms ease`,

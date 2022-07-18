@@ -13,6 +13,8 @@ export default function Controls({
   setBlockSizeIsMB,
   finalMarketCap,
   setFinalMarketCap,
+  mktYearDoneChange,
+  setMktYearDoneChange,
   priceAtYear,
 }) {
   return (
@@ -23,6 +25,8 @@ export default function Controls({
         feeIsUsd={feeIsUsd}
         setFeeIsUsd={setFeeIsUsd}
         priceAtYear={priceAtYear}
+        mktYearDoneChange={mktYearDoneChange}
+        setMktYearDoneChange={setMktYearDoneChange}
       />
       <BlockSizeSlider
         blockSize={blockSize}
@@ -33,6 +37,7 @@ export default function Controls({
       <MarketCapSlider
         finalMarketCap={finalMarketCap}
         setFinalMarketCap={setFinalMarketCap}
+        setMktYearDoneChange={setMktYearDoneChange}
       />
     </>
   );

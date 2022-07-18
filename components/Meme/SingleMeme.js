@@ -15,7 +15,7 @@ export default function SingleMeme({ memeSrc, rating }) {
     setIsHovered(false);
   };
   const condition = rating === GOOD_RATING ? "180" : "0";
-  const [{ title }, fadeStyle] = useFadeInOut({ title: memeSrc[rating].meme });
+  const [[title], fadeStyle] = useFadeInOut([memeSrc[rating].meme]);
 
   const sizes = {
     base: "clamp(2rem, 30vw, 100px)",

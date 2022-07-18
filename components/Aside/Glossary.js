@@ -67,7 +67,7 @@ export default function Glossary() {
   );
 }
 
-function Item({ image, alt, ...props }) {
+function Item({ image, ...props }) {
   return (
     <Stack
       flexDir={{ base: "column", md: "row" }}

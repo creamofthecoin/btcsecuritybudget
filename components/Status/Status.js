@@ -11,7 +11,7 @@ import { useFadeInOut } from "../../utils/useFadeInOut";
 
 function Status({ ratings }) {
   const [currRatings, fadeStyle] = useFadeInOut(ratings);
-  const { avgFeeRating, securityRating, decentralizationRating } = currRatings;
+  const [avgFeeRating, decentralizationRating, securityRating] = currRatings;
 
   return (
     <Stack
