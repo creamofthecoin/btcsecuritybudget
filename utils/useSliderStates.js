@@ -3,7 +3,7 @@ import { CURR_AVG_BLOCK_SIZE_MB, CURR_AVG_FEE } from "../utils/constants";
 import { useLocalStorage } from "../utils/useLocalStorage";
 
 const initMarketCap = 1e14;
-const initYear = 2032;
+const initYear = 2023;
 const initFeeMemeThreshold = 100;
 const initBlockSizeMemeThreshold = 10;
 const initSetSecurityMemeThreshold = 1;
