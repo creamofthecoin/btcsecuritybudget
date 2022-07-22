@@ -2,9 +2,14 @@ import React from "react";
 import { END_YEAR, START_FUTURE_YEAR } from "../../../utils/constants";
 import BaseSlider from "../../Controls/BaseSlider/BaseSlider";
 
-function YearSlider({ year, setYear }) {
+function YearSlider({ year, setYear, setMktYearDoneChange }) {
   const setYearToMem = setYear(false);
   const setYearToStorage = setYear(true);
+
+  function onChangeEnd(v) {
+    setMktYearDoneChange(true);
+    setYearToStorage(v);
+  }
 
   return (
     <BaseSlider
@@ -12,7 +17,7 @@ function YearSlider({ year, setYear }) {
       output={year}
       value={year}
       onChange={setYearToMem}
-      onChangeEnd={setYearToStorage}
+      onChangeEnd={onChangeEnd}
       min={START_FUTURE_YEAR}
       max={END_YEAR}
       mb="0"

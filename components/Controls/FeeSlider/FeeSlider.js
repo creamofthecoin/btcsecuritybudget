@@ -18,7 +18,15 @@ function minMaxUsd(minSats, maxSats, priceAtYear) {
 const minSats = 1;
 const maxSats = SATS_PER_BTC;
 
-function FeeSlider({ avgFee, setAvgFee, feeIsUsd, setFeeIsUsd, priceAtYear }) {
+function FeeSlider({
+  avgFee,
+  setAvgFee,
+  feeIsUsd,
+  setFeeIsUsd,
+  priceAtYear,
+  mktYearDoneChange,
+  setMktYearDoneChange,
+}) {
   const setAvgFeeToMem = setAvgFee(false);
   const setAvgFeeToStorage = setAvgFee(true);
   const setFeeIsUsdToStorage = setFeeIsUsd(true);
@@ -46,6 +54,18 @@ function FeeSlider({ avgFee, setAvgFee, feeIsUsd, setFeeIsUsd, priceAtYear }) {
       setAvgFeeToMem(pow10(max));
     }
   }, [min, max]);
+
+  // Special case for writing to local storage.
+  // This triggers when year or market cap slider finishes changing.
+  // Then the min/max of the fee slider may have changed.
+  // The in-memory change is taken care of by the above useEffect.
+  // This separate useEffect is to reduce writes to localstorage.
+  useEffect(() => {
+    if (feeIsUsd && mktYearDoneChange) {
+      setAvgFeeToStorage(avgFee);
+    }
+    setMktYearDoneChange(false);
+  }, [mktYearDoneChange]);
 
   const toolTipLabel = `${twoDecimals.format(equivalent)} ${unitsLabel(
     !feeIsUsd
