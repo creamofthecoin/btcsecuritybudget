@@ -48,10 +48,10 @@ const dynamicBlockSize = {
   ],
 };
 
-const solutionList = [drivechain, spacechains, dynamicBlockSize];
+const solutionsList = _.shuffle([drivechain, spacechains, dynamicBlockSize]);
 
 function ShuffledSolutions() {
-  return _.shuffle(solutionList).map((x) => (
+  return solutionsList.map((x) => (
     <div key={x.heading}>
       <ModalHeading>{x.heading}</ModalHeading>
       <UnorderedList>
