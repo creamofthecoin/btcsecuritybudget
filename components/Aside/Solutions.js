@@ -78,7 +78,7 @@ function OpeningText() {
         <Link
           href="https://github.com/creamofthecoin/btcsecuritybudget/issues"
           isExternal
-          color="teal.500"
+          color="cyan.400"
         >
           open an issue on GitHub.
         </Link>
