@@ -1,5 +1,6 @@
 import { Link, ListItem, Text, UnorderedList } from "@chakra-ui/react";
 import _ from "lodash";
+import React from "react";
 import ModalHeading from "../../utils/ModalHeading";
 
 const drivechain = {
@@ -52,9 +53,9 @@ const solutionsList = _.shuffle([drivechain, spacechains, dynamicBlockSize]);
 
 function ShuffledSolutions() {
   return solutionsList.map((x) => (
-    <div key={x.heading}>
+    <React.Fragment key={x.heading}>
       <ModalHeading>{x.heading}</ModalHeading>
-      <UnorderedList>
+      <UnorderedList spacing={2} pl="1.75rem" pt=".5rem">
         {x.links.map((y) => (
           <ListItem key={y.href}>
             <Link href={y.href} isExternal>
@@ -63,23 +64,26 @@ function ShuffledSolutions() {
           </ListItem>
         ))}
       </UnorderedList>
-    </div>
+    </React.Fragment>
   ));
 }
 
 function OpeningText() {
   return (
-    <Text>
-      Here are some potential solutions (the order is randomized on page load).
-      If you have any suggestions, please{" "}
-      <Link
-        href="https://github.com/creamofthecoin/btcsecuritybudget/issues"
-        isExternal
-        color="teal.500"
-      >
-        open an issue on GitHub.
-      </Link>
-    </Text>
+    <>
+      <ModalHeading>Potential Solutions</ModalHeading>
+      <Text>
+        Listed below are some potential solutions. The order is randomized on
+        page load. If you have any suggestions, please{" "}
+        <Link
+          href="https://github.com/creamofthecoin/btcsecuritybudget/issues"
+          isExternal
+          color="teal.500"
+        >
+          open an issue on GitHub.
+        </Link>
+      </Text>
+    </>
   );
 }
 
