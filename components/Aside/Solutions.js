@@ -31,7 +31,9 @@ export default function Solutions() {
       <UnorderedList>
         {x.links.map((y) => (
           <ListItem key={y.href}>
-            <Link href={y.href}>{y.name}</Link>
+            <Link href={y.href} isExternal>
+              {y.name}
+            </Link>
           </ListItem>
         ))}
       </UnorderedList>
