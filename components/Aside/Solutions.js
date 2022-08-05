@@ -57,8 +57,8 @@ const inflation = {
       name: "Tail Emission",
     },
     {
-      href: "#",
-      name: "Burning Fees + Inflation",
+      href: "",
+      name: "Burning Fees + Inflation *",
     },
   ],
 };
@@ -77,9 +77,13 @@ function ShuffledSolutions() {
       <UnorderedList spacing={2} pl="1.75rem" pt=".5rem">
         {x.links.map((y) => (
           <ListItem key={y.href}>
-            <Link href={y.href} isExternal>
-              {y.name}
-            </Link>
+            {y.href ? (
+              <Link href={y.href} isExternal>
+                {y.name}
+              </Link>
+            ) : (
+              <Text userSelect="none">{y.name}</Text>
+            )}
           </ListItem>
         ))}
       </UnorderedList>
@@ -111,6 +115,9 @@ export default function Solutions() {
     <>
       <OpeningText />
       <ShuffledSolutions />
+      <Text fontSize="xs" pt="2rem !important">
+        * Needs a link.
+      </Text>
     </>
   );
 }
