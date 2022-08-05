@@ -49,7 +49,26 @@ const dynamicBlockSize = {
   ],
 };
 
-const solutionsList = _.shuffle([drivechain, spacechains, dynamicBlockSize]);
+const inflation = {
+  heading: "Inflation",
+  links: [
+    {
+      href: "https://petertodd.org/2022/surprisingly-tail-emission-is-not-inflationary",
+      name: "Tail Emission",
+    },
+    {
+      href: "#",
+      name: "Burning Fees + Inflation",
+    },
+  ],
+};
+
+const solutionsList = _.shuffle([
+  drivechain,
+  spacechains,
+  dynamicBlockSize,
+  inflation,
+]);
 
 function ShuffledSolutions() {
   return solutionsList.map((x) => (
