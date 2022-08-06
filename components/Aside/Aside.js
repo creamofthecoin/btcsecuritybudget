@@ -2,6 +2,7 @@ import { Button, Stack } from "@chakra-ui/react";
 import MainModal from "../MainModal/MainModal";
 import FAQ from "./Faq";
 import Glossary from "./Glossary";
+import Solutions from "./Solutions";
 import Settings from "./Settings";
 
 export default function Aside({ resetSettings, ...props }) {
@@ -26,6 +27,7 @@ export default function Aside({ resetSettings, ...props }) {
       />
       <MainModal body={<FAQ />} buttonText="Explanation" />
       <MainModal body={<Glossary />} buttonText="Glossary" />
+      <MainModal body={<Solutions />} buttonText="Solutions" />
     </Stack>
   );
 }
