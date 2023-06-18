@@ -3,6 +3,11 @@ import _ from "lodash";
 import React from "react";
 import ModalHeading from "../../utils/ModalHeading";
 
+const clientSideValidation = {
+  heading: "Client-side validation",
+  links: [{ href: "https://github.com/LNP-BP/layer1", name: "Paper" }],
+};
+
 const validityRollups = {
   heading: "Validity rollups",
   links: [
@@ -84,6 +89,7 @@ const inflation = {
 };
 
 const solutionsList = _.shuffle([
+  clientSideValidation,
   validityRollups,
   drivechain,
   spacechains,
