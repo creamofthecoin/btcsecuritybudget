@@ -3,26 +3,51 @@ import _ from "lodash";
 import React from "react";
 import ModalHeading from "../../utils/ModalHeading";
 
+const clientSideValidation = {
+  heading: "Client-side validation",
+  links: [{ href: "https://github.com/LNP-BP/layer1", name: "Paper" }],
+};
+
+const validityRollups = {
+  heading: "Validity rollups",
+  links: [
+    { href: "https://bitcoinrollups.org/", name: "Validity rollups website" },
+    {
+      href: "https://tuta-space.notion.site/Validity-rollups-on-Bitcoin-dfdf93725f1849a899b3092bbcff0808",
+      name: "Shorter explanation",
+    },
+  ],
+};
+
 const drivechain = {
   heading: "Drivechain",
   links: [
-    { href: "https://www.drivechain.info/", name: "Drivechain Website" },
+    { href: "https://www.drivechain.info/", name: "Drivechain website" },
     {
-      href: "https://twitter.com/Truthcoin/status/1471487934352216065",
-      name: "Twitter Thread",
+      href: "https://drivechain.xyz",
+      name: "Drivechain website #2",
     },
     {
       href: "https://onthebrink-podcast.com/drivechains/",
       name: "Podcast discussion",
     },
+    {
+      href: "https://bitcoinmagazine.com/technical/drivechain-makes-bitcoin-the-only-crypto",
+      name: "Bitcoin Magazine article",
+    },
+    {
+      href: "https://bitcoinmagazine.com/technical/drivechain-makes-bitcoin-the-only-crypto",
+      name: "YouTube playlist",
+    },
   ],
 };
+
 const spacechains = {
   heading: "Spacechains",
   links: [
     {
       href: "https://www.youtube.com/watch?v=N2ow4Q34Jeg",
-      name: "Video Explanation",
+      name: "Video explanation",
     },
   ],
 };
@@ -54,20 +79,33 @@ const inflation = {
   links: [
     {
       href: "https://petertodd.org/2022/surprisingly-tail-emission-is-not-inflationary",
-      name: "Tail Emission",
+      name: "Tail emission",
     },
     {
       href: "",
-      name: "Burning Fees + Inflation *",
+      name: "Burning fees + Inflation *",
+    },
+  ],
+};
+
+const demurrage = {
+  heading: "Demurrage",
+  links: [
+    {
+      href: "https://en.wikipedia.org/wiki/Demurrage_(currency)",
+      name: "Wikipedia article",
     },
   ],
 };
 
 const solutionsList = _.shuffle([
+  clientSideValidation,
+  validityRollups,
   drivechain,
   spacechains,
   dynamicBlockSize,
   inflation,
+  demurrage,
 ]);
 
 function ShuffledSolutions() {

@@ -12,44 +12,6 @@ export default function FAQ() {
         as the 2030s. You can help keep the future of BTC safe by engaging in
         discussions about this subject, and thinking about potential solutions.
       </Text>
-
-      <ModalHeading>
-        How are the meme states for fee, decentralization, and security
-        determined?
-      </ModalHeading>
-      <Text>
-        The three memes are in a "good" state if the fee is less than 100 USD,
-        the block size is less than 10 MB, and the relative miner revenue is
-        greater than 1%. You can change these thresholds in the Settings menu.
-      </Text>
-
-      <ModalHeading>
-        Why does the Miner Revenue curve change when toggling the Average Fee
-        slider?
-      </ModalHeading>
-      <Text>
-        In USD mode, the fee in USD terms is the same each year. In sats mode,
-        the fee in BTC terms is the same each year, but the USD/BTC exchange
-        rate changes over time. For example, if you set the fee to $100 in USD
-        mode, then the fee is $100 in both 2032 and 2140. In contrast, if you
-        set the fee to 100 in sats mode, then the fee might be $0.5 in 2032, and
-        $5 in 2140. Thus, in USD mode, the fee is constant in USD terms, and in
-        sats mode, the fee changes over time in USD terms.
-      </Text>
-
-      <ModalHeading>
-        Why does the Average Fee slider move when changing the market cap or the
-        year?
-      </ModalHeading>
-      <Text>
-        In USD mode, the min and max values of the slider are set to equal 1 sat
-        and 1 bitcoin respectively. Changing the market cap or the year changes
-        the USD/BTC exchange rate. This affects how many USD are equal to 1 sat
-        or 1 bitcoin, which affects the min and max bounds of the USD slider.
-        When the min and max bounds change, the slider handle has to move to
-        maintain its set value.
-      </Text>
-
       <ModalHeading>What is the security budget?</ModalHeading>
       <Text>
         The security budget is the amount of money paid to miners, which
@@ -127,11 +89,9 @@ export default function FAQ() {
         high (via high security), when there are other ways to preserve or
         increase their wealth?
       </Text>
-
       <ModalHeading>
         An attacker needs a majority of available low-cost energy.
       </ModalHeading>
-
       <Text>
         One argument goes like this: "Let X be the amount of energy worldwide
         that can be used to mine bitcoin profitably. As long as a majority of X
@@ -142,7 +102,49 @@ export default function FAQ() {
         security. There is no profit motive, so they would be willing to use
         non-profitable energy sources to obtain 51% of the hash power.
       </Text>
-
+      <ModalHeading>
+        Why does the Miner Revenue curve change when toggling the Average Fee
+        slider?
+      </ModalHeading>
+      <Text>
+        In USD mode, the fee in USD terms is the same each year. In sats mode,
+        the fee in BTC terms is the same each year, but the USD/BTC exchange
+        rate changes over time. For example, if you set the fee to $100 in USD
+        mode, then the fee is $100 in both 2032 and 2140. In contrast, if you
+        set the fee to 100 in sats mode, then the fee might be $0.5 in 2032, and
+        $5 in 2140. Thus, in USD mode, the fee is constant in USD terms, and in
+        sats mode, the fee changes over time in USD terms.
+      </Text>
+      <ModalHeading>
+        Why does the Average Fee slider move when changing the market cap or the
+        year?
+      </ModalHeading>
+      <Text>
+        In USD mode, the min and max values of the slider are set to equal 1 sat
+        and 1 bitcoin respectively. Changing the market cap or the year changes
+        the USD/BTC exchange rate. This affects how many USD are equal to 1 sat
+        or 1 bitcoin, which affects the min and max bounds of the USD slider.
+        When the min and max bounds change, the slider handle has to move to
+        maintain its set value.
+      </Text>
+      <ModalHeading>
+        Why does the market cap only go to 100 trillion USD? By the year 2140,
+        the market cap should be much higher due to inflation.
+      </ModalHeading>
+      <Text>
+        All values are in today's dollars. So $100 trillion means $100 trillion
+        of value in today's dollars, not some future scenario where $100
+        trillion buys a loaf of bread.
+      </Text>
+      <ModalHeading>
+        How are the meme states for fee, decentralization, and security
+        determined?
+      </ModalHeading>
+      <Text>
+        The three memes are in a "good" state if the fee is less than 100 USD,
+        the block size is less than 10 MB, and the relative miner revenue is
+        greater than 1%. You can change these thresholds in the Settings menu.
+      </Text>
       <ModalHeading>Why memes?</ModalHeading>
       <Text>Memes are useful for discussion.</Text>
     </>
