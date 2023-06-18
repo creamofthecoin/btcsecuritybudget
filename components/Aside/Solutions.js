@@ -3,6 +3,17 @@ import _ from "lodash";
 import React from "react";
 import ModalHeading from "../../utils/ModalHeading";
 
+const validityRollups = {
+  heading: "Validity rollups",
+  links: [
+    { href: "https://bitcoinrollups.org/", name: "Validity rollups website" },
+    {
+      href: "https://tuta-space.notion.site/Validity-rollups-on-Bitcoin-dfdf93725f1849a899b3092bbcff0808",
+      name: "Shorter explanation",
+    },
+  ],
+};
+
 const drivechain = {
   heading: "Drivechain",
   links: [
@@ -25,12 +36,13 @@ const drivechain = {
     },
   ],
 };
+
 const spacechains = {
   heading: "Spacechains",
   links: [
     {
       href: "https://www.youtube.com/watch?v=N2ow4Q34Jeg",
-      name: "Video Explanation",
+      name: "Video explanation",
     },
   ],
 };
@@ -62,16 +74,17 @@ const inflation = {
   links: [
     {
       href: "https://petertodd.org/2022/surprisingly-tail-emission-is-not-inflationary",
-      name: "Tail Emission",
+      name: "Tail emission",
     },
     {
       href: "",
-      name: "Burning Fees + Inflation *",
+      name: "Burning fees + Inflation *",
     },
   ],
 };
 
 const solutionsList = _.shuffle([
+  validityRollups,
   drivechain,
   spacechains,
   dynamicBlockSize,
