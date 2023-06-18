@@ -6,7 +6,7 @@ const initMarketCap = 1e14;
 const initYear = 2023;
 const initFeeMemeThreshold = 100;
 const initBlockSizeMemeThreshold = 10;
-const initSetSecurityMemeThreshold = 1;
+const initSetSecurityMemeThreshold = 0.25;
 
 export function useSliderStates() {
   const [avgFee, setAvgFee] = useLocalStorage("avgFee", CURR_AVG_FEE); // usd or sats
