@@ -2,51 +2,51 @@ import _ from "lodash";
 
 // 2011 to 2022
 // Average transaction fee (USD) per year
-// https://www.blockchain.com/charts/fees-usd-per-transaction
+// https://bitcoinvisuals.com/chain-fees-tx-usd
 export const AVERAGE_FEE_HISTORY = [
   0.011, 0.008, 0.104, 0.101, 0.05, 0.155, 4.809, 2.897, 1.253, 2.896, 10.008,
-  1.743,
+  1.345,
 ];
 
 // 2011 to 2022
 // Average block size (MB) per year
-// https://www.blockchain.com/charts/avg-block-size
+// https://bitcoinvisuals.com/chain-block-size
 export const BLOCKSIZE_HISTORY = [
   0.013, 0.065, 0.148, 0.245, 0.468, 0.771, 0.941, 0.892, 1.073, 1.175, 1.226,
-  1.182,
+  1.347,
 ];
 
 // 2011 to 2022
-// Blockchain size in GB at end of each year (July for 2022)
-// https://www.blockchain.com/charts/blocks-size
+// Blockchain size in GB at end of each year
+// https://bitcoinvisuals.com/chain-size
 export const BLOCKCHAIN_SIZE_HISTORY = [
   0.857, 4.625, 14.017, 28.564, 54.434, 96.929, 149.941, 198.101, 255.841,
-  318.685, 382.992, 414.483,
+  318.685, 382.992, 446.055,
 ];
 
 // 2011 to 2022
 // Average market cap (USD) per year
-// https://www.blockchain.com/charts/market-cap
+// https://bitcoinvisuals.com/market-cap
 export const MARKET_CAP_HISTORY = [
   43283692, 80525000, 2242262476, 6844553536, 3978407382, 8900502518,
   66693167841, 130154700622, 131589002207, 204720845766, 892271740364,
-  688832716093,
+  538126698800,
 ];
 
 // 2011 to 2022
-// Block reward per year in USD. Value for 2022 is calculated by 2 * reward through June 2022.
+// Block reward per year in USD.
 // https://bitcoinvisuals.com/chain-block-reward-day
 const BLOCK_REWARD_USD_HISTORY = [
   17565380, 20967412, 313177087, 785138214, 374080759, 558867339, 2805024365,
-  5222149099, 5035180518, 4670828738, 15666770910, 12281813936,
+  5222149099, 5035180518, 4670828738, 15666770910, 9430954591,
 ];
 
 // 2011 to 2022
-// Transaction fees per year in USD. Value for 2022 is calculated by 2 * fees through June 2022.
+// Transaction fees per year in USD.
 // https://bitcoinvisuals.com/chain-fees-day
 const FEE_USD_HISTORY = [
   29979, 64752, 2230226, 2448777, 2343884, 13654163, 549288904, 284117417,
-  155664608, 324274306, 1018498664, 165944078,
+  155664608, 324274306, 1018498664, 142147315,
 ];
 
 export const MINER_REWARD_USD_HISTORY = BLOCK_REWARD_USD_HISTORY.map(
