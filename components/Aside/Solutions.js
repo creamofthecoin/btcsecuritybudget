@@ -6,14 +6,22 @@ import ModalHeading from "../../utils/ModalHeading";
 const drivechain = {
   heading: "Drivechain",
   links: [
-    { href: "https://www.drivechain.info/", name: "Drivechain Website" },
+    { href: "https://www.drivechain.info/", name: "Drivechain website" },
     {
-      href: "https://twitter.com/Truthcoin/status/1471487934352216065",
-      name: "Twitter Thread",
+      href: "https://drivechain.xyz",
+      name: "Drivechain website #2",
     },
     {
       href: "https://onthebrink-podcast.com/drivechains/",
       name: "Podcast discussion",
+    },
+    {
+      href: "https://bitcoinmagazine.com/technical/drivechain-makes-bitcoin-the-only-crypto",
+      name: "Bitcoin Magazine article",
+    },
+    {
+      href: "https://bitcoinmagazine.com/technical/drivechain-makes-bitcoin-the-only-crypto",
+      name: "YouTube playlist",
     },
   ],
 };
