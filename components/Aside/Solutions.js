@@ -88,6 +88,16 @@ const inflation = {
   ],
 };
 
+const demurrage = {
+  heading: "Demurrage",
+  links: [
+    {
+      href: "https://en.wikipedia.org/wiki/Demurrage_(currency)",
+      name: "Wikipedia article",
+    },
+  ],
+};
+
 const solutionsList = _.shuffle([
   clientSideValidation,
   validityRollups,
@@ -95,6 +105,7 @@ const solutionsList = _.shuffle([
   spacechains,
   dynamicBlockSize,
   inflation,
+  demurrage,
 ]);
 
 function ShuffledSolutions() {
