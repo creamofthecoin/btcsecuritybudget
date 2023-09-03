@@ -4,8 +4,14 @@ import React from "react";
 import ModalHeading from "../../utils/ModalHeading";
 
 const clientSideValidation = {
-  heading: "Client-side validation",
-  links: [{ href: "https://github.com/LNP-BP/layer1", name: "Paper" }],
+  heading: "Prime (Client-side validation)",
+  links: [
+    {
+      href: "https://www.youtube.com/live/V3vvybsc1A4?feature=shared&t=23665",
+      name: "Video explanation",
+    },
+    { href: "https://github.com/LNP-BP/layer1", name: "Paper" },
+  ],
 };
 
 const validityRollups = {
@@ -36,7 +42,7 @@ const drivechain = {
       name: "Bitcoin Magazine article",
     },
     {
-      href: "https://bitcoinmagazine.com/technical/drivechain-makes-bitcoin-the-only-crypto",
+      href: "https://www.youtube.com/playlist?list=PLw8-6ARlyVciMH79ZyLOpImsMug3LgNc4",
       name: "YouTube playlist",
     },
   ],
