@@ -42,7 +42,7 @@ const drivechain = {
       name: "Bitcoin Magazine article",
     },
     {
-      href: "https://bitcoinmagazine.com/technical/drivechain-makes-bitcoin-the-only-crypto",
+      href: "https://www.youtube.com/playlist?list=PLw8-6ARlyVciMH79ZyLOpImsMug3LgNc4",
       name: "YouTube playlist",
     },
   ],
