@@ -11,6 +11,10 @@ const clientSideValidation = {
       name: "Video explanation",
     },
     { href: "https://github.com/LNP-BP/layer1", name: "Paper" },
+    {
+      href: "https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2023-June/021732.html",
+      name: "Post on bitcoin-dev",
+    },
   ],
 };
 
